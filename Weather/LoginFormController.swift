@@ -14,10 +14,9 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    // MARK: Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @IBAction func loginButtonTapHandler(_ sender: UIButton) {
     }
 }

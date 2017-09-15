@@ -35,6 +35,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4AC5B0D1F6C194F009C42C6 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				D4CD9AC21F6866420079A121 /* Main.storyboard */,
+				D4CD9AC51F6866420079A121 /* Assets.xcassets */,
+				D4CD9AC71F6866420079A121 /* LaunchScreen.storyboard */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+		D4AC5B0E1F6C231E009C42C6 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				D4CD9ABE1F6866420079A121 /* AppDelegate.swift */,
+				D4CD9AD01F68667B0079A121 /* LoginFormController.swift */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
 		D4CD9AB21F6866420079A121 = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +73,8 @@
 		D4CD9ABD1F6866420079A121 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				D4CD9ABE1F6866420079A121 /* AppDelegate.swift */,
-				D4CD9AD01F68667B0079A121 /* LoginFormController.swift */,
-				D4CD9AC21F6866420079A121 /* Main.storyboard */,
-				D4CD9AC51F6866420079A121 /* Assets.xcassets */,
-				D4CD9AC71F6866420079A121 /* LaunchScreen.storyboard */,
+				D4AC5B0E1F6C231E009C42C6 /* Code */,
+				D4AC5B0D1F6C194F009C42C6 /* XIB */,
 				D4CD9ACA1F6866420079A121 /* Info.plist */,
 			);
 			path = Weather;
@@ -263,6 +279,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9R5B75D885;
 				INFOPLIST_FILE = Weather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,6 +293,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9R5B75D885;
 				INFOPLIST_FILE = Weather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +320,7 @@
 				D4CD9ACF1F6866420079A121 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
