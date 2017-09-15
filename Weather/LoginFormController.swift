@@ -18,5 +18,18 @@ class LoginFormController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addHideKeyboradGestureRecognizer()
+    }
+    
+    // MARK: Private
+    
+    func addHideKeyboradGestureRecognizer() {
+        let hideKeyboradGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        scrollView?.addGestureRecognizer(hideKeyboradGestureRecognizer)
+    }
+    
+    @objc func hideKeyboard() {
+        scrollView?.endEditing(true)
     }
 }
