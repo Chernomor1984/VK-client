@@ -14,14 +14,15 @@ class LoginFormController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    // MARK: Life cycle
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addHideKeyboradGestureRecognizer()
     }
-    
+    // пофиксить баг со скроллом
+    // добавить text field delegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -38,7 +39,7 @@ class LoginFormController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    // MARK: Actions
+    // MARK: - Actions
     
     @IBAction func loginButtonTapHandler(_ sender: UIButton) {
         let login = loginTextField!.text
@@ -51,7 +52,7 @@ class LoginFormController: UIViewController {
         }
     }
     
-    // MARK: Private
+    // MARK: - Private
     
     func addHideKeyboradGestureRecognizer() {
         let hideKeyboradGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -62,7 +63,7 @@ class LoginFormController: UIViewController {
         scrollView?.endEditing(true)
     }
     
-    // MARK: Notifications
+    // MARK: - Notifications
     
     @objc func keyboardWillShow(notification: Notification) {
         let info = notification.userInfo! as NSDictionary
