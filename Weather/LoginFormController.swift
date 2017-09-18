@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let loginIdentifier = "loginIdentifier"
+
 class LoginFormController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -42,14 +44,6 @@ class LoginFormController: UIViewController {
     // MARK: - Actions
     
     @IBAction func loginButtonTapHandler(_ sender: UIButton) {
-        let login = loginTextField!.text
-        let password = passwordTextField!.text
-        
-        if login == "admin" && password == "admin" {
-            print("авторизация успешна!")
-        } else {
-            print("данные неверны")
-        }
     }
     
     // MARK: - Private
@@ -61,6 +55,19 @@ class LoginFormController: UIViewController {
     
     @objc func hideKeyboard() {
         scrollView?.endEditing(true)
+    }
+    
+    func userDataIsValid() -> Bool {
+        let login = loginTextField!.text
+        let password = passwordTextField!.text
+        return login == "admin" && password == "admin"
+    }
+    
+    func showLoginErrorAlert() {
+        let alertController = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Notifications
@@ -76,5 +83,20 @@ class LoginFormController: UIViewController {
     @objc func KeyboardWillHide(notification: Notification) {
         scrollView?.contentInset = UIEdgeInsets.zero
         scrollView?.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+    
+    // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == loginIdentifier {
+            let dataIsValid = userDataIsValid()
+            
+            if !dataIsValid {
+                showLoginErrorAlert()
+            }
+            return dataIsValid
+        } else {
+            return true
+        }
     }
 }
