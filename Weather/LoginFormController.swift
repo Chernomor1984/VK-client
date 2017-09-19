@@ -37,13 +37,17 @@ class LoginFormController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        hideKeyboard()
+        
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     // MARK: - Actions
     
-    @IBAction func loginButtonTapHandler(_ sender: UIButton) {
+    @IBAction func logout(unwindSegue: UIStoryboardSegue) {
+        loginTextField.text! = ""
+        passwordTextField.text! = ""
     }
     
     // MARK: - Private

@@ -45,7 +45,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6Q-5u-EZU">
                                         <rect key="frame" x="138" y="283" width="44" height="30"/>
@@ -173,9 +173,16 @@
                             <outlet property="delegate" destination="Lsq-tj-42f" id="QHq-t7-Q7n"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Какой-то список" id="ctc-vl-uZl"/>
+                    <navigationItem key="navigationItem" title="Какой-то список" id="ctc-vl-uZl">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="XWw-bH-oHy">
+                            <connections>
+                                <segue destination="P46-sa-hsX" kind="unwind" unwindAction="logoutWithUnwindSegue:" id="S9r-qp-Zek"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8C-15-Xc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="P46-sa-hsX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3386" y="-188"/>
         </scene>
@@ -247,9 +254,16 @@
                             <outlet property="delegate" destination="F8h-KJ-RLX" id="JGv-na-JsE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ещё один список" id="exZ-3M-pon"/>
+                    <navigationItem key="navigationItem" title="Ещё один список" id="exZ-3M-pon">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nVV-QI-HbU">
+                            <connections>
+                                <segue destination="bmu-i9-RM4" kind="unwind" unwindAction="logoutWithUnwindSegue:" id="LmS-cf-zOK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LdI-Am-UhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bmu-i9-RM4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3384" y="689"/>
         </scene>
