@@ -179,7 +179,7 @@
                                 <connections>
                                     <outlet property="avatarImageView" destination="ARH-Hg-4cU" id="tdw-I5-gho"/>
                                     <outlet property="nameLabel" destination="p5e-ln-sjT" id="wdP-aW-oFK"/>
-                                    <segue destination="CKX-of-gTF" kind="presentation" id="Kte-B9-Wtm"/>
+                                    <segue destination="CKX-of-gTF" kind="presentation" identifier="didSelectFriend" id="Kte-B9-Wtm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -201,27 +201,41 @@
             </objects>
             <point key="canvasLocation" x="3384.375" y="-188.02816901408451"/>
         </scene>
-        <!--Какие-то картинки-->
+        <!--Friend Avatar Controller-->
         <scene sceneID="axA-lc-G23">
             <objects>
-                <collectionViewController id="Xa4-aG-xSN" customClass="CollectionViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Xa4-aG-xSN" customClass="FriendAvatarController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Af8-ZW-BYd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="meh-4o-POk">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellIdentifier" id="k1l-Wd-4b1">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellIdentifier" id="k1l-Wd-4b1" customClass="AvatarCollectionViewCell" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="60" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dTE-yR-OWB">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="dTE-yR-OWB" firstAttribute="top" secondItem="k1l-Wd-4b1" secondAttribute="top" id="6lu-Sw-EBo"/>
+                                    <constraint firstAttribute="trailing" secondItem="dTE-yR-OWB" secondAttribute="trailing" id="Vm5-C7-alf"/>
+                                    <constraint firstAttribute="bottom" secondItem="dTE-yR-OWB" secondAttribute="bottom" id="nEL-lK-RP9"/>
+                                    <constraint firstItem="dTE-yR-OWB" firstAttribute="leading" secondItem="k1l-Wd-4b1" secondAttribute="leading" id="tQ8-6J-W4W"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="dTE-yR-OWB" id="ngZ-m6-xNO"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -229,7 +243,7 @@
                             <outlet property="delegate" destination="Xa4-aG-xSN" id="Xe7-U1-hAi"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Какие-то картинки" id="r8z-sM-oTk">
+                    <navigationItem key="navigationItem" id="r8z-sM-oTk">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="ocj-eE-S2C">
                             <connections>
                                 <segue destination="mGB-Oh-aoB" kind="unwind" unwindAction="closeCurrentControllerTapHandlerWithUnwindSegue:" id="YLc-UV-qxZ"/>
@@ -240,7 +254,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVh-tz-dX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mGB-Oh-aoB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5089" y="-188"/>
+            <point key="canvasLocation" x="5088.75" y="-188.02816901408451"/>
         </scene>
         <!--Ещё один список-->
         <scene sceneID="uvI-uE-u3P">

@@ -40,6 +40,20 @@ class FriendsListController: UITableViewController {
     
     // MARK: - Actions
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "didSelectFriend"{
+            let navigationController = segue.destination as! UINavigationController
+            let friendAvatarController = navigationController.viewControllers[0] as! FriendAvatarController
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                let keys = Array(itemsDictionary.keys)
+                let key = keys[selectedIndexPath.row]
+                friendAvatarController.selectedAvatarName = key
+                friendAvatarController.selectedName = itemsDictionary[key]!
+            }
+        }
+    }
+    
     @IBAction func closeCurrentControllerTapHandler(unwindSegue: UIStoryboardSegue) {
     }
 }
