@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D4416DBD1F70883E006720E1 /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DBC1F70883E006720E1 /* FriendsListController.swift */; };
-		D4416DBF1F7089D8006720E1 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DBE1F7089D8006720E1 /* TableViewController2.swift */; };
+		D4416DBF1F7089D8006720E1 /* GroupsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DBE1F7089D8006720E1 /* GroupsListController.swift */; };
 		D4416DC11F708AB8006720E1 /* FriendAvatarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DC01F708AB8006720E1 /* FriendAvatarController.swift */; };
 		D4416DED1F75475B006720E1 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DEC1F75475B006720E1 /* FriendTableViewCell.swift */; };
 		D4416DEF1F754CDE006720E1 /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DEE1F754CDE006720E1 /* AvatarCollectionViewCell.swift */; };
+		D4416DF11F755508006720E1 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF01F755508006720E1 /* GroupTableViewCell.swift */; };
 		D4CD9ABF1F6866420079A121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CD9ABE1F6866420079A121 /* AppDelegate.swift */; };
 		D4CD9AC41F6866420079A121 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CD9AC21F6866420079A121 /* Main.storyboard */; };
 		D4CD9AC61F6866420079A121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4CD9AC51F6866420079A121 /* Assets.xcassets */; };
@@ -21,10 +22,11 @@
 
 /* Begin PBXFileReference section */
 		D4416DBC1F70883E006720E1 /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
-		D4416DBE1F7089D8006720E1 /* TableViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
+		D4416DBE1F7089D8006720E1 /* GroupsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsListController.swift; sourceTree = "<group>"; };
 		D4416DC01F708AB8006720E1 /* FriendAvatarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendAvatarController.swift; sourceTree = "<group>"; };
 		D4416DEC1F75475B006720E1 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		D4416DEE1F754CDE006720E1 /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
+		D4416DF01F755508006720E1 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		D4CD9ABB1F6866420079A121 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CD9ABE1F6866420079A121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4CD9AC31F6866420079A121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				D4416DEC1F75475B006720E1 /* FriendTableViewCell.swift */,
+				D4416DF01F755508006720E1 /* GroupTableViewCell.swift */,
 				D4416DEE1F754CDE006720E1 /* AvatarCollectionViewCell.swift */,
 			);
 			name = Cells;
@@ -71,7 +74,7 @@
 				D4CD9ABE1F6866420079A121 /* AppDelegate.swift */,
 				D4CD9AD01F68667B0079A121 /* LoginFormController.swift */,
 				D4416DBC1F70883E006720E1 /* FriendsListController.swift */,
-				D4416DBE1F7089D8006720E1 /* TableViewController2.swift */,
+				D4416DBE1F7089D8006720E1 /* GroupsListController.swift */,
 				D4416DC01F708AB8006720E1 /* FriendAvatarController.swift */,
 			);
 			name = Code;
@@ -178,7 +181,8 @@
 			files = (
 				D4CD9ABF1F6866420079A121 /* AppDelegate.swift in Sources */,
 				D4416DBD1F70883E006720E1 /* FriendsListController.swift in Sources */,
-				D4416DBF1F7089D8006720E1 /* TableViewController2.swift in Sources */,
+				D4416DBF1F7089D8006720E1 /* GroupsListController.swift in Sources */,
+				D4416DF11F755508006720E1 /* GroupTableViewCell.swift in Sources */,
 				D4416DED1F75475B006720E1 /* FriendTableViewCell.swift in Sources */,
 				D4CD9AD11F68667B0079A121 /* LoginFormController.swift in Sources */,
 				D4416DEF1F754CDE006720E1 /* AvatarCollectionViewCell.swift in Sources */,
