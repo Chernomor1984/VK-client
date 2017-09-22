@@ -10,7 +10,7 @@ import UIKit
 
 class GroupsListController: UITableViewController {
     
-    let itemsDictionary = ["group1" : "Клуб любителей гольфа", "group2" : "Группа крутых чуваков", "group3" : "Группа любителей пива"]
+    var selectedGroups = [NewGroupData]()
     
     // MARK: - Life cycle
     
@@ -25,16 +25,48 @@ class GroupsListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsDictionary.count
+        return selectedGroups.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! GroupTableViewCell
-        let keys = Array(itemsDictionary.keys)
-        let key = keys[indexPath.row]
-        cell.groupNameLabel.text = itemsDictionary[key]
-        cell.groupImageView.image = UIImage(named:key)
+        let groupData = selectedGroups[indexPath.row]
+        cell.groupNameLabel.text = groupData.groupName
+        cell.groupImageView.image = UIImage(named: groupData.avatarName)
         return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            selectedGroups.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // MARK: - Navigation
+    
+    @IBAction func closeNewGroupsListControllerTapHandler(unwindSegue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func selectAndCloseNewGroupsListControllerTapHandler(unwindSegue: UIStoryboardSegue) {
+        if unwindSegue.identifier == "didSelectGroup" {
+            let groupsController = unwindSegue.source as! NewGroupsController
+            
+            if let indexPath = groupsController.tableView.indexPathForSelectedRow {
+                let group = groupsController.groups[indexPath.row]
+                
+                if !selectedGroups.contains(group) {
+                    selectedGroups.append(group)
+                    tableView.reloadData()
+                }
+            }
+        }
     }
 }
