@@ -23,8 +23,7 @@ class LoginFormController: UIViewController {
         
         addHideKeyboradGestureRecognizer()
     }
-    // пофиксить баг со скроллом
-    // добавить text field delegate
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

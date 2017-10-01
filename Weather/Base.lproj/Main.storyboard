@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qqd-e3-UL3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qqd-e3-UL3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,26 +13,26 @@
         <!--Login Form Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginFormController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginFormController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWY-6n-t7r">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzt-Nc-Y3T">
-                                        <rect key="frame" x="10" y="81" width="300" height="21"/>
+                                        <rect key="frame" x="10" y="81" width="355" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G9Q-zd-43w">
-                                        <rect key="frame" x="60" y="122" width="200" height="30"/>
+                                        <rect key="frame" x="87.5" y="122" width="200" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="kgv-ch-Eul"/>
                                         </constraints>
@@ -37,7 +41,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gpj-Uf-mam">
-                                        <rect key="frame" x="60" y="223" width="200" height="30"/>
+                                        <rect key="frame" x="87.5" y="223" width="200" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="1ep-dD-0Hj"/>
                                         </constraints>
@@ -46,27 +50,24 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6Q-5u-EZU">
-                                        <rect key="frame" x="138" y="383" width="44" height="30"/>
+                                        <rect key="frame" x="165.5" y="383" width="44" height="30"/>
                                         <state key="normal" title="Войти"/>
-                                        <connections>
-                                            <segue destination="1uf-VZ-SLm" kind="show" identifier="loginIdentifier" id="m11-Dk-HTG"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-OC-pW5">
-                                        <rect key="frame" x="10" y="30" width="300" height="21"/>
+                                        <rect key="frame" x="10" y="30" width="355" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfs-O7-RrN" userLabel="horizontal helper view">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="fVa-K7-6YO"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef3-YT-ts2">
-                                        <rect key="frame" x="10" y="182" width="300" height="21"/>
+                                        <rect key="frame" x="10" y="182" width="355" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -113,7 +114,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="495" y="133.09859154929578"/>
+            <point key="canvasLocation" x="548" y="-609"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="LIX-8x-04h">
+            <objects>
+                <viewController id="8Rg-1I-QgH" customClass="VKLoginViewController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GP9-uk-S76"/>
+                        <viewControllerLayoutGuide type="bottom" id="FdH-H4-nEh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gue-OU-cRm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Muv-gg-aXW"/>
+                    <connections>
+                        <segue destination="1uf-VZ-SLm" kind="show" identifier="loginIdentifier" id="7hQ-v9-6de"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u5P-3l-nXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="548" y="132.68365817091455"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XFP-ts-Syz">
@@ -137,17 +159,17 @@
         <!--Список друзей-->
         <scene sceneID="iZL-ya-ZU8">
             <objects>
-                <tableViewController id="Lsq-tj-42f" customClass="FriendsListController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Lsq-tj-42f" customClass="FriendsListController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="d3e-Np-elC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="XuX-Nj-fJ8" customClass="FriendTableViewCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="XuX-Nj-fJ8" customClass="FriendTableViewCell" customModule="VK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XuX-Nj-fJ8" id="zuU-3H-hH0">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-Hg-4cU">
@@ -157,7 +179,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5e-ln-sjT">
-                                            <rect key="frame" x="60" y="8" width="252" height="28"/>
+                                            <rect key="frame" x="60" y="8" width="307" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -186,7 +208,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Список друзей" id="ctc-vl-uZl">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="XWw-bH-oHy">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Logout" id="XWw-bH-oHy">
                             <connections>
                                 <segue destination="P46-sa-hsX" kind="unwind" unwindAction="logoutWithUnwindSegue:" id="S9r-qp-Zek"/>
                             </connections>
@@ -201,9 +223,9 @@
         <!--Friend Avatar Controller-->
         <scene sceneID="axA-lc-G23">
             <objects>
-                <collectionViewController id="Xa4-aG-xSN" customClass="FriendAvatarController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Xa4-aG-xSN" customClass="FriendAvatarController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Af8-ZW-BYd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="meh-4o-POk">
                             <size key="itemSize" width="200" height="200"/>
@@ -212,8 +234,8 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellIdentifier" id="k1l-Wd-4b1" customClass="AvatarCollectionViewCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="60" y="0.0" width="200" height="200"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellIdentifier" id="k1l-Wd-4b1" customClass="AvatarCollectionViewCell" customModule="VK" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -256,27 +278,27 @@
         <!--Список групп-->
         <scene sceneID="uvI-uE-u3P">
             <objects>
-                <tableViewController id="F8h-KJ-RLX" customClass="GroupsListController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="F8h-KJ-RLX" customClass="GroupsListController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uyM-UN-tGf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="8dC-Ck-iRX" customClass="GroupTableViewCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="8dC-Ck-iRX" customClass="GroupTableViewCell" customModule="VK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8dC-Ck-iRX" id="Dnn-E1-j6W">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dgO-26-olg">
-                                            <rect key="frame" x="268" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="323" y="0.0" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="dgO-26-olg" secondAttribute="height" multiplier="1:1" id="a6G-Ub-q8f"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-4p-vFr">
-                                            <rect key="frame" x="8" y="8" width="252" height="28"/>
+                                            <rect key="frame" x="8" y="8" width="307" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -304,7 +326,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Список групп" id="exZ-3M-pon">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nVV-QI-HbU">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Logout" id="nVV-QI-HbU">
                             <connections>
                                 <segue destination="bmu-i9-RM4" kind="unwind" unwindAction="logoutWithUnwindSegue:" id="LmS-cf-zOK"/>
                             </connections>
@@ -324,17 +346,17 @@
         <!--Общий список групп-->
         <scene sceneID="N8y-Y2-aIi">
             <objects>
-                <tableViewController id="dsu-wc-u6K" customClass="NewGroupsController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dsu-wc-u6K" customClass="NewGroupsController" customModule="VK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3R9-SK-EqN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="3fc-Ps-SdB" customClass="NewGroupTableViewCell" customModule="Weather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="3fc-Ps-SdB" customClass="NewGroupTableViewCell" customModule="VK" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fc-Ps-SdB" id="lNY-k7-5Qr">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dzw-tG-Dol">
@@ -344,7 +366,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl4-5a-KXE">
-                                            <rect key="frame" x="268" y="0.0" width="44" height="44"/>
+                                            <rect key="frame" x="323" y="0.0" width="44" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="fl4-5a-KXE" secondAttribute="height" multiplier="1:1" id="Mok-Hq-BTx"/>
                                             </constraints>
@@ -353,7 +375,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-8A-uoD">
-                                            <rect key="frame" x="56" y="0.0" width="208" height="44"/>
+                                            <rect key="frame" x="56" y="0.0" width="263" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -404,7 +426,6 @@
                 <navigationController id="DMl-l4-yEl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Вкладка 2" id="aRj-nF-FXZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cY1-Oh-OLp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -422,12 +443,11 @@
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pMh-WQ-d3A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TYB-NO-YaX"/>
+                        <segue destination="8Rg-1I-QgH" kind="relationship" relationship="rootViewController" id="uen-99-kSa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAs-4A-QSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,7 +461,6 @@
                     <tabBarItem key="tabBarItem" title="Вкладка 1" id="UZB-6U-qWm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sjT-Ae-90q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -459,7 +478,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CKX-of-gTF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U1m-xL-kPG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -477,7 +496,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1z0-d5-Mof" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zDG-qG-wqO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
