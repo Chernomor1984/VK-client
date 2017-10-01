@@ -11,5 +11,10 @@ import UIKit
 class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    var item: FriendTableViewItem!
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        item = FriendTableViewItem()
+    }
 }

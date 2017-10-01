@@ -11,10 +11,8 @@ import UIKit
 private let reuseIdentifier = "cellIdentifier"
 
 class FriendAvatarController: UICollectionViewController {
-    var selectedAvatarName = ""
+    var userID = Int.min
     var selectedName = ""
-    
-    
 
     // MARK: - Life cycle
     
@@ -37,7 +35,7 @@ class FriendAvatarController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AvatarCollectionViewCell
-        cell.avatarImageView.image = UIImage(named:selectedAvatarName)
+//        cell.avatarImageView.image = UIImage(named:selectedAvatarName)
         return cell
     }
 }

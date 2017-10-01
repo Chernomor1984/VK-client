@@ -10,7 +10,7 @@ import UIKit
 
 class FriendsListController: UITableViewController {
     
-    let itemsDictionary = ["avatar1" : "John Smith", "avatar2" : "Victoria Graham", "avatar3" : "Matt Busby"]
+    var friends = [[String:AnyObject]]()
     
     // MARK: - Life cycle
     
@@ -23,8 +23,16 @@ class FriendsListController: UITableViewController {
     
     private func loadFriendsList() {
         HTTPSessionManager.sharedInstance.performFriendsListRequest { (data, response, error) in
-            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-            print(json as Any)
+            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else {
+                return
+            }
+            
+            let dictionary = json as! [String: Any]
+            weak var weakSelf = self
+            weakSelf?.friends = dictionary["response"] as! [[String:AnyObject]]
+            DispatchQueue.main.async {
+                weakSelf?.tableView.reloadData()
+            }
         }
     }
     
@@ -35,16 +43,19 @@ class FriendsListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsDictionary.count
+        return friends.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FriendTableViewCell
-        let keys = Array(itemsDictionary.keys)
-        let key = keys[indexPath.row]
-        cell.nameLabel.text = itemsDictionary[key]
-        cell.avatarImageView.image = UIImage(named:key)
+        let dict = friends[indexPath.row]
+        cell.item.userID = String(describing: dict["user_id"])
+        cell.item.userPhotoURL = URL(fileURLWithPath: dict["photo_50"] as! String)
+        
+        if let lastName = dict["last_name"], let firstName = dict["first_name"] {
+            cell.nameLabel.text = (lastName as! String) + " " + (firstName as! String)
+        }
         return cell
     }
     
@@ -62,10 +73,15 @@ class FriendsListController: UITableViewController {
             let friendAvatarController = navigationController.viewControllers[0] as! FriendAvatarController
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                let keys = Array(itemsDictionary.keys)
-                let key = keys[selectedIndexPath.row]
-                friendAvatarController.selectedAvatarName = key
-                friendAvatarController.selectedName = itemsDictionary[key]!
+                let dict = friends[selectedIndexPath.row]
+                
+                if let userID = dict["user_id"] {
+                    friendAvatarController.userID = userID as! Int
+                }
+                
+                if let lastName = dict["last_name"], let firstName = dict["first_name"] {
+                    friendAvatarController.selectedName = (lastName as! String) + " " + (firstName as! String)
+                }
             }
         }
     }
