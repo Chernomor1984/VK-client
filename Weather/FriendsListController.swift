@@ -16,6 +16,16 @@ class FriendsListController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadFriendsList()
+    }
+    
+    // MARK: - Private
+    
+    private func loadFriendsList() {
+        HTTPSessionManager.sharedInstance.performFriendsListRequest { (data, response, error) in
+            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+            print(json as Any)
+        }
     }
     
     // MARK: - UITableViewDataSource

@@ -10,6 +10,8 @@ import Foundation
 
 final class HTTPSessionManager {
     var token: String
+    var userID: String
+    let urlSession: URLSession
     
     // MARK: - Shared Instance
     
@@ -21,5 +23,16 @@ final class HTTPSessionManager {
     
     private init() {
         token = ""
+        userID = ""
+        let defaultConfiguration = URLSessionConfiguration.default
+        urlSession = URLSession(configuration: defaultConfiguration)
+    }
+    
+    // MARK: - Public
+    
+    func performFriendsListRequest(completionHandler: @escaping(_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void) {
+        let urlRequest = RequestFactory.vkFriendsListRequest()
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+        dataTask.resume()
     }
 }

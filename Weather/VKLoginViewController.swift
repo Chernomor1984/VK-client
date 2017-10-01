@@ -64,8 +64,9 @@ extension VKLoginViewController: WKNavigationDelegate {
                 return dictionary
         }
         
-        if let token = parameters["access_token"] {
+        if let token = parameters["access_token"], let userID = parameters["user_id"] {
             HTTPSessionManager.sharedInstance.token = token
+            HTTPSessionManager.sharedInstance.userID = userID
         }
         decisionHandler(.cancel)
         self.performSegue(withIdentifier: loginIdentifier, sender: self)
