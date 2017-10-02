@@ -11,6 +11,7 @@
 		D43CBC431F8161FC0061FF79 /* HTTPSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC421F8161FC0061FF79 /* HTTPSessionManager.swift */; };
 		D43CBC461F8162800061FF79 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC451F8162800061FF79 /* RequestFactory.swift */; };
 		D43CBC491F81A48C0061FF79 /* FriendTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC481F81A48C0061FF79 /* FriendTableViewItem.swift */; };
+		D43CBC801F82D7660061FF79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC7F1F82D7660061FF79 /* User.swift */; };
 		D4416DBD1F70883E006720E1 /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DBC1F70883E006720E1 /* FriendsListController.swift */; };
 		D4416DBF1F7089D8006720E1 /* GroupsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DBE1F7089D8006720E1 /* GroupsListController.swift */; };
 		D4416DC11F708AB8006720E1 /* FriendAvatarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DC01F708AB8006720E1 /* FriendAvatarController.swift */; };
@@ -34,6 +35,7 @@
 		D43CBC421F8161FC0061FF79 /* HTTPSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPSessionManager.swift; sourceTree = "<group>"; };
 		D43CBC451F8162800061FF79 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		D43CBC481F81A48C0061FF79 /* FriendTableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewItem.swift; sourceTree = "<group>"; };
+		D43CBC7F1F82D7660061FF79 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4416DBC1F70883E006720E1 /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
 		D4416DBE1F7089D8006720E1 /* GroupsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsListController.swift; sourceTree = "<group>"; };
 		D4416DC01F708AB8006720E1 /* FriendAvatarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendAvatarController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				D4416DC01F708AB8006720E1 /* FriendAvatarController.swift */,
 				D4416DF21F755746006720E1 /* NewGroupsController.swift */,
 				D4416DF41F75690E006720E1 /* NewGroupData.swift */,
+				D43CBC7F1F82D7660061FF79 /* User.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				D4416DF11F755508006720E1 /* GroupTableViewCell.swift in Sources */,
 				D4416DED1F75475B006720E1 /* FriendTableViewCell.swift in Sources */,
 				D4416DF51F75690E006720E1 /* NewGroupData.swift in Sources */,
+				D43CBC801F82D7660061FF79 /* User.swift in Sources */,
 				D4FCBC781F80074800E6E45C /* VKLoginViewController.swift in Sources */,
 				D4416DF31F755746006720E1 /* NewGroupsController.swift in Sources */,
 				D43CBC461F8162800061FF79 /* RequestFactory.swift in Sources */,
