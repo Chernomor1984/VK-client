@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SwiftyJSON
+import AlamofireImage
 
 private let reuseIdentifier = "cellIdentifier"
 
 class FriendAvatarController: UICollectionViewController {
     var userID = Int.min
     var selectedName = ""
+    var photos = [Photo]()
 
     // MARK: - Life cycle
     
@@ -26,13 +29,16 @@ class FriendAvatarController: UICollectionViewController {
     // MARK: - Private
     
     private func loadPhotos() {
+        weak var weakSelf = self
         HTTPSessionManager.sharedInstance.performPhotosListRequest(ownerID: userID) { (data, response, error) in
-            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else {
+            guard let data = data else {
                 return
             }
-            let dictionary = json as! [String: Any]
-            let photosArray = dictionary["response"] as! [[String:AnyObject]]
-            print(photosArray)
+            let json = JSON(data)
+            weakSelf?.photos = json["response"].flatMap{Photo($0.1)}
+            DispatchQueue.main.async {
+                weakSelf?.collectionView?.reloadData()
+            }
         }
     }
 
@@ -44,12 +50,14 @@ class FriendAvatarController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return photos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AvatarCollectionViewCell
-//        cell.avatarImageView.image = UIImage(named:selectedAvatarName)
+        let photo = photos[indexPath.row]
+        let placeholderImage = UIImage(named: "placeholder")!
+        cell.avatarImageView.af_setImage(withURL: photo.photoURL, placeholderImage: placeholderImage)
         return cell
     }
 }

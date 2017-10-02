@@ -56,7 +56,6 @@ class FriendsListController: UITableViewController {
         cell.item.userPhotoURL = user.userPhotoURL
         cell.nameLabel.text = user.userFirstName + " " + user.userLastName
         let placeholderImage = UIImage(named: "placeholder")!
-        print(user.userPhotoURL)
         cell.avatarImageView.af_setImage(withURL: user.userPhotoURL, placeholderImage: placeholderImage)
         return cell
     }
