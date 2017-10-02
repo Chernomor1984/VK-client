@@ -19,7 +19,7 @@ class User {
     
     init(json: JSON) {
         self.userID = json["user_id"].stringValue
-        self.userPhotoURL = URL(fileURLWithPath: json["photo_50"].stringValue)
+        self.userPhotoURL = URL(string: json["photo_50"].stringValue)
         self.userFirstName = json["first_name"].stringValue
         self.userLastName = json["last_name"].stringValue
     }

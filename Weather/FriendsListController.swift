@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import AlamofireImage
 
 class FriendsListController: UITableViewController {
     
@@ -54,6 +55,9 @@ class FriendsListController: UITableViewController {
         cell.item.userID = String(describing: user.userID)
         cell.item.userPhotoURL = user.userPhotoURL
         cell.nameLabel.text = user.userFirstName + " " + user.userLastName
+        let placeholderImage = UIImage(named: "placeholder")!
+        print(user.userPhotoURL)
+        cell.avatarImageView.af_setImage(withURL: user.userPhotoURL, placeholderImage: placeholderImage)
         return cell
     }
     
