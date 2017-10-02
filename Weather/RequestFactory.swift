@@ -69,4 +69,18 @@ class RequestFactory {
         let request = URLRequest(url: urlComponents.url!)
         return request
     }
+    
+    class func groupsSearchRequest(text: String) -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/groups.search"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "q", value: text),
+            URLQueryItem(name: "sort", value: "0"),
+            URLQueryItem(name: "access_token", value: HTTPSessionManager.sharedInstance.token)
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
 }

@@ -81,10 +81,10 @@ class GroupsListController: UITableViewController {
             if let indexPath = groupsController.tableView.indexPathForSelectedRow {
                 let group = groupsController.selectedGroup(row: indexPath.row)
                 
-                if !selectedGroups.contains(group) {
-                    selectedGroups.append(group)
-                    tableView.reloadData()
-                }
+//                if !selectedGroups.contains(group) {
+//                    selectedGroups.append(group)
+//                    tableView.reloadData()
+//                }
             }
         }
     }

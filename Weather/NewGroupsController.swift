@@ -9,20 +9,9 @@
 import UIKit
 
 class NewGroupsController: UITableViewController {
-    private let names = ["Group1", "Group2", "Group3", "Group4", "Group5"]
-    private let avatars = ["group1", "group2", "group3", "group4", "group5"]
-    private let members = [123, 15, 64, 28, 97]
+    var groups = [AnyObject]()
+    var filteredGroups = [AnyObject]()
     private let searchController = UISearchController(searchResultsController: nil)
-    
-    var filteredGroups = [NewGroupData]()
-    var groups = [NewGroupData]()
-    
-    //MARK: - Init
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        createNewGroups()
-    }
     
     // MARK: - Life cycle
     
@@ -44,9 +33,8 @@ class NewGroupsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewGroupTableViewCell
         let group = isFiltering() ? filteredGroups[indexPath.row] : groups[indexPath.row]
-        cell.groupNameLabel.text = group.groupName
-        cell.groupImageView.image = UIImage(named: group.avatarName)
-        cell.membersCountLabel.text = String(group.membersCount)
+//        cell.groupNameLabel.text =
+//        cell.membersCountLabel.text = String(group.membersCount)
         return cell
     }
     
@@ -58,18 +46,18 @@ class NewGroupsController: UITableViewController {
     
     // MARK: - Public
     
-    func selectedGroup(row: Int) -> NewGroupData {
+    func selectedGroup(row: Int) -> AnyObject {
         return isFiltering() ? filteredGroups[row] : groups[row]
     }
     
     // MARK: - Private
     
-    private func createNewGroups() {
-        for i in 0..<names.count {
-            let groupData = NewGroupData(names[i], avatarName: avatars[i], membersCount: members[i])
-            groups.append(groupData)
-        }
-    }
+//    private func createNewGroups() {
+//        for i in 0..<names.count {
+//            let groupData = NewGroupData(names[i], avatarName: avatars[i], membersCount: members[i])
+//            groups.append(groupData)
+//        }
+//    }
     
     private func configureSearchController() {
         searchController.searchResultsUpdater = self
@@ -84,11 +72,23 @@ class NewGroupsController: UITableViewController {
     }
     
     fileprivate func filterGroupsForText(_ searchText: String, scope: String = "All") {
-        let filterClosure = {(group: NewGroupData) -> Bool in
-            return group.groupName.lowercased().contains(searchText.lowercased())
+//        let filterClosure = {(group: NewGroupData) -> Bool in
+//            return group.groupName.lowercased().contains(searchText.lowercased())
+//        }
+//        filteredGroups = groups.filter(filterClosure)
+//        tableView.reloadData()
+        if searchText.count < 2 {
+            return
         }
-        filteredGroups = groups.filter(filterClosure)
-        tableView.reloadData()
+        HTTPSessionManager.sharedInstance.performGroupsSearchRequest(text: searchText) { (data, urlResponse, error) in
+            guard let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) else {
+                return
+            }
+            let dictionary = json as! [String: Any]
+            print(dictionary)
+            let groupsArray = dictionary["response"] as! [AnyObject]
+            print(groupsArray)
+        }
     }
     
     private func isFiltering() -> Bool {
