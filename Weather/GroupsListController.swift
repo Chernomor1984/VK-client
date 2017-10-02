@@ -16,6 +16,25 @@ class GroupsListController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadGroups()
+    }
+    
+    // MARK: - Private
+    
+    private func loadGroups() {
+        let userID = HTTPSessionManager.sharedInstance.userID
+        
+        if let userID = Int(userID){
+            HTTPSessionManager.sharedInstance.performGroupsListRequest(userID: userID) { (data, urlResponse, error) in
+                guard let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) else {
+                    return
+                }
+                let dictionary = json as! [String: Any]
+                let photosArray = dictionary["response"] as! [AnyObject]
+                print(photosArray)
+            }
+        }
     }
     
     // MARK: - UITableViewDataSource

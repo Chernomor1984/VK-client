@@ -54,4 +54,19 @@ class RequestFactory {
         let request = URLRequest(url: urlComponents.url!)
         return request
     }
+    
+    class func groupsListRequest(userID: Int) -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/groups.get"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "user_id", value: String(userID)),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "fields", value: "members_count"),
+            URLQueryItem(name: "access_token", value: HTTPSessionManager.sharedInstance.token)
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
 }

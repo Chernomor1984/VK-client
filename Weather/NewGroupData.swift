@@ -28,7 +28,7 @@ class NewGroupData: NSObject {
             return
                 self.groupName == otherObject.groupName &&
                 self.avatarName == otherObject.avatarName &&
-                    self.membersCount == otherObject.membersCount
+                self.membersCount == otherObject.membersCount
         }
         return false
     }
