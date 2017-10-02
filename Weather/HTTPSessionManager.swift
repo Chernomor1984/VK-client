@@ -35,4 +35,10 @@ final class HTTPSessionManager {
         let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
         dataTask.resume()
     }
+    
+    func performPhotosListRequest(ownerID: Int, completionHandler: @escaping(_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void) {
+        let urlRequest = RequestFactory.photosListRequest(ownerID: ownerID)
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+        dataTask.resume()
+    }
 }

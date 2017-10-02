@@ -40,4 +40,18 @@ class RequestFactory {
         let request = URLRequest(url: urlComponents.url!)
         return request
     }
+    
+    class func photosListRequest(ownerID: Int) -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/photos.get"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "owner_id", value: String(ownerID)),
+            URLQueryItem(name: "album_id", value: "wall"),
+            URLQueryItem(name: "rev", value: "0")
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
 }

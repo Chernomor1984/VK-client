@@ -20,6 +20,20 @@ class FriendAvatarController: UICollectionViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = selectedName
+        loadPhotos()
+    }
+    
+    // MARK: - Private
+    
+    private func loadPhotos() {
+        HTTPSessionManager.sharedInstance.performPhotosListRequest(ownerID: userID) { (data, response, error) in
+            guard let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) else {
+                return
+            }
+            let dictionary = json as! [String: Any]
+            let photosArray = dictionary["response"] as! [[String:AnyObject]]
+            print(photosArray)
+        }
     }
 
     // MARK: UICollectionViewDataSource
