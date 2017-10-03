@@ -9,8 +9,6 @@
 import Foundation
 
 final class HTTPSessionManager {
-    var token: String
-    var userID: String
     let urlSession: URLSession
     
     // MARK: - Shared Instance
@@ -22,8 +20,6 @@ final class HTTPSessionManager {
     // MARK: - Init
     
     private init() {
-        token = ""
-        userID = ""
         let defaultConfiguration = URLSessionConfiguration.default
         urlSession = URLSession(configuration: defaultConfiguration)
     }

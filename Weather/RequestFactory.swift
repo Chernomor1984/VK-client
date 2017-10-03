@@ -33,7 +33,7 @@ class RequestFactory {
         urlComponents.host = "api.vk.com"
         urlComponents.path = "/method/friends.get"
         urlComponents.queryItems = [
-            URLQueryItem(name: "user_id", value: HTTPSessionManager.sharedInstance.userID),
+            URLQueryItem(name: "user_id", value: UserDefaults.standard.string(forKey: userIDKey)),
             URLQueryItem(name: "order", value: "random"),
             URLQueryItem(name: "fields", value: "nickname, domain, sex, bdate, city, country, photo_50, contacts, education, relation, status, universities")
         ]
@@ -64,7 +64,7 @@ class RequestFactory {
             URLQueryItem(name: "user_id", value: String(userID)),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "fields", value: "members_count"),
-            URLQueryItem(name: "access_token", value: HTTPSessionManager.sharedInstance.token)
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey))
         ]
         let request = URLRequest(url: urlComponents.url!)
         return request
@@ -78,7 +78,7 @@ class RequestFactory {
         urlComponents.queryItems = [
             URLQueryItem(name: "q", value: text),
             URLQueryItem(name: "sort", value: "0"),
-            URLQueryItem(name: "access_token", value: HTTPSessionManager.sharedInstance.token)
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey))
         ]
         let request = URLRequest(url: urlComponents.url!)
         return request

@@ -9,6 +9,9 @@
 import UIKit
 import WebKit
 
+public let tokenKey = "tokenKey"
+public let userIDKey = "userIDKey"
+
 private let loginIdentifier = "loginIdentifier"
 
 class VKLoginViewController: UIViewController {
@@ -65,8 +68,8 @@ extension VKLoginViewController: WKNavigationDelegate {
         }
         
         if let token = parameters["access_token"], let userID = parameters["user_id"] {
-            HTTPSessionManager.sharedInstance.token = token
-            HTTPSessionManager.sharedInstance.userID = userID
+            UserDefaults.standard.setValue(token, forKey: tokenKey)
+            UserDefaults.standard.setValue(userID, forKey: userIDKey)
         }
         decisionHandler(.cancel)
         self.performSegue(withIdentifier: loginIdentifier, sender: self)

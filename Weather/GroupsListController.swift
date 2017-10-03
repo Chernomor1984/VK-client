@@ -25,7 +25,9 @@ class GroupsListController: UITableViewController {
     // MARK: - Private
     
     private func loadGroups() {
-        let userID = HTTPSessionManager.sharedInstance.userID
+        guard let userID = UserDefaults.standard.string(forKey: userIDKey) else {
+            return
+        }
         
         if let userID = Int(userID){
             weak var weakSelf = self
