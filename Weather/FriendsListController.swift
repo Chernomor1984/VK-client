@@ -53,10 +53,12 @@ class FriendsListController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FriendTableViewCell
         let user = friends[indexPath.row]
         cell.item.userID = String(describing: user.userID)
-        cell.item.userPhotoURL = user.userPhotoURL
         cell.nameLabel.text = user.userFirstName + " " + user.userLastName
         let placeholderImage = UIImage(named: "placeholder")!
-        cell.avatarImageView.af_setImage(withURL: user.userPhotoURL, placeholderImage: placeholderImage)
+        
+        if let url = URL(string: user.userPhotoURL){
+            cell.avatarImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        }
         return cell
     }
     

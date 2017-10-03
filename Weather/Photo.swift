@@ -8,13 +8,15 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class Photo {
-    var photoURL: URL!
+class Photo: Object {
+    @objc dynamic var photoURL: String!
     
     // MARK: - Init
     
-    init(_ json: JSON) {
-        self.photoURL = URL(string: json["src_big"].stringValue)
+    convenience init(_ json: JSON) {
+        self.init()
+        self.photoURL = json["src_big"].stringValue
     }
 }

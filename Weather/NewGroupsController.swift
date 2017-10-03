@@ -35,7 +35,10 @@ class NewGroupsController: UITableViewController {
         let group = filteredGroups[indexPath.row]
         cell.groupNameLabel.text = group.name
         let placeholderImage = UIImage(named: "placeholder")!
-        cell.groupImageView.af_setImage(withURL: group.imageURL, placeholderImage: placeholderImage)
+        
+        if let url = URL(string: group.imageURL){
+            cell.groupImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        }
         return cell
     }
     
@@ -81,7 +84,7 @@ class NewGroupsController: UITableViewController {
             
             let json = JSON(data: data)
             let array = json["response"].flatMap({Group(json: $0.1)})
-            weakSelf?.filteredGroups = array.filter{$0.imageURL != nil}
+            weakSelf?.filteredGroups = array.filter{$0.imageURL != ""}
             DispatchQueue.main.async {
                 weakSelf?.tableView.reloadData()
             }

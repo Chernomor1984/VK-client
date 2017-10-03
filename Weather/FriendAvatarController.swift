@@ -57,7 +57,10 @@ class FriendAvatarController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AvatarCollectionViewCell
         let photo = photos[indexPath.row]
         let placeholderImage = UIImage(named: "placeholder")!
-        cell.avatarImageView.af_setImage(withURL: photo.photoURL, placeholderImage: placeholderImage)
+        
+        if let url = URL(string: photo.photoURL){
+            cell.avatarImageView.af_setImage(withURL: url, placeholderImage: placeholderImage)
+        }
         return cell
     }
 }

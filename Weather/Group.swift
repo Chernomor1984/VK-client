@@ -8,17 +8,19 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class Group: NSObject {
-    var imageURL: URL!
-    var name: String!
-    var membersCount: Int!
+class Group: Object {
+    @objc dynamic var imageURL: String!
+    @objc dynamic var name: String!
+    @objc dynamic var membersCount = 0
     
     // MARK: - Init
     
-    init(json: JSON) {
+    convenience init(json: JSON) {
+        self.init()
         self.name = json["name"].stringValue
-        self.imageURL = URL(string: json["photo_medium"].stringValue)
+        self.imageURL = json["photo_medium"].stringValue
         self.membersCount = json["members_count"].intValue
     }
     
