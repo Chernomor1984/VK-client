@@ -9,8 +9,8 @@
 import UIKit
 
 class NewGroupsController: UITableViewController {
-    var groups = [AnyObject]()
-    var filteredGroups = [AnyObject]()
+    var groups = [Group]()
+    var filteredGroups = [Group]()
     private let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Life cycle

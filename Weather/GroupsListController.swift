@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
+import AlamofireImage
 
 class GroupsListController: UITableViewController {
     
-    var selectedGroups = [NewGroupData]()
+    var groups = [Group]()
     
     // MARK: - Life cycle
     
@@ -26,13 +28,18 @@ class GroupsListController: UITableViewController {
         let userID = HTTPSessionManager.sharedInstance.userID
         
         if let userID = Int(userID){
+            weak var weakSelf = self
             HTTPSessionManager.sharedInstance.performGroupsListRequest(userID: userID) { (data, urlResponse, error) in
-                guard let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) else {
+                guard let data = data else {
                     return
                 }
-                let dictionary = json as! [String: Any]
-                let photosArray = dictionary["response"] as! [AnyObject]
-                print(photosArray)
+                
+                let json = JSON(data: data)
+                let array = json["response"].flatMap({Group(json: $0.1)})
+                weakSelf?.groups = array.filter{$0.imageURL != nil}
+                DispatchQueue.main.async {
+                    weakSelf?.tableView.reloadData()
+                }
             }
         }
     }
@@ -44,15 +51,16 @@ class GroupsListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedGroups.count
+        return groups.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! GroupTableViewCell
-        let groupData = selectedGroups[indexPath.row]
-        cell.groupNameLabel.text = groupData.groupName
-        cell.groupImageView.image = UIImage(named: groupData.avatarName)
+        let group = groups[indexPath.row]
+        cell.groupNameLabel.text = group.name
+        let placeholderImage = UIImage(named: "placeholder")!
+        cell.groupImageView.af_setImage(withURL: group.imageURL, placeholderImage: placeholderImage)
         return cell
     }
     
@@ -60,7 +68,7 @@ class GroupsListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            selectedGroups.remove(at: indexPath.row)
+            groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -79,12 +87,12 @@ class GroupsListController: UITableViewController {
             let groupsController = unwindSegue.source as! NewGroupsController
             
             if let indexPath = groupsController.tableView.indexPathForSelectedRow {
-                let group = groupsController.selectedGroup(row: indexPath.row)
+                let group = groupsController.groups[indexPath.row]
                 
-//                if !selectedGroups.contains(group) {
-//                    selectedGroups.append(group)
-//                    tableView.reloadData()
-//                }
+                if !groups.contains(group) {
+                    groups.append(group)
+                    tableView.reloadData()
+                }
             }
         }
     }
