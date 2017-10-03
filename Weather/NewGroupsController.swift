@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 
 class NewGroupsController: UITableViewController {
-//    var groups = [Group]()
     var filteredGroups = [Group]()
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -52,15 +51,6 @@ class NewGroupsController: UITableViewController {
         return filteredGroups[row]
     }
     
-    // MARK: - Private
-    
-//    private func createNewGroups() {
-//        for i in 0..<names.count {
-//            let groupData = NewGroupData(names[i], avatarName: avatars[i], membersCount: members[i])
-//            groups.append(groupData)
-//        }
-//    }
-    
     private func configureSearchController() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -74,12 +64,12 @@ class NewGroupsController: UITableViewController {
     }
     
     fileprivate func filterGroupsForText(_ searchText: String, scope: String = "All") {
-//        let filterClosure = {(group: Group) -> Bool in
-//            return group.name.lowercased().contains(searchText.lowercased())
-//        }
-//        filteredGroups = groups.filter(filterClosure)
-//        tableView.reloadData()
-        
+        /**
+        let filterClosure = {(group: Group) -> Bool in
+            return group.name.lowercased().contains(searchText.lowercased())
+        }
+        filteredGroups = groups.filter(filterClosure)
+        */
         if searchText.count < 2 {
             return
         }

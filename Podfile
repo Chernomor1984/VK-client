@@ -6,4 +6,5 @@ target 'VK' do
     pod 'Alamofire', '~> 4.4'
     pod 'SwiftyJSON'
     pod 'AlamofireImage', '~> 3.3'
+    pod 'RealmSwift'
 end
