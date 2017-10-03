@@ -28,8 +28,7 @@ class Group: NSObject {
         if let otherObject = object as? Group {
             return
                 self.name == otherObject.name &&
-                self.imageURL == otherObject.imageURL &&
-                self.membersCount == otherObject.membersCount
+                self.imageURL == otherObject.imageURL
         }
         return false
     }

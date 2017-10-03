@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class NewGroupsController: UITableViewController {
-    var groups = [Group]()
+//    var groups = [Group]()
     var filteredGroups = [Group]()
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -27,14 +28,15 @@ class NewGroupsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isFiltering() ? filteredGroups.count : groups.count
+        return filteredGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewGroupTableViewCell
-        let group = isFiltering() ? filteredGroups[indexPath.row] : groups[indexPath.row]
-//        cell.groupNameLabel.text =
-//        cell.membersCountLabel.text = String(group.membersCount)
+        let group = filteredGroups[indexPath.row]
+        cell.groupNameLabel.text = group.name
+        let placeholderImage = UIImage(named: "placeholder")!
+        cell.groupImageView.af_setImage(withURL: group.imageURL, placeholderImage: placeholderImage)
         return cell
     }
     
@@ -46,8 +48,8 @@ class NewGroupsController: UITableViewController {
     
     // MARK: - Public
     
-    func selectedGroup(row: Int) -> AnyObject {
-        return isFiltering() ? filteredGroups[row] : groups[row]
+    func selectedGroup(row: Int) -> Group {
+        return filteredGroups[row]
     }
     
     // MARK: - Private
@@ -72,22 +74,27 @@ class NewGroupsController: UITableViewController {
     }
     
     fileprivate func filterGroupsForText(_ searchText: String, scope: String = "All") {
-//        let filterClosure = {(group: NewGroupData) -> Bool in
-//            return group.groupName.lowercased().contains(searchText.lowercased())
+//        let filterClosure = {(group: Group) -> Bool in
+//            return group.name.lowercased().contains(searchText.lowercased())
 //        }
 //        filteredGroups = groups.filter(filterClosure)
 //        tableView.reloadData()
+        
         if searchText.count < 2 {
             return
         }
+        weak var weakSelf = self
         HTTPSessionManager.sharedInstance.performGroupsSearchRequest(text: searchText) { (data, urlResponse, error) in
-            guard let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) else {
+            guard let data = data else {
                 return
             }
-            let dictionary = json as! [String: Any]
-            print(dictionary)
-            let groupsArray = dictionary["response"] as! [AnyObject]
-            print(groupsArray)
+            
+            let json = JSON(data: data)
+            let array = json["response"].flatMap({Group(json: $0.1)})
+            weakSelf?.filteredGroups = array.filter{$0.imageURL != nil}
+            DispatchQueue.main.async {
+                weakSelf?.tableView.reloadData()
+            }
         }
     }
     

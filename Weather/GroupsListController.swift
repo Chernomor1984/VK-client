@@ -87,7 +87,7 @@ class GroupsListController: UITableViewController {
             let groupsController = unwindSegue.source as! NewGroupsController
             
             if let indexPath = groupsController.tableView.indexPathForSelectedRow {
-                let group = groupsController.groups[indexPath.row]
+                let group = groupsController.filteredGroups[indexPath.row]
                 
                 if !groups.contains(group) {
                     groups.append(group)

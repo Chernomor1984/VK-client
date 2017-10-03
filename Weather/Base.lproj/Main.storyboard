@@ -259,17 +259,8 @@
                                                 <constraint firstAttribute="width" secondItem="dzw-tG-Dol" secondAttribute="height" multiplier="1:1" id="3R5-2b-7Be"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fl4-5a-KXE">
-                                            <rect key="frame" x="323" y="0.0" width="44" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="fl4-5a-KXE" secondAttribute="height" multiplier="1:1" id="Mok-Hq-BTx"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-8A-uoD">
-                                            <rect key="frame" x="56" y="0.0" width="263" height="44"/>
+                                            <rect key="frame" x="56" y="0.0" width="315" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -278,11 +269,8 @@
                                     <constraints>
                                         <constraint firstItem="G6T-8A-uoD" firstAttribute="leading" secondItem="dzw-tG-Dol" secondAttribute="trailing" constant="4" id="1Rc-ac-x0q"/>
                                         <constraint firstAttribute="bottom" secondItem="dzw-tG-Dol" secondAttribute="bottom" id="Nap-9C-QFW"/>
-                                        <constraint firstItem="fl4-5a-KXE" firstAttribute="leading" secondItem="G6T-8A-uoD" secondAttribute="trailing" constant="4" id="UFd-KK-JXV"/>
-                                        <constraint firstAttribute="bottom" secondItem="fl4-5a-KXE" secondAttribute="bottom" id="Wz3-FR-Yrn"/>
-                                        <constraint firstAttribute="bottom" secondItem="G6T-8A-uoD" secondAttribute="bottom" id="arv-9q-bFX"/>
-                                        <constraint firstItem="fl4-5a-KXE" firstAttribute="top" secondItem="lNY-k7-5Qr" secondAttribute="top" id="fHR-s5-Anm"/>
-                                        <constraint firstAttribute="trailing" secondItem="fl4-5a-KXE" secondAttribute="trailing" constant="8" id="mcX-wj-R0y"/>
+                                        <constraint firstAttribute="bottom" secondItem="G6T-8A-uoD" secondAttribute="bottom" id="VEa-wc-mGD"/>
+                                        <constraint firstAttribute="trailing" secondItem="G6T-8A-uoD" secondAttribute="trailing" constant="4" id="gKg-Uo-SJo"/>
                                         <constraint firstItem="dzw-tG-Dol" firstAttribute="top" secondItem="lNY-k7-5Qr" secondAttribute="top" id="nPA-L7-fy2"/>
                                         <constraint firstItem="G6T-8A-uoD" firstAttribute="top" secondItem="lNY-k7-5Qr" secondAttribute="top" id="xNU-u2-1Hw"/>
                                         <constraint firstItem="dzw-tG-Dol" firstAttribute="leading" secondItem="lNY-k7-5Qr" secondAttribute="leading" constant="8" id="zR3-NT-jqt"/>
@@ -291,7 +279,6 @@
                                 <connections>
                                     <outlet property="groupImageView" destination="dzw-tG-Dol" id="B0k-cj-b0U"/>
                                     <outlet property="groupNameLabel" destination="G6T-8A-uoD" id="F1q-rl-yPp"/>
-                                    <outlet property="membersCountLabel" destination="fl4-5a-KXE" id="G9W-fy-UdR"/>
                                     <segue destination="cte-QL-UCb" kind="unwind" identifier="didSelectGroup" unwindAction="selectAndCloseNewGroupsListControllerTapHandlerWithUnwindSegue:" id="95q-lU-OzJ"/>
                                 </connections>
                             </tableViewCell>

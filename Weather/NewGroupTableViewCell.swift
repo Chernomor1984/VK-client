@@ -11,5 +11,4 @@ import UIKit
 class NewGroupTableViewCell: UITableViewCell {
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupImageView: UIImageView!
-    @IBOutlet weak var membersCountLabel: UILabel!
 }
