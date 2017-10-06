@@ -56,9 +56,19 @@ final class HTTPSessionManager {
         dataTask.resume()
     }
     
-    func performGroupsListRequest(userID: Int, completionHandler: @escaping(_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void) {
+    func performGroupsListRequest(userID: Int, completionHandler: @escaping(_ error: Error?) -> Void) {
         let urlRequest = RequestFactory.groupsListRequest(userID: userID)
-        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+        let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
+            guard let data = data else {
+                return
+            }
+            
+            let json = JSON(data: data)
+            let array = json["response"].flatMap({Group(json: $0.1)})
+            let groups = array.filter{$0.imageURL != ""}
+            Storage.sharedInstance.importGroups(groups, completion: completionHandler)
+        }
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completion)
         dataTask.resume()
     }
     

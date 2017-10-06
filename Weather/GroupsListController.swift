@@ -18,11 +18,26 @@ class GroupsListController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadGroupsFromCache()
         loadGroups()
     }
     
     // MARK: - Private
+    
+    private func loadGroupsFromCache() {
+        weak var weakSelf = self
+        let completionHandler = { (groups: [Group]?, error: Error?) -> Void in
+            if let error = error {
+                print("loadFriendsFromCache error: \(error.localizedDescription)")
+                return
+            }
+            weakSelf?.groups = groups!
+            DispatchQueue.main.async {
+                weakSelf?.tableView.reloadData()
+            }
+        }
+        Storage.sharedInstance.loadGroupsFromCache(completionHandler: completionHandler)
+    }
     
     private func loadGroups() {
         guard let userID = UserDefaults.standard.string(forKey: userIDKey) else {
@@ -31,18 +46,13 @@ class GroupsListController: UITableViewController {
         
         if let userID = Int(userID){
             weak var weakSelf = self
-            HTTPSessionManager.sharedInstance.performGroupsListRequest(userID: userID) { (data, urlResponse, error) in
-                guard let data = data else {
+            HTTPSessionManager.sharedInstance.performGroupsListRequest(userID: userID, completionHandler: { error in
+                if let error = error {
+                    print("loadGroups error: \(error.localizedDescription)")
                     return
                 }
-                
-                let json = JSON(data: data)
-                let array = json["response"].flatMap({Group(json: $0.1)})
-                weakSelf?.groups = array.filter{$0.imageURL != ""}
-                DispatchQueue.main.async {
-                    weakSelf?.tableView.reloadData()
-                }
-            }
+                weakSelf?.loadGroupsFromCache()
+            })
         }
     }
     

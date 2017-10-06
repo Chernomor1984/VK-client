@@ -34,4 +34,8 @@ class Group: Object {
         }
         return false
     }
+    
+    override static func primaryKey() -> String? {
+        return "name"
+    }
 }

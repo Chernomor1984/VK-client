@@ -51,6 +51,18 @@ final class Storage {
         }
     }
     
+    func loadGroupsFromCache(completionHandler: @escaping(_ groups: [Group]?, _ error: Error?) -> Void) {
+        concurrentQueue.async {
+            do {
+                let realmInstance = try Realm()
+                let groups = realmInstance.objects(Group.self)
+                completionHandler(Array(groups), nil)
+            } catch {
+                completionHandler(nil, error)
+            }
+        }
+    }
+    
     func importFriends(_ friends: [User], completion: @escaping(_ error: Error?) -> Void) -> Void {
         concurrentQueue.async {
             do {
@@ -75,6 +87,22 @@ final class Storage {
                 realmInstance.beginWrite()
                 realmInstance.delete(oldPhotos)
                 realmInstance.add(photos)
+                try realmInstance.commitWrite()
+                completion(nil)
+            } catch {
+                completion(error)
+            }
+        }
+    }
+    
+    func importGroups(_ groups: [Group], completion: @escaping(_ error: Error?) -> Void) -> Void {
+        concurrentQueue.async {
+            do {
+                let realmInstance = try Realm()
+                let oldGroups = realmInstance.objects(Group.self)
+                realmInstance.beginWrite()
+                realmInstance.delete(oldGroups)
+                realmInstance.add(groups)
                 try realmInstance.commitWrite()
                 completion(nil)
             } catch {
