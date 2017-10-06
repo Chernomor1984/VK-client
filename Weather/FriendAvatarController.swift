@@ -23,22 +23,35 @@ class FriendAvatarController: UICollectionViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = selectedName
+        loadPhotosFromCache()
         loadPhotos()
     }
     
     // MARK: - Private
     
-    private func loadPhotos() {
+    private func loadPhotosFromCache() {
         weak var weakSelf = self
-        HTTPSessionManager.sharedInstance.performPhotosListRequest(ownerID: userID) { (data, response, error) in
-            guard let data = data else {
+        let completionHandler = { (photos: [Photo]?, error: Error?) -> Void in
+            if let error = error {
+                print("loadFriendsFromCache error: \(error.localizedDescription)")
                 return
             }
-            let json = JSON(data)
-            weakSelf?.photos = json["response"].flatMap{Photo($0.1)}
+            weakSelf?.photos = photos!
             DispatchQueue.main.async {
                 weakSelf?.collectionView?.reloadData()
             }
+        }
+        Storage.sharedInstance.loadPhotosFromCache(ownerID: String(userID), completionHandler: completionHandler)
+    }
+    
+    private func loadPhotos() {
+        weak var weakSelf = self
+        HTTPSessionManager.sharedInstance.performPhotosListRequest(ownerID: userID) { error in
+            if let error = error {
+                print("loadFriendsFromCache error: \(error.localizedDescription)")
+                return
+            }
+            weakSelf?.loadPhotosFromCache()
         }
     }
 

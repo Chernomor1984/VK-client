@@ -127,12 +127,20 @@
 		D47B29661F86F78A0024D191 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D43CBC7F1F82D7660061FF79 /* User.swift */,
-				D43CBC811F82F62B0061FF79 /* Photo.swift */,
-				D43CBC831F82FFC00061FF79 /* Group.swift */,
+				D47B296B1F8728870024D191 /* Entities */,
 				D47B29671F86F7B10024D191 /* Storage.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		D47B296B1F8728870024D191 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D43CBC7F1F82D7660061FF79 /* User.swift */,
+				D43CBC811F82F62B0061FF79 /* Photo.swift */,
+				D43CBC831F82FFC00061FF79 /* Group.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		D4AC5B0D1F6C194F009C42C6 /* XIB */ = {

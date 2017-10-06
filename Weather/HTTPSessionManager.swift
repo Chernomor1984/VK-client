@@ -42,9 +42,17 @@ final class HTTPSessionManager {
         dataTask.resume()
     }
     
-    func performPhotosListRequest(ownerID: Int, completionHandler: @escaping(_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void) {
+    func performPhotosListRequest(ownerID: Int, completionHandler: @escaping(_ error: Error?) -> Void) {
         let urlRequest = RequestFactory.photosListRequest(ownerID: ownerID)
-        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+        let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
+            guard let data = data else {
+                return
+            }
+            let json = JSON(data)
+            let photos = json["response"].flatMap{Photo($0.1)}
+            Storage.sharedInstance.importPhotos(ownerID: String(ownerID), photos, completion: completionHandler)
+        }
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completion)
         dataTask.resume()
     }
     

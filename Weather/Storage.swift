@@ -27,6 +27,18 @@ final class Storage {
     
     // MARK: - Public
     
+    func loadPhotosFromCache(ownerID: String, completionHandler: @escaping(_ users: [Photo]?, _ error: Error?) -> Void) {
+        concurrentQueue.async {
+            do {
+                let realmInstance = try Realm()
+                let photos = realmInstance.objects(Photo.self).filter("ownerID == %@", ownerID)
+                completionHandler(Array(photos), nil)
+            } catch {
+                completionHandler(nil, error)
+            }
+        }
+    }
+    
     func loadFriendsFromCache(completionHandler: @escaping(_ users: [User]?, _ error: Error?) -> Void) {
         concurrentQueue.async {
             do {
@@ -47,6 +59,22 @@ final class Storage {
                 realmInstance.beginWrite()
                 realmInstance.delete(oldFriends)
                 realmInstance.add(friends)
+                try realmInstance.commitWrite()
+                completion(nil)
+            } catch {
+                completion(error)
+            }
+        }
+    }
+    
+    func importPhotos(ownerID: String, _ photos: [Photo], completion: @escaping(_ error: Error?) -> Void) -> Void {
+        concurrentQueue.async {
+            do {
+                let realmInstance = try Realm()
+                let oldPhotos = realmInstance.objects(Photo.self).filter("ownerID == %@", ownerID)
+                realmInstance.beginWrite()
+                realmInstance.delete(oldPhotos)
+                realmInstance.add(photos)
                 try realmInstance.commitWrite()
                 completion(nil)
             } catch {
