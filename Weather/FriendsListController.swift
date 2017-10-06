@@ -7,34 +7,44 @@
 //
 
 import UIKit
-import SwiftyJSON
 import AlamofireImage
 
 class FriendsListController: UITableViewController {
-    
     var friends = [User]()
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadFriendsFromCache()
         loadFriendsList()
     }
     
     // MARK: - Private
     
-    private func loadFriendsList() {
+    private func loadFriendsFromCache() {
         weak var weakSelf = self
-        HTTPSessionManager.sharedInstance.performFriendsListRequest {(data, response, error) in
-            guard let data = data else {
+        let completionHandler = { (users: [User]?, error: Error?) -> Void in
+            if let error = error {
+                print("loadFriendsFromCache error: \(error.localizedDescription)")
                 return
             }
-            
-            let json = JSON(data: data)
-            weakSelf?.friends = json["response"].flatMap({User(json: $0.1)})
+            weakSelf?.friends = users!
             DispatchQueue.main.async {
                 weakSelf?.tableView.reloadData()
             }
+        }
+        Storage.sharedInstance.loadFriendsFromCache(completionHandler: completionHandler)
+    }
+    
+    private func loadFriendsList() {
+        weak var weakSelf = self
+        HTTPSessionManager.sharedInstance.performFriendsListRequest { error in
+            if let error = error {
+                print("loadFriendsFromCache error: \(error.localizedDescription)")
+                return
+            }
+            weakSelf?.loadFriendsFromCache()
         }
     }
     

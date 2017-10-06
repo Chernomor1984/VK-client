@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 final class HTTPSessionManager {
     let urlSession: URLSession
@@ -26,9 +27,18 @@ final class HTTPSessionManager {
     
     // MARK: - Public
     
-    func performFriendsListRequest(completionHandler: @escaping(_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void) {
+    func performFriendsListRequest(completionHandler: @escaping(_ error: Error?) -> Void) {
         let urlRequest = RequestFactory.vkFriendsListRequest()
-        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+        let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
+            guard let data = data else {
+                return
+            }
+            
+            let json = JSON(data: data)
+            let friends = json["response"].flatMap({User(json: $0.1)})
+            Storage.sharedInstance.importFriends(friends, completion: completionHandler)
+        }
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completion)
         dataTask.resume()
     }
     

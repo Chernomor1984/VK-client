@@ -25,4 +25,8 @@ class User: Object {
         self.userFirstName = json["first_name"].stringValue
         self.userLastName = json["last_name"].stringValue
     }
+    
+    override static func primaryKey() -> String? {
+        return "userID"
+    }
 }
