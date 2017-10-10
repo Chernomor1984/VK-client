@@ -88,6 +88,13 @@ class FriendsListController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let objectToDelete = friends[indexPath.row]
+            Storage.sharedInstance.removeObject(objectToDelete)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

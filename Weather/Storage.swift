@@ -43,11 +43,11 @@ final class Storage {
         }
     }
     
-    func loadGroupsFromCache(completionHandler: @escaping(_ groups: [Group]?, _ error: Error?) -> Void) {
+    func loadGroupsFromCache(completionHandler: @escaping(_ groups: Results<Group>?, _ error: Error?) -> Void) {
         do {
             let realmInstance = try Realm()
             let groups = realmInstance.objects(Group.self)
-            completionHandler(Array(groups), nil)
+            completionHandler(groups, nil)
         } catch {
             completionHandler(nil, error)
         }
@@ -92,6 +92,28 @@ final class Storage {
             completion(nil)
         } catch {
             completion(error)
+        }
+    }
+    
+    func removeObject(_ object: Object) {
+        do {
+            let realmInstance = try Realm()
+            realmInstance.beginWrite()
+            realmInstance.delete(object)
+            try realmInstance.commitWrite()
+        } catch {
+            print("removeObject error:\(error)")
+        }
+    }
+    
+    func addObject(_ object: Object) {
+        do {
+            let realmInstance = try Realm()
+            realmInstance.beginWrite()
+            realmInstance.add(object)
+            try realmInstance.commitWrite()
+        } catch {
+            print("addObject error:\(error)")
         }
     }
 }

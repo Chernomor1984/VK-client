@@ -9,10 +9,11 @@
 import UIKit
 import SwiftyJSON
 import AlamofireImage
+import RealmSwift
 
 class GroupsListController: UITableViewController {
-    
-    var groups = [Group]()
+    var groups: Results<Group>!
+    var token: NotificationToken?
     
     // MARK: - Life cycle
     
@@ -26,15 +27,29 @@ class GroupsListController: UITableViewController {
     
     private func loadGroupsFromCache() {
         weak var weakSelf = self
-        let completionHandler = { (groups: [Group]?, error: Error?) -> Void in
+        let completionHandler = { (groups: Results<Group>?, error: Error?) -> Void in
             if let error = error {
-                print("loadFriendsFromCache error: \(error.localizedDescription)")
+                print("loadGroupsFromCache error: \(error.localizedDescription)")
                 return
             }
-            weakSelf?.groups = groups!
-            DispatchQueue.main.async {
-                weakSelf?.tableView.reloadData()
-            }
+            weakSelf?.groups = groups
+            weakSelf?.token = weakSelf?.groups.addNotificationBlock({[weak self] (changes: RealmCollectionChange) in
+                switch changes {
+                case .initial:
+                    self?.tableView.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    self?.tableView.beginUpdates()
+                    self?.tableView.insertRows(at: insertions.map({IndexPath(row: $0, section: 0)}),
+                                               with: .automatic)
+                    self?.tableView.deleteRows(at: deletions.map({IndexPath(row: $0, section: 0)}),
+                                               with: .automatic)
+                    self?.tableView.reloadRows(at: modifications.map({IndexPath(row: $0, section: 0)}),
+                                               with: .automatic)
+                    self?.tableView.endUpdates()
+                case .error(let error):
+                    print("error:\(error)")
+                }
+            })
         }
         Storage.sharedInstance.loadGroupsFromCache(completionHandler: completionHandler)
     }
@@ -45,13 +60,11 @@ class GroupsListController: UITableViewController {
         }
         
         if let userID = Int(userID){
-            weak var weakSelf = self
             HTTPSessionManager.sharedInstance.performGroupsListRequest(userID: userID, completionHandler: { error in
                 if let error = error {
                     print("loadGroups error: \(error.localizedDescription)")
                     return
                 }
-                weakSelf?.loadGroupsFromCache()
             })
         }
     }
@@ -63,7 +76,7 @@ class GroupsListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return groups?.count ?? 0
     }
     
     
@@ -83,8 +96,8 @@ class GroupsListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            groups.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let objectToDelete = groups[indexPath.row]
+            Storage.sharedInstance.removeObject(objectToDelete)
         }
     }
     
@@ -105,8 +118,7 @@ class GroupsListController: UITableViewController {
                 let group = groupsController.filteredGroups[indexPath.row]
                 
                 if !groups.contains(group) {
-                    groups.append(group)
-                    tableView.reloadData()
+                    Storage.sharedInstance.addObject(group)
                 }
             }
         }
