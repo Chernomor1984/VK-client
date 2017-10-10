@@ -8,9 +8,11 @@
 
 import UIKit
 import AlamofireImage
+import RealmSwift
 
 class FriendsListController: UITableViewController {
-    var friends = [User]()
+    var friends: Results<User>!
+    var token: NotificationToken?
     
     // MARK: - Life cycle
     
@@ -24,27 +26,39 @@ class FriendsListController: UITableViewController {
     
     private func loadFriendsFromCache() {
         weak var weakSelf = self
-        let completionHandler = { (users: [User]?, error: Error?) -> Void in
+        let completionHandler = { (users: Results<User>?, error: Error?) -> Void in
             if let error = error {
                 print("loadFriendsFromCache error: \(error.localizedDescription)")
                 return
             }
-            weakSelf?.friends = users!
-            DispatchQueue.main.async {
-                weakSelf?.tableView.reloadData()
-            }
+            weakSelf?.friends = users
+            weakSelf?.token = weakSelf?.friends.addNotificationBlock({[weak self] (changes: RealmCollectionChange) in
+                switch changes {
+                case .initial:
+                    self?.tableView.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    self?.tableView.beginUpdates()
+                    self?.tableView.insertRows(at: insertions.map({IndexPath(row: $0, section: 0)}),
+                                               with: .automatic)
+                    self?.tableView.deleteRows(at: deletions.map({IndexPath(row: $0, section: 0)}),
+                                               with: .automatic)
+                    self?.tableView.reloadRows(at: modifications.map({IndexPath(row: $0, section: 0)}),
+                                               with: .automatic)
+                    self?.tableView.endUpdates()
+                case .error(let error):
+                    print("error:\(error)")
+                }
+            })
         }
         Storage.sharedInstance.loadFriendsFromCache(completionHandler: completionHandler)
     }
     
     private func loadFriendsList() {
-        weak var weakSelf = self
         HTTPSessionManager.sharedInstance.performFriendsListRequest { error in
             if let error = error {
                 print("loadFriendsFromCache error: \(error.localizedDescription)")
                 return
             }
-            weakSelf?.loadFriendsFromCache()
         }
     }
     
@@ -55,7 +69,7 @@ class FriendsListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        return friends?.count ?? 0
     }
     
     
