@@ -23,11 +23,11 @@ final class Storage {
     
     // MARK: - Public
     
-    func loadPhotosFromCache(ownerID: String, completionHandler: @escaping(_ users: [Photo]?, _ error: Error?) -> Void) {
+    func loadPhotosFromCache(ownerID: String, completionHandler: @escaping(_ users: Results<Photo>?, _ error: Error?) -> Void) {
         do {
             let realmInstance = try Realm()
             let photos = realmInstance.objects(Photo.self).filter("ownerID == %@", ownerID)
-            completionHandler(Array(photos), nil)
+            completionHandler(photos, nil)
         } catch {
             completionHandler(nil, error)
         }

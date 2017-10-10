@@ -9,14 +9,16 @@
 import UIKit
 import SwiftyJSON
 import AlamofireImage
+import RealmSwift
 
 private let reuseIdentifier = "cellIdentifier"
 
 class FriendAvatarController: UICollectionViewController {
     var userID = Int.min
     var selectedName = ""
-    var photos = [Photo]()
-
+    var photos: Results<Photo>!
+    var token: NotificationToken?
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
@@ -31,41 +33,50 @@ class FriendAvatarController: UICollectionViewController {
     
     private func loadPhotosFromCache() {
         weak var weakSelf = self
-        let completionHandler = { (photos: [Photo]?, error: Error?) -> Void in
+        let completionHandler = { (photos: Results<Photo>?, error: Error?) -> Void in
             if let error = error {
                 print("loadFriendsFromCache error: \(error.localizedDescription)")
                 return
             }
-            weakSelf?.photos = photos!
-            DispatchQueue.main.async {
-                weakSelf?.collectionView?.reloadData()
+            weakSelf?.photos = photos
+            weakSelf?.token = weakSelf?.photos.addNotificationBlock{[weak self] (changes: RealmCollectionChange) in
+                switch changes {
+                case .initial:
+                    self?.collectionView?.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    self?.collectionView?.performBatchUpdates({
+                        self?.collectionView?.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
+                        self?.collectionView?.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0)}))
+                        self?.collectionView?.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
+                    }, completion: nil)
+                case .error(let error):
+                    fatalError("\(error)")
+                }
             }
         }
         Storage.sharedInstance.loadPhotosFromCache(ownerID: String(userID), completionHandler: completionHandler)
     }
     
     private func loadPhotos() {
-        weak var weakSelf = self
         HTTPSessionManager.sharedInstance.performPhotosListRequest(ownerID: userID) { error in
             if let error = error {
                 print("loadFriendsFromCache error: \(error.localizedDescription)")
                 return
             }
-            weakSelf?.loadPhotosFromCache()
         }
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return photos?.count ?? 0
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AvatarCollectionViewCell
         let photo = photos[indexPath.row]
