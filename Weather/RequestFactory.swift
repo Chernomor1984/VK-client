@@ -93,7 +93,8 @@ class RequestFactory {
             URLQueryItem(name: "filters", value: "post"),
             URLQueryItem(name: "start_time", value: startTime),
             URLQueryItem(name: "count", value: newsCount),
-            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey))
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey)),
+            URLQueryItem(name: "v", value: "5.68")
         ]
         let request = URLRequest(url: urlComponents.url!)
         return request
