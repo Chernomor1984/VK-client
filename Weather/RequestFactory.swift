@@ -19,7 +19,7 @@ class RequestFactory {
             URLQueryItem(name: "client_id", value: clientID),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "scope", value: "270342"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.68")
         ]
@@ -78,6 +78,21 @@ class RequestFactory {
         urlComponents.queryItems = [
             URLQueryItem(name: "q", value: text),
             URLQueryItem(name: "sort", value: "0"),
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey))
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
+    
+    class func newsfeedRequest(startTime: String, newsCount: String) -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/newsfeed.get"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "filters", value: "post"),
+            URLQueryItem(name: "start_time", value: startTime),
+            URLQueryItem(name: "count", value: newsCount),
             URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey))
         ]
         let request = URLRequest(url: urlComponents.url!)

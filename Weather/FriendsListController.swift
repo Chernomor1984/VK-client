@@ -56,7 +56,7 @@ class FriendsListController: UITableViewController {
     private func loadFriendsList() {
         HTTPSessionManager.sharedInstance.performFriendsListRequest { error in
             if let error = error {
-                print("loadFriendsFromCache error: \(error.localizedDescription)")
+                print("loadFriendsList error: \(error.localizedDescription)")
                 return
             }
         }
@@ -76,7 +76,6 @@ class FriendsListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FriendTableViewCell
         let user = friends[indexPath.row]
-        cell.item.userID = String(describing: user.userID)
         cell.nameLabel.text = user.userFirstName + " " + user.userLastName
         let placeholderImage = UIImage(named: "placeholder")!
         

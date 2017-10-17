@@ -9,6 +9,9 @@
 import Foundation
 import SwiftyJSON
 
+typealias completionHandlerClosure = (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void
+typealias errorCompletionHandlerClosure = (_ error: Error?) -> Void
+
 final class HTTPSessionManager {
     let urlSession: URLSession
     
@@ -27,7 +30,7 @@ final class HTTPSessionManager {
     
     // MARK: - Public
     
-    func performFriendsListRequest(completionHandler: @escaping(_ error: Error?) -> Void) {
+    func performFriendsListRequest(completionHandler: @escaping errorCompletionHandlerClosure) {
         let urlRequest = RequestFactory.vkFriendsListRequest()
         let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
             guard let data = data else {
@@ -42,7 +45,7 @@ final class HTTPSessionManager {
         dataTask.resume()
     }
     
-    func performPhotosListRequest(ownerID: Int, completionHandler: @escaping(_ error: Error?) -> Void) {
+    func performPhotosListRequest(ownerID: Int, completionHandler: @escaping errorCompletionHandlerClosure) {
         let urlRequest = RequestFactory.photosListRequest(ownerID: ownerID)
         let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
             guard let data = data else {
@@ -56,7 +59,7 @@ final class HTTPSessionManager {
         dataTask.resume()
     }
     
-    func performGroupsListRequest(userID: Int, completionHandler: @escaping(_ error: Error?) -> Void) {
+    func performGroupsListRequest(userID: Int, completionHandler: @escaping errorCompletionHandlerClosure) {
         let urlRequest = RequestFactory.groupsListRequest(userID: userID)
         let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
             guard let data = data else {
@@ -72,9 +75,24 @@ final class HTTPSessionManager {
         dataTask.resume()
     }
     
-    func performGroupsSearchRequest(text: String, completionHandler: @escaping(_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void) {
+    func performGroupsSearchRequest(text: String, completionHandler: @escaping completionHandlerClosure) {
         let urlRequest = RequestFactory.groupsSearchRequest(text: text)
         let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+        dataTask.resume()
+    }
+    
+    func performNewsFeedRequest(startTime: String, newsCount: String, completionHandler: @escaping errorCompletionHandlerClosure) {
+        let urlRequest = RequestFactory.newsfeedRequest(startTime: startTime, newsCount: newsCount)
+        let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
+            guard let data = data else {
+                return
+            }
+            let json = JSON(data)
+            let array = json["response"]["items"].flatMap({News(json: $0.1)})
+            print(array)
+            
+        }
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completion)
         dataTask.resume()
     }
 }
