@@ -81,18 +81,9 @@ final class HTTPSessionManager {
         dataTask.resume()
     }
     
-    func performNewsFeedRequest(startTime: String, newsCount: String, completionHandler: @escaping errorCompletionHandlerClosure) {
+    func performNewsFeedRequest(startTime: String, newsCount: String, completionHandler: @escaping completionHandlerClosure) {
         let urlRequest = RequestFactory.newsfeedRequest(startTime: startTime, newsCount: newsCount)
-        let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
-            guard let data = data else {
-                return
-            }
-            let json = JSON(data)
-            let array = json["response"]["items"].flatMap({News(json: $0.1)})
-            print(array)
-            
-        }
-        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completion)
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
         dataTask.resume()
     }
 }

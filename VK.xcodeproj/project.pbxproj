@@ -29,6 +29,9 @@
 		D4F332171F962F0F0003765E /* NewsFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F332161F962F0F0003765E /* NewsFeedTableViewController.swift */; };
 		D4F332191F962FAB0003765E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F332181F962FAB0003765E /* News.swift */; };
 		D4F3321B1F9645F20003765E /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3321A1F9645F20003765E /* NewsFeedTableViewCell.swift */; };
+		D4F3322A1F9F7F5D0003765E /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F332291F9F7F5D0003765E /* NewsService.swift */; };
+		D4F3322C1F9F87D70003765E /* JSONParsingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3322B1F9F87D70003765E /* JSONParsingProtocol.swift */; };
+		D4F3322E1F9F88460003765E /* NewsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3322D1F9F88460003765E /* NewsParser.swift */; };
 		D4FCBC781F80074800E6E45C /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FCBC771F80074800E6E45C /* VKLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		D4F332161F962F0F0003765E /* NewsFeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewController.swift; sourceTree = "<group>"; };
 		D4F332181F962FAB0003765E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		D4F3321A1F9645F20003765E /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
+		D4F332291F9F7F5D0003765E /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		D4F3322B1F9F87D70003765E /* JSONParsingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingProtocol.swift; sourceTree = "<group>"; };
+		D4F3322D1F9F88460003765E /* NewsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsParser.swift; sourceTree = "<group>"; };
 		D4FCBC771F80074800E6E45C /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +159,7 @@
 		D4AC5B0E1F6C231E009C42C6 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				D4F3321F1F9F66B40003765E /* Services */,
 				D43CBC411F8161B50061FF79 /* Network */,
 				D4416DEB1F754734006720E1 /* Cells */,
 				D4CD9ABE1F6866420079A121 /* AppDelegate.swift */,
@@ -194,6 +201,16 @@
 			);
 			name = VK;
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		D4F3321F1F9F66B40003765E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4F332291F9F7F5D0003765E /* NewsService.swift */,
+				D4F3322B1F9F87D70003765E /* JSONParsingProtocol.swift */,
+				D4F3322D1F9F88460003765E /* NewsParser.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,11 +357,13 @@
 				D43CBC431F8161FC0061FF79 /* HTTPSessionManager.swift in Sources */,
 				D4CD9ABF1F6866420079A121 /* AppDelegate.swift in Sources */,
 				D4416DBD1F70883E006720E1 /* FriendsListController.swift in Sources */,
+				D4F3322E1F9F88460003765E /* NewsParser.swift in Sources */,
 				D4F3321B1F9645F20003765E /* NewsFeedTableViewCell.swift in Sources */,
 				D4F332191F962FAB0003765E /* News.swift in Sources */,
 				D4416DBF1F7089D8006720E1 /* GroupsListController.swift in Sources */,
 				D4416DF11F755508006720E1 /* GroupTableViewCell.swift in Sources */,
 				D4416DED1F75475B006720E1 /* FriendTableViewCell.swift in Sources */,
+				D4F3322A1F9F7F5D0003765E /* NewsService.swift in Sources */,
 				D43CBC801F82D7660061FF79 /* User.swift in Sources */,
 				D4FCBC781F80074800E6E45C /* VKLoginViewController.swift in Sources */,
 				D4416DF31F755746006720E1 /* NewGroupsController.swift in Sources */,
@@ -354,6 +373,7 @@
 				D47B29681F86F7B10024D191 /* Storage.swift in Sources */,
 				D4F332171F962F0F0003765E /* NewsFeedTableViewController.swift in Sources */,
 				D4416DC11F708AB8006720E1 /* FriendAvatarController.swift in Sources */,
+				D4F3322C1F9F87D70003765E /* JSONParsingProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

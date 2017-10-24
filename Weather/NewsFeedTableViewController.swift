@@ -11,12 +11,17 @@ import AlamofireImage
 import RealmSwift
 
 class NewsFeedTableViewController: UITableViewController {
-
+    
+    let newsService = NewsService()
+    var news = [News]()
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadNewsFeed()
+        
+        configureTableView()
+        
     }
 
     // MARK: - Table view data source
@@ -36,12 +41,8 @@ class NewsFeedTableViewController: UITableViewController {
     
     // MARK: - Private
     
-    private func loadNewsFeed() {
-        HTTPSessionManager.sharedInstance.performNewsFeedRequest(startTime: "1508241600", newsCount: "100") { error in
-            if let error = error {
-                print("loadNewsFeed error: \(error.localizedDescription)")
-                return
-            }
-        }
+    private func configureTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 10
     }
 }
