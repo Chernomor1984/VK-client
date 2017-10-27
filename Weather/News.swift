@@ -11,8 +11,11 @@ import SwiftyJSON
 import RealmSwift
 
 class News {
-    var postID: String!
-    var title: String!
-    var text: String!
-    var photoURL: String!
+    var postID: Int?
+    var text: String?
+    var photoURL: String?
+    var likesCount: Int?
+    var repostsCount: Int?
+    var commentsCount: Int?
+    var viewsCount: Int?
 }

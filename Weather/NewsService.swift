@@ -14,8 +14,11 @@ class NewsService {
     
     func downloadNews(completion: @escaping([News]) -> Void) {
         weak var weakSelf = self
-        DispatchQueue.global(qos: .userInitiated).async {
-            HTTPSessionManager.sharedInstance.performNewsFeedRequest(startTime: "1508241600", newsCount: "100", completionHandler: { (data, response, error) in
+        DispatchQueue.global(qos: .userInteractive).async {
+            let date = Date().dateByAdding(-3)
+            let roundedTimeInterval = Int(Date().timeIntervalForDate(date))
+            let stringInterval = String(roundedTimeInterval)
+            HTTPSessionManager.sharedInstance.performNewsFeedRequest(startTime: stringInterval, newsCount: "100", completionHandler: { (data, response, error) in
                 if let error = error {
                     print("downloadNews error: \(error.localizedDescription)")
                     return
