@@ -21,9 +21,11 @@ class NewsFeedTableViewController: UITableViewController {
         super.viewDidLoad()
         
         configureTableView()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         newsService.downloadNews{ [weak self] (news) in
             self?.news = news
             self?.tableView.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
@@ -41,7 +43,15 @@ class NewsFeedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! NewsFeedTableViewCell
         let news = self.news[indexPath.row]
         
-        cell.newsTextLabel.text = news.text
+        cell.newsTextLabel.text = news.text ?? ""
+        cell.commentCountLabel.text = String(describing: news.commentsCount ?? 0)
+        cell.likeCountLabel.text = String(describing: news.likesCount ?? 0)
+        cell.repostCountLabel.text = String(describing: news.repostsCount ?? 0)
+        cell.viewsCountLabel.text = String(describing: news.viewsCount ?? 0)
+        
+        if let stringPhotoURL = news.photoURL, let photoURL = URL(string: stringPhotoURL) {
+            cell.newsImageView.af_setImage(withURL: photoURL, placeholderImage: nil)
+        }
         
         return cell
     }
