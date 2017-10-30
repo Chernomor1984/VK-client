@@ -1,0 +1,2 @@
+# VK-client
+Educational project 
