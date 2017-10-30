@@ -7,13 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 class CachedImageOperation: Operation {
+    
+    var outputImage: UIImage?
+    
+    private let url: String
     private let cacheLifeTime: TimeInterval = 86400 // сутки
+    
     private static let path: String = {
         let path = "imageCache"
         
-        guard let cacheDicrectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
+        guard let cacheDicrectory = FileManager().cacheDicrectoryURL() else {
             return path
         }
         
@@ -29,4 +35,77 @@ class CachedImageOperation: Operation {
         
         return path
     }()
+    
+    private lazy var filePath: String? = {
+        guard let cacheDirectory = FileManager().cacheDicrectoryURL() else {
+            return nil
+        }
+        
+        let hash = String(describing: url.hashValue)
+        let pathComponent = CachedImageOperation.path + "/" + hash
+        let filePath = cacheDirectory.appendingPathComponent(pathComponent)
+        return filePath.path
+    }()
+    
+    // MARK: - Init
+    
+    init(url: String) {
+        self.url = url
+    }
+    
+    // MARK: - Main
+    
+    override func main() {
+        if filePath == nil || isCancelled {
+            return
+        }
+        
+        if readCachedImage() || isCancelled {
+            return
+        }
+        
+        if !downloadImage() || isCancelled {
+            return
+        }
+        
+        saveImageToCache()
+    }
+    
+    // MARK: - Private
+    
+    private func readCachedImage() -> Bool {
+        guard let fileName = filePath,
+            let fileInfo = try? FileManager.default.attributesOfItem(atPath: fileName),
+            let modificationDate = fileInfo[FileAttributeKey.modificationDate] as? Date else {
+                return false
+        }
+        
+        let lifeTime = Date().timeIntervalSince(modificationDate)
+        
+        guard lifeTime <= cacheLifeTime, let cacheImage = UIImage(contentsOfFile: fileName) else {
+            return false
+        }
+        self.outputImage = cacheImage
+        return true
+    }
+    
+    private func downloadImage() -> Bool {
+        guard let url = URL(string: url),
+        let imageData = try? Data(contentsOf: url),
+            let image = UIImage(data: imageData) else {
+                return false
+        }
+        
+        self.outputImage = image
+        return true
+    }
+    
+    private func saveImageToCache() {
+        guard let fileName = filePath, let image = outputImage else {
+            return
+        }
+        
+        let imageData = UIImagePNGRepresentation(image)
+        FileManager.default.createFile(atPath: fileName, contents: imageData, attributes: nil)
+    }
 }
