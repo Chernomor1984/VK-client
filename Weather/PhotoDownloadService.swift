@@ -44,7 +44,7 @@ class PhotoDownloadService: DownloadServiceProtocol {
     
     func readLocalCachedImage(identifier: String) -> UIImage? {
         var image: UIImage?
-        accessQueue.async { [weak self] in
+        accessQueue.sync { [weak self] in
             image = self?.images[identifier]
         }
         return image
@@ -71,7 +71,6 @@ extension PhotoDownloadService {
                     return
             }
             imageView.image = image
-            tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
     
@@ -88,7 +87,6 @@ extension PhotoDownloadService {
                     return
             }
             imageView.image = image
-            collectionView.reloadItems(at: [indexPath])
         }
     }
 }

@@ -14,6 +14,7 @@ class NewsFeedTableViewController: UITableViewController {
     
     let newsService = NewsService()
     var news = [News]()
+    lazy var photoService: PhotoDownloadService = PhotoDownloadService(container: tableView)
     
     // MARK: - Life cycle
     
@@ -49,8 +50,10 @@ class NewsFeedTableViewController: UITableViewController {
         cell.repostCountLabel.text = String(describing: news.repostsCount ?? 0)
         cell.viewsCountLabel.text = String(describing: news.viewsCount ?? 0)
         
-        if let stringPhotoURL = news.photoURL, let photoURL = URL(string: stringPhotoURL) {
-            cell.newsImageView.af_setImage(withURL: photoURL, placeholderImage: nil)
+        if let stringPhotoURL = news.photoURL {
+            photoService.loadPhoto(url: stringPhotoURL, indexPath: indexPath)
+        } else {
+            cell.newsImageView.image = nil
         }
         
         return cell
