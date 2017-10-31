@@ -15,6 +15,7 @@ class CachedImageOperation: Operation {
     
     private let url: String
     private let cacheLifeTime: TimeInterval = 86400 // сутки
+    private let service: DownloadServiceProtocol
     
     private static let path: String = {
         let path = "imageCache"
@@ -49,14 +50,19 @@ class CachedImageOperation: Operation {
     
     // MARK: - Init
     
-    init(url: String) {
+    init(url: String, service: DownloadServiceProtocol) {
         self.url = url
+        self.service = service
     }
     
     // MARK: - Main
     
     override func main() {
         if filePath == nil || isCancelled {
+            return
+        }
+        
+        if (readLocalCachedImage() || isCancelled){
             return
         }
         
@@ -73,6 +79,16 @@ class CachedImageOperation: Operation {
     
     // MARK: - Private
     
+    private func readLocalCachedImage() -> Bool {
+        let hash = String(describing: url.hashValue)
+        
+        guard let image = service.readLocalCachedImage(identifier: hash) else {
+            return false
+        }
+        self.outputImage = image
+        return true
+    }
+    
     private func readCachedImage() -> Bool {
         guard let fileName = filePath,
             let fileInfo = try? FileManager.default.attributesOfItem(atPath: fileName),
@@ -85,6 +101,9 @@ class CachedImageOperation: Operation {
         guard lifeTime <= cacheLifeTime, let cacheImage = UIImage(contentsOfFile: fileName) else {
             return false
         }
+        
+        let hash = String(describing: url.hashValue)
+        service.addImageToLocalCache(image: cacheImage, identifier: hash)
         self.outputImage = cacheImage
         return true
     }

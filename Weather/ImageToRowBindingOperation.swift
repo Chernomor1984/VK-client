@@ -15,14 +15,9 @@ class ImageToRowBindingOperation: Operation {
     
     // MARK: - Init
     
-    init(indexPath: IndexPath, container: UITableView) {
+    init(indexPath: IndexPath, container: CellDataUpdating) {
         self.indexPath = indexPath
-        self.container = TableView(container)
-    }
-    
-    init(indexPath: IndexPath, container: UICollectionView) {
-        self.indexPath = indexPath
-        self.container = CollectionView(container)
+        self.container = container
     }
     
     // MARK: - Main
@@ -36,40 +31,3 @@ class ImageToRowBindingOperation: Operation {
     }
 }
 
-fileprivate protocol CellDataUpdating {
-    func updateCellImage(image: UIImage, atIndexPath indexPath: IndexPath)
-}
-
-extension ImageToRowBindingOperation {
-    private class TableView: CellDataUpdating {
-        let tableView: UITableView
-        
-        init(_ tableView: UITableView) {
-            self.tableView = tableView
-        }
-        
-        func updateCellImage(image: UIImage, atIndexPath indexPath: IndexPath) {
-            guard let cell = tableView.cellForRow(at: indexPath) as? ImageViewCellProtocol,
-                let imageView = cell.imageView() else {
-                    return
-            }
-            imageView.image = image
-        }
-    }
-    
-    private class CollectionView: CellDataUpdating {
-        let collectionView: UICollectionView
-        
-        init(_ collectionView: UICollectionView) {
-            self.collectionView = collectionView
-        }
-        
-        func updateCellImage(image: UIImage, atIndexPath indexPath: IndexPath) {
-            guard let cell = collectionView.cellForItem(at: indexPath) as? ImageViewCellProtocol,
-                let imageView = cell.imageView() else {
-                    return
-            }
-            imageView.image = image
-        }
-    }
-}
