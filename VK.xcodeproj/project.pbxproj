@@ -23,6 +23,7 @@
 		D4416DF71F756B60006720E1 /* NewGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */; };
 		D46A678F1FA7E1BF00F9A5BD /* PhotoDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */; };
 		D46A67911FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */; };
+		D46A67931FA7F07100F9A5BD /* ImageViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A67921FA7F07100F9A5BD /* ImageViewCellProtocol.swift */; };
 		D47B29681F86F7B10024D191 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B29671F86F7B10024D191 /* Storage.swift */; };
 		D4CCC4521FA2B930005CAEF5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCC4511FA2B930005CAEF5 /* DateExtension.swift */; };
 		D4CCC4571FA37B10005CAEF5 /* CachedImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */; };
@@ -59,6 +60,7 @@
 		D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupTableViewCell.swift; sourceTree = "<group>"; };
 		D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDownloadService.swift; sourceTree = "<group>"; };
 		D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToRowBindingOperation.swift; sourceTree = "<group>"; };
+		D46A67921FA7F07100F9A5BD /* ImageViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCellProtocol.swift; sourceTree = "<group>"; };
 		D47B29671F86F7B10024D191 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		D4CCC4511FA2B930005CAEF5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageOperation.swift; sourceTree = "<group>"; };
@@ -186,7 +188,6 @@
 			children = (
 				D4CCC4511FA2B930005CAEF5 /* DateExtension.swift */,
 				D4CCC4581FA39034005CAEF5 /* FileManagerExtension.swift */,
-				D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				D4F3322B1F9F87D70003765E /* JSONParsingProtocol.swift */,
+				D46A67921FA7F07100F9A5BD /* ImageViewCellProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -246,6 +248,7 @@
 			children = (
 				D4F332291F9F7F5D0003765E /* NewsService.swift */,
 				D4F3322D1F9F88460003765E /* NewsParser.swift */,
+				D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */,
 				D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */,
 				D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */,
 			);
@@ -417,6 +420,7 @@
 				D4F332171F962F0F0003765E /* NewsFeedTableViewController.swift in Sources */,
 				D4416DC11F708AB8006720E1 /* FriendAvatarController.swift in Sources */,
 				D46A678F1FA7E1BF00F9A5BD /* PhotoDownloadService.swift in Sources */,
+				D46A67931FA7F07100F9A5BD /* ImageViewCellProtocol.swift in Sources */,
 				D4F3322C1F9F87D70003765E /* JSONParsingProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

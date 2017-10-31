@@ -8,7 +8,11 @@
 
 import UIKit
 
-class NewGroupTableViewCell: UITableViewCell {
+class NewGroupTableViewCell: UITableViewCell, ImageViewCellProtocol {
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupImageView: UIImageView!
+    
+    func imageView() -> UIImageView? {
+        return groupImageView
+    }
 }

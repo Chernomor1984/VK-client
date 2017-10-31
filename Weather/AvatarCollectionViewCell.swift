@@ -8,6 +8,10 @@
 
 import UIKit
 
-class AvatarCollectionViewCell: UICollectionViewCell {
+class AvatarCollectionViewCell: UICollectionViewCell, ImageViewCellProtocol {
     @IBOutlet weak var avatarImageView: UIImageView!
+    
+    func imageView() -> UIImageView? {
+        return avatarImageView
+    }
 }

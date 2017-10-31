@@ -49,6 +49,11 @@ extension ImageToRowBindingOperation {
         }
         
         func updateCellImage(image: UIImage, atIndexPath indexPath: IndexPath) {
+            guard let cell = tableView.cellForRow(at: indexPath) as? ImageViewCellProtocol,
+                let imageView = cell.imageView() else {
+                    return
+            }
+            imageView.image = image
         }
     }
     
@@ -60,6 +65,11 @@ extension ImageToRowBindingOperation {
         }
         
         func updateCellImage(image: UIImage, atIndexPath indexPath: IndexPath) {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ImageViewCellProtocol,
+                let imageView = cell.imageView() else {
+                    return
+            }
+            imageView.image = image
         }
     }
 }

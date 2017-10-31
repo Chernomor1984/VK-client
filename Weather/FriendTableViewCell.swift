@@ -8,7 +8,11 @@
 
 import UIKit
 
-class FriendTableViewCell: UITableViewCell {
+class FriendTableViewCell: UITableViewCell, ImageViewCellProtocol {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    func imageView() -> UIImageView? {
+        return avatarImageView
+    }
 }
