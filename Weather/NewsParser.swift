@@ -31,9 +31,16 @@ class NewsParser: JSONParsingProtocol {
         return news
     }
     
+    let filterClosure = { (news: News) -> Bool in
+        guard let url = news.photoURL, let text = news.text else {
+            return false
+        }
+        return news.photoURL?.count != 0 || news.text?.count != 0
+    }
+    
     // MARK: - Public
     
     func parseJSON(_ json: JSON) -> [AnyObject] {
-        return json["response"]["items"].flatMap({ newsParsingClosure($0.1) })
+        return json["response"]["items"].flatMap({ newsParsingClosure($0.1) }).filter({ filterClosure($0) })
     }
 }
