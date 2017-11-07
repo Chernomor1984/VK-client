@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import FirebaseDatabase
 
 public let tokenKey = "tokenKey"
 public let userIDKey = "userIDKey"
@@ -22,6 +23,8 @@ class VKLoginViewController: UIViewController {
             loginWebView.navigationDelegate = self
         }
     }
+    
+    private lazy var database: DatabaseReference = Database.database().reference()
     
     // MARK: - Life cycle
     
@@ -42,6 +45,22 @@ class VKLoginViewController: UIViewController {
         
         let urlRequest = RequestFactory.vkAuthRequest(clientID: vkAppID)
         loginWebView.load(urlRequest)
+    }
+    
+    // MARK: - Private
+    
+    private func updateFirebaseWithUserID(userID: String?) {
+        guard let userID = userID else {
+            return
+        }
+        let data = ["userID" : userID]
+        database.child("Users").updateChildValues(data) { (error, dbRef) in
+            if let error = error {
+                print("error occured:\(error.localizedDescription)")
+                return
+            }
+            print("user id updated successfully!")
+        }
     }
     
     // MARK: - Actions
@@ -70,6 +89,7 @@ extension VKLoginViewController: WKNavigationDelegate {
         if let token = parameters["access_token"], let userID = parameters["user_id"] {
             UserDefaults.standard.setValue(token, forKey: tokenKey)
             UserDefaults.standard.setValue(userID, forKey: userIDKey)
+            updateFirebaseWithUserID(userID: userID)
         }
         decisionHandler(.cancel)
         self.performSegue(withIdentifier: loginIdentifier, sender: self)
