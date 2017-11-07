@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 
 target 'VK' do
     use_frameworks!
@@ -7,4 +7,5 @@ target 'VK' do
     pod 'SwiftyJSON'
     pod 'AlamofireImage', '~> 3.3'
     pod 'RealmSwift'
+    pod 'Firebase/Core'
 end
