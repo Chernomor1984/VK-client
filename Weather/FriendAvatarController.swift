@@ -39,7 +39,7 @@ class FriendAvatarController: UICollectionViewController {
                 return
             }
             weakSelf?.photos = photos
-            weakSelf?.token = weakSelf?.photos.addNotificationBlock{[weak self] (changes: RealmCollectionChange) in
+            weakSelf?.token = weakSelf?.photos.observe{[weak self] (changes: RealmCollectionChange) in
                 switch changes {
                 case .initial:
                     self?.collectionView?.reloadData()

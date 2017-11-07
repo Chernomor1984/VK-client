@@ -32,7 +32,7 @@ class FriendsListController: UITableViewController {
                 return
             }
             weakSelf?.friends = users
-            weakSelf?.token = weakSelf?.friends.addNotificationBlock({[weak self] (changes: RealmCollectionChange) in
+            weakSelf?.token = weakSelf?.friends.observe({[weak self] (changes: RealmCollectionChange) in
                 switch changes {
                 case .initial:
                     self?.tableView.reloadData()

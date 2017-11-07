@@ -8,4 +8,5 @@ target 'VK' do
     pod 'AlamofireImage', '~> 3.3'
     pod 'RealmSwift'
     pod 'Firebase/Core'
+    pod 'Firebase/Database'
 end

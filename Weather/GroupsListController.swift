@@ -33,7 +33,7 @@ class GroupsListController: UITableViewController {
                 return
             }
             weakSelf?.groups = groups
-            weakSelf?.token = weakSelf?.groups.addNotificationBlock({[weak self] (changes: RealmCollectionChange) in
+            weakSelf?.token = weakSelf?.groups.observe({[weak self] (changes: RealmCollectionChange) in
                 switch changes {
                 case .initial:
                     self?.tableView.reloadData()
