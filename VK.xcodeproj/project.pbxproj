@@ -23,6 +23,8 @@
 		D4416DF71F756B60006720E1 /* NewGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */; };
 		D45F531B1FA821C000AE7B2F /* CellDataUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */; };
 		D468B6181FB1E79600D1063A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D468B6171FB1E79600D1063A /* GoogleService-Info.plist */; };
+		D468B61A1FB1FB8E00D1063A /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468B6191FB1FB8E00D1063A /* UserDB.swift */; };
+		D468B61C1FB1FC0D00D1063A /* GroupDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468B61B1FB1FC0D00D1063A /* GroupDB.swift */; };
 		D46A678F1FA7E1BF00F9A5BD /* PhotoDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */; };
 		D46A67911FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */; };
 		D46A67931FA7F07100F9A5BD /* ImageViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A67921FA7F07100F9A5BD /* ImageViewCellProtocol.swift */; };
@@ -63,6 +65,8 @@
 		D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupTableViewCell.swift; sourceTree = "<group>"; };
 		D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDataUpdating.swift; sourceTree = "<group>"; };
 		D468B6171FB1E79600D1063A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D468B6191FB1FB8E00D1063A /* UserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
+		D468B61B1FB1FC0D00D1063A /* GroupDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDB.swift; sourceTree = "<group>"; };
 		D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDownloadService.swift; sourceTree = "<group>"; };
 		D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageToRowBindingOperation.swift; sourceTree = "<group>"; };
 		D46A67921FA7F07100F9A5BD /* ImageViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCellProtocol.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				D4416DC01F708AB8006720E1 /* FriendAvatarController.swift */,
 				D4416DF21F755746006720E1 /* NewGroupsController.swift */,
 				D4F332161F962F0F0003765E /* NewsFeedTableViewController.swift */,
+				D468B6191FB1FB8E00D1063A /* UserDB.swift */,
+				D468B61B1FB1FC0D00D1063A /* GroupDB.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -430,12 +436,14 @@
 				D46A67971FA7F9AD00F9A5BD /* DownloadServiceProtocol.swift in Sources */,
 				D4CCC4591FA39034005CAEF5 /* FileManagerExtension.swift in Sources */,
 				D4FCBC781F80074800E6E45C /* VKLoginViewController.swift in Sources */,
+				D468B61A1FB1FB8E00D1063A /* UserDB.swift in Sources */,
 				D4416DF31F755746006720E1 /* NewGroupsController.swift in Sources */,
 				D43CBC461F8162800061FF79 /* RequestFactory.swift in Sources */,
 				D4416DEF1F754CDE006720E1 /* AvatarCollectionViewCell.swift in Sources */,
 				D4416DF71F756B60006720E1 /* NewGroupTableViewCell.swift in Sources */,
 				D47B29681F86F7B10024D191 /* Storage.swift in Sources */,
 				D4F332171F962F0F0003765E /* NewsFeedTableViewController.swift in Sources */,
+				D468B61C1FB1FC0D00D1063A /* GroupDB.swift in Sources */,
 				D4416DC11F708AB8006720E1 /* FriendAvatarController.swift in Sources */,
 				D46A678F1FA7E1BF00F9A5BD /* PhotoDownloadService.swift in Sources */,
 				D46A67931FA7F07100F9A5BD /* ImageViewCellProtocol.swift in Sources */,

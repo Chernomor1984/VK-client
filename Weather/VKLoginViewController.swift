@@ -49,12 +49,13 @@ class VKLoginViewController: UIViewController {
     
     // MARK: - Private
     
-    private func updateFirebaseWithUserID(userID: String?) {
+    private func updateFirebaseWithUser(userID: String?) {
         guard let userID = userID else {
             return
         }
-        let data = ["userID" : userID]
-        database.child("Users").updateChildValues(data) { (error, dbRef) in
+        let userDB = UserDB(userID: userID, groups: [])
+        let data = userDB.anyObject
+        database.child("Users").updateChildValues(data as! [AnyHashable : Any]) { (error, dbRef) in
             if let error = error {
                 print("error occured:\(error.localizedDescription)")
                 return
@@ -89,7 +90,7 @@ extension VKLoginViewController: WKNavigationDelegate {
         if let token = parameters["access_token"], let userID = parameters["user_id"] {
             UserDefaults.standard.setValue(token, forKey: tokenKey)
             UserDefaults.standard.setValue(userID, forKey: userIDKey)
-            updateFirebaseWithUserID(userID: userID)
+            updateFirebaseWithUser(userID: userID)
         }
         decisionHandler(.cancel)
         self.performSegue(withIdentifier: loginIdentifier, sender: self)

@@ -10,10 +10,12 @@ import UIKit
 import SwiftyJSON
 import AlamofireImage
 import RealmSwift
+import FirebaseDatabase
 
 class GroupsListController: UITableViewController {
     var groups: Results<Group>!
     var token: NotificationToken?
+    private lazy var database: DatabaseReference = Database.database().reference()
     
     // MARK: - Life cycle
     
@@ -69,6 +71,23 @@ class GroupsListController: UITableViewController {
         }
     }
     
+    private func updateFirebaseWithGroup(group: Group?) {
+        guard let group = group, let groupName = group.name, let userID = UserDefaults.standard.string(forKey: userIDKey) else {
+            print("updateFirebaseWithGroup failed")
+            return
+        }
+        let groupDB = GroupDB(groupName: groupName)
+        let data = ["groups" : [groupDB]]
+        let childPath = "Users" + userID
+        database.child(childPath).updateChildValues(data) { (error, dbRef) in
+            if let error = error {
+                print("updateFirebaseWithGroup error:\(error.localizedDescription)")
+                return
+            }
+            print("firebase groups for user id \(userID) updated successfully!")
+        }
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -119,6 +138,7 @@ class GroupsListController: UITableViewController {
                 
                 if !groups.contains(group) {
                     Storage.sharedInstance.addObject(group)
+                    updateFirebaseWithGroup(group: group)
                 }
             }
         }
