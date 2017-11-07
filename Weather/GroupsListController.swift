@@ -77,8 +77,8 @@ class GroupsListController: UITableViewController {
             return
         }
         let groupDB = GroupDB(groupName: groupName)
-        let data = ["groups" : [groupDB]]
-        let childPath = "Users" + userID
+        let data = ["groups" : [groupDB.anyObject]]
+        let childPath = "Users/" + userID
         database.child(childPath).updateChildValues(data) { (error, dbRef) in
             if let error = error {
                 print("updateFirebaseWithGroup error:\(error.localizedDescription)")
