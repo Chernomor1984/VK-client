@@ -59,6 +59,11 @@ class NewsFeedTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: - Actions
+    
+    @IBAction func closeAddPostContrller(unwindSegue: UIStoryboardSegue){
+    }
+    
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
