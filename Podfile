@@ -9,4 +9,6 @@ target 'VK' do
     pod 'RealmSwift'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
 end
