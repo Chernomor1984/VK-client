@@ -33,11 +33,10 @@ final class HTTPSessionManager {
     func performFriendsListRequest(completionHandler: @escaping errorCompletionHandlerClosure) {
         let urlRequest = RequestFactory.vkFriendsListRequest()
         let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
-            guard let data = data else {
+            guard let data = data, let json = try? JSON(data: data) else {
                 return
             }
             
-            let json = JSON(data: data)
             let friends = json["response"].flatMap({User(json: $0.1)})
             Storage.sharedInstance.importFriends(friends, completion: completionHandler)
         }
@@ -62,11 +61,10 @@ final class HTTPSessionManager {
     func performGroupsListRequest(userID: Int, completionHandler: @escaping errorCompletionHandlerClosure) {
         let urlRequest = RequestFactory.groupsListRequest(userID: userID)
         let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
-            guard let data = data else {
+            guard let data = data, let json = try? JSON(data: data) else {
                 return
             }
             
-            let json = JSON(data: data)
             let array = json["response"].flatMap({Group(json: $0.1)})
             let groups = array.filter{$0.imageURL != ""}
             Storage.sharedInstance.importGroups(groups, completion: completionHandler)

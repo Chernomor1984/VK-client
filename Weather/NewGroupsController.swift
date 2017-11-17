@@ -78,11 +78,10 @@ class NewGroupsController: UITableViewController {
         }
         weak var weakSelf = self
         HTTPSessionManager.sharedInstance.performGroupsSearchRequest(text: searchText) { (data, urlResponse, error) in
-            guard let data = data else {
+            guard let data = data, let json = try? JSON(data: data) else {
                 return
             }
             
-            let json = JSON(data: data)
             let array = json["response"].flatMap({Group(json: $0.1)})
             weakSelf?.filteredGroups = array.filter{$0.imageURL != ""}
             DispatchQueue.main.async {

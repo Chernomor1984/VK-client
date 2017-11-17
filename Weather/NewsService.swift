@@ -27,11 +27,16 @@ class NewsService {
                 guard let data = data else {
                     return
                 }
-                let json = JSON(data: data)
-                let news = weakSelf?.newsParser.parseJSON(json) as? [News]
                 
-                DispatchQueue.main.async {
-                    completion(news ?? [])
+                do {
+                    let json = try JSON(data: data)
+                    let news = weakSelf?.newsParser.parseJSON(json) as? [News]
+                    
+                    DispatchQueue.main.async {
+                        completion(news ?? [])
+                    }
+                } catch {
+                    print("downloadNews error:\(error.localizedDescription)")
                 }
             })
         }
