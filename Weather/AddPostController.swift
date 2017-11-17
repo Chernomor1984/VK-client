@@ -35,6 +35,7 @@ class AddPostController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(mapView)
         configureMapViewConstraints()
+        textView.addBorder(colour: .groupTableViewBackground)
     }
     
     // MARK: - Private
@@ -49,7 +50,7 @@ class AddPostController: UIViewController {
             let standardSpacing: CGFloat = 0.0
             NSLayoutConstraint.activate([bottomLayoutGuide.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: standardSpacing)])
         }
-        let top = NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: mapView, attribute: .top, multiplier: 1.0, constant: 0.0);
+        let top = NSLayoutConstraint(item: mapView, attribute: .top, relatedBy: .equal, toItem: textView, attribute: .bottom, multiplier: 1.0, constant: 8.0);
         let leading = NSLayoutConstraint(item: self.view, attribute: .leading, relatedBy: .equal, toItem: mapView, attribute: .leading, multiplier: 1.0, constant: 0.0)
         let trailing = NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
         view.addConstraints([top, leading, trailing])
