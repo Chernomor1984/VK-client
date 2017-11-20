@@ -18,7 +18,8 @@ class AddPostController: UIViewController {
     var pointAddress = ""
     var inputText = ""
     
-    let minZoom: Float = 6.0
+    let minZoom: Float = 8.0
+    let defaultZoom: Float = 14.0
     let maxZoom: Float = 19.0
     
     lazy var reverseGeoCoderClosure: GMSReverseGeocodeCallback = { (response, error) in
@@ -41,7 +42,7 @@ class AddPostController: UIViewController {
     
     private lazy var camera: GMSCameraPosition = {
         let coordinate = CLLocationCoordinate2D()
-        let cm = GMSCameraPosition.camera(withTarget: coordinate, zoom: minZoom)
+        let cm = GMSCameraPosition.camera(withTarget: coordinate, zoom: defaultZoom)
         return cm
     }()
     
@@ -59,7 +60,9 @@ class AddPostController: UIViewController {
         self.view.addSubview(mapView)
         configureMapViewConstraints()
         configureTextView()
-        mapView.delegate = self
+        configureMapView()
+        LocationService.sharedInstance.delegete = self
+        LocationService.sharedInstance.startUpdateLocations()
     }
     
     // MARK: - Private
@@ -70,6 +73,11 @@ class AddPostController: UIViewController {
         textView.addToolbar(frame: frame, items: [closeBarItem])
         textView.addBorder(colour: .groupTableViewBackground)
         textView.delegate = self
+    }
+    
+    private func configureMapView() {
+        mapView.delegate = self
+        mapView.setMinZoom(minZoom, maxZoom: maxZoom)
     }
     
     private func constructAddress(from response: GMSAddress) {
@@ -131,4 +139,14 @@ extension AddPostController: GMSMapViewDelegate {
         marker.map = mapView
         self.geoCoder.reverseGeocodeCoordinate(coordinate, completionHandler: self.reverseGeoCoderClosure)
     }
+}
+
+extension AddPostController: LocationServiceDelegate {
+    func didUpdateLocations(locationService: LocationService, coordinates: CLLocationCoordinate2D) {
+        let position = GMSCameraPosition.camera(withTarget: coordinates, zoom: defaultZoom)
+        mapView.animate(to: position)
+        locationService.stopUpdateLocations()
+    }
+    
+    
 }
