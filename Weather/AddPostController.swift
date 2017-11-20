@@ -76,8 +76,28 @@ class AddPostController: UIViewController {
     }
     
     private func configureMapView() {
+        /**
+         2. фотогалерея
+         3. Отправка пост-запроса в вк
+         */
         mapView.delegate = self
         mapView.setMinZoom(minZoom, maxZoom: maxZoom)
+        addUserLocationButton()
+    }
+    
+    private func addUserLocationButton() {
+        let userLocationButton = UIButton(type: .roundedRect)
+        mapView.addSubview(userLocationButton)
+        let image = UIImage(named: "user_location_button")
+        userLocationButton.setBackgroundImage(image, for: .normal)
+        userLocationButton.addTarget(self, action: #selector(updateLocations), for: .touchUpInside)
+        userLocationButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        userLocationButton.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
+        userLocationButton.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        let bottom = NSLayoutConstraint(item: mapView, attribute: .bottom, relatedBy: .equal, toItem: userLocationButton, attribute: .bottom, multiplier: 1.0, constant: 8.0);
+        let trailing = NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: userLocationButton, attribute: .trailing, multiplier: 1.0, constant: 8.0)
+        mapView.addConstraints([bottom, trailing])
     }
     
     private func constructAddress(from response: GMSAddress) {
@@ -121,6 +141,10 @@ class AddPostController: UIViewController {
     
     @objc private func closeKeyboard(sender: Any) {
         textView.endEditing(true)
+    }
+    
+    @objc private func updateLocations() {
+        LocationService.sharedInstance.startUpdateLocations()
     }
 }
 
