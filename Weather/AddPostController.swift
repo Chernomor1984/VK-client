@@ -58,12 +58,19 @@ class AddPostController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(mapView)
         configureMapViewConstraints()
-        textView.addBorder(colour: .groupTableViewBackground)
-        textView.delegate = self
+        configureTextView()
         mapView.delegate = self
     }
     
     // MARK: - Private
+    
+    private func configureTextView() {
+        let closeBarItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeKeyboard(sender:)))
+        let frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.size.width, height: 40.0))
+        textView.addToolbar(frame: frame, items: [closeBarItem])
+        textView.addBorder(colour: .groupTableViewBackground)
+        textView.delegate = self
+    }
     
     private func constructAddress(from response: GMSAddress) {
         guard let lines = response.lines else {
@@ -100,6 +107,12 @@ class AddPostController: UIViewController {
         let leading = NSLayoutConstraint(item: self.view, attribute: .leading, relatedBy: .equal, toItem: mapView, attribute: .leading, multiplier: 1.0, constant: 0.0)
         let trailing = NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
         view.addConstraints([top, leading, trailing])
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func closeKeyboard(sender: Any) {
+        textView.endEditing(true)
     }
 }
 

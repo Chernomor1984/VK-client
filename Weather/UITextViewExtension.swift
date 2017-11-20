@@ -15,4 +15,11 @@ extension UITextView {
         self.layer.borderWidth = CGFloat(borderWidth)
         self.layer.cornerRadius = CGFloat(cornerRadius)
     }
+    
+    func addToolbar(frame: CGRect, items: [UIBarButtonItem], barStyle: UIBarStyle = UIBarStyle.default) {
+        let toolbar = UIToolbar(frame: frame)
+        toolbar.barStyle = barStyle
+        toolbar.items = items
+        self.inputAccessoryView = toolbar
+    }
 }
