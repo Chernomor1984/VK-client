@@ -15,10 +15,29 @@ class AddPostController: UIViewController {
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var doneBarItem: UIBarButtonItem!
     
-    var pointAddress: String?
+    var pointAddress = ""
+    var inputText = ""
     
     let minZoom: Float = 6.0
     let maxZoom: Float = 19.0
+    
+    lazy var reverseGeoCoderClosure: GMSReverseGeocodeCallback = { (response, error) in
+        if let error = error {
+            print("geocoding finished with error:\(error.localizedDescription)")
+            return
+        }
+        
+        guard let response = response, let address = response.firstResult() else {
+            print("geocoding finished with no address")
+            return
+        }
+        self.constructAddress(from: address)
+    }
+    
+    lazy var geoCoder: GMSGeocoder = {
+        let gc = GMSGeocoder()
+        return gc
+    }()
     
     private lazy var camera: GMSCameraPosition = {
         let coordinate = CLLocationCoordinate2D()
@@ -41,9 +60,31 @@ class AddPostController: UIViewController {
         configureMapViewConstraints()
         textView.addBorder(colour: .groupTableViewBackground)
         textView.delegate = self
+        mapView.delegate = self
     }
     
     // MARK: - Private
+    
+    private func constructAddress(from response: GMSAddress) {
+        guard let lines = response.lines else {
+            return
+        }
+        pointAddress = lines.reduce("", { line1, line2 in
+            return (line1.isEmpty) ? line2 : line2 + ", " + line1
+        })
+        updateTextView()
+    }
+    
+    private func updateTextView() {
+        if !inputText.isEmpty {
+            let fullText = inputText + "\r\n" + pointAddress
+            textView.text = fullText
+            return
+        }
+        
+        self.textView.text = pointAddress
+        self.doneBarItem.isEnabled = true
+    }
     
     private func configureMapViewConstraints() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +105,17 @@ class AddPostController: UIViewController {
 
 extension AddPostController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        let textViewIsEmpty = textView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
-        self.doneBarItem.isEnabled = !textViewIsEmpty && !(self.pointAddress ?? "").isEmpty
+        inputText = textView.text.components(separatedBy: pointAddress).first ?? ""
+        let textViewIsEmpty = inputText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+        self.doneBarItem.isEnabled = !textViewIsEmpty && !self.pointAddress.isEmpty
+    }
+}
+
+extension AddPostController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        mapView.clear()
+        let marker = GMSMarker(position: coordinate)
+        marker.map = mapView
+        self.geoCoder.reverseGeocodeCoordinate(coordinate, completionHandler: self.reverseGeoCoderClosure)
     }
 }
