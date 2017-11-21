@@ -16,8 +16,9 @@ class AddPostController: UIViewController {
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var doneBarItem: UIBarButtonItem!
     
-    var pointAddress = ""
-    var inputText = ""
+    fileprivate var pointAddress = ""
+    fileprivate var inputText = ""
+    fileprivate var userImage: UIImage?
     
     let minZoom: Float = 8.0
     let defaultZoom: Float = 14.0
@@ -84,7 +85,6 @@ class AddPostController: UIViewController {
     
     private func configureMapView() {
         /**
-         2. фотогалерея
          3. Отправка пост-запроса в вк
          */
         mapView.delegate = self
@@ -218,6 +218,8 @@ extension AddPostController: UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        userImage = (info[UIImagePickerControllerOriginalImage] as! UIImage)
+        dismiss(animated: true, completion: nil)
     }
 }
 
