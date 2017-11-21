@@ -42,5 +42,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Доступ к фотогалерее необходим для отправки изображений в вк</string>
 </dict>
 </plist>

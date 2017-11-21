@@ -450,7 +450,11 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem enabled="NO" systemItem="done" id="g04-jX-pXI"/>
-                            <barButtonItem image="image_gallery" id="Gjp-1d-cBw"/>
+                            <barButtonItem image="image_gallery" id="Gjp-1d-cBw">
+                                <connections>
+                                    <action selector="imageGalleryTapHandlerWithSender:" destination="RdG-uf-Ycx" id="3PO-T2-2FF"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>

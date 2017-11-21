@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import GoogleMaps
+import Photos
 
 class AddPostController: UIViewController {
     @IBOutlet var textView: UITextView!
@@ -50,6 +51,12 @@ class AddPostController: UIViewController {
         let mv = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mv.isMyLocationEnabled = true
         return mv
+    }()
+    
+    private lazy var imagePicker: UIImagePickerController = {
+        let ip = UIImagePickerController()
+        ip.delegate = self
+        return ip
     }()
     
     // MARK: - Life cycle
@@ -137,6 +144,24 @@ class AddPostController: UIViewController {
         view.addConstraints([top, leading, trailing])
     }
     
+    private func showAlert(title: String?, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let submitAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(submitAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showImageGallery() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        present(imagePicker, animated: true) {
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
     // MARK: - Actions
     
     @objc private func closeKeyboard(sender: Any) {
@@ -145,6 +170,20 @@ class AddPostController: UIViewController {
     
     @objc private func updateLocations() {
         LocationService.sharedInstance.startUpdateLocations()
+    }
+    
+    @IBAction func imageGalleryTapHandler(sender: UIBarButtonItem) {
+        PHPhotoLibrary.requestAuthorization { [weak self] status in
+            switch status {
+            case .restricted:
+                self?.showAlert(title: "Ууупс!", message: "Доступ к фотогалерее ограничен")
+            case . denied:
+                self?.showAlert(title: "Ууупс!", message: "Доступ к фотогалерее запрещён")
+            default:
+                self?.showImageGallery()
+                break
+            }
+        }
     }
 }
 
@@ -171,6 +210,15 @@ extension AddPostController: LocationServiceDelegate {
         mapView.animate(to: position)
         locationService.stopUpdateLocations()
     }
-    
-    
 }
+
+extension AddPostController: UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    }
+}
+
+extension AddPostController: UINavigationControllerDelegate {}
