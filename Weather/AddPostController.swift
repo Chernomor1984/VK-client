@@ -19,6 +19,7 @@ class AddPostController: UIViewController {
     fileprivate var pointAddress = ""
     fileprivate var inputText = ""
     fileprivate var userImage: UIImage?
+    fileprivate var downloadQueue = OperationQueue()
     
     let minZoom: Float = 8.0
     let defaultZoom: Float = 14.0
@@ -184,6 +185,20 @@ class AddPostController: UIViewController {
                 break
             }
         }
+    }
+    
+    @IBAction func doneButtonTapHandler(sender: UIBarButtonItem) {
+        guard let stringUserID = UserDefaults.standard.string(forKey: userIDKey), let userID = Int(stringUserID) else {
+            print("AddPostController doneButtonTapHandler error: no user ID found")
+            return
+        }
+        
+        let urlRequest = RequestFactory.vkServerAddressRequest(groupID: userID)
+        let downloadServerAddressOperation = AsyncNetworkOperation(with: urlRequest)
+        downloadServerAddressOperation.completionBlock = {
+            print("downloadServerAddressOperation finished")
+        }
+        downloadQueue.addOperation(downloadServerAddressOperation)
     }
 }
 

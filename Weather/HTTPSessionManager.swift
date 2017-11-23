@@ -84,4 +84,8 @@ final class HTTPSessionManager {
         let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
         dataTask.resume()
     }
+    
+    func dataTask(urlRequest: URLRequest, completionHandler: @escaping completionHandlerClosure) -> URLSessionDataTask {
+        return urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+    }
 }

@@ -99,4 +99,17 @@ class RequestFactory {
         let request = URLRequest(url: urlComponents.url!)
         return request
     }
+    
+    class func vkServerAddressRequest(groupID: Int) -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/photos.getWallUploadServer"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "group_id", value: String(groupID)),
+            URLQueryItem(name: "v", value: "5.68")
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
 }

@@ -21,6 +21,7 @@
 		D4416DF11F755508006720E1 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF01F755508006720E1 /* GroupTableViewCell.swift */; };
 		D4416DF31F755746006720E1 /* NewGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF21F755746006720E1 /* NewGroupsController.swift */; };
 		D4416DF71F756B60006720E1 /* NewGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */; };
+		D45DA4C11FC727C1002E5BD4 /* AsyncNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */; };
 		D45F531B1FA821C000AE7B2F /* CellDataUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */; };
 		D468B6181FB1E79600D1063A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D468B6171FB1E79600D1063A /* GoogleService-Info.plist */; };
 		D468B61A1FB1FB8E00D1063A /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468B6191FB1FB8E00D1063A /* UserDB.swift */; };
@@ -67,6 +68,7 @@
 		D4416DF01F755508006720E1 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		D4416DF21F755746006720E1 /* NewGroupsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupsController.swift; sourceTree = "<group>"; };
 		D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupTableViewCell.swift; sourceTree = "<group>"; };
+		D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncNetworkOperation.swift; sourceTree = "<group>"; };
 		D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDataUpdating.swift; sourceTree = "<group>"; };
 		D468B6171FB1E79600D1063A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D468B6191FB1FB8E00D1063A /* UserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
@@ -156,6 +158,16 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		D45DA4BF1FC7279C002E5BD4 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */,
+				D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */,
+				D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
 		D47B29661F86F78A0024D191 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +215,7 @@
 				D4CCC4551FA372BD005CAEF5 /* Protocols */,
 				D4CCC4531FA3726F005CAEF5 /* Extensions */,
 				D4F3321F1F9F66B40003765E /* Services */,
+				D45DA4BF1FC7279C002E5BD4 /* Operations */,
 				D43CBC411F8161B50061FF79 /* Network */,
 				D4416DEB1F754734006720E1 /* Cells */,
 				D4CCC4541FA37292005CAEF5 /* Controllers */,
@@ -283,8 +296,6 @@
 				D4F332291F9F7F5D0003765E /* NewsService.swift */,
 				D4F3322D1F9F88460003765E /* NewsParser.swift */,
 				D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */,
-				D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */,
-				D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */,
 				D49D21A81FC27634007A1D4C /* LocationService.swift */,
 			);
 			name = Services;
@@ -465,6 +476,7 @@
 				D49D219C1FBEF6AB007A1D4C /* AddPostController.swift in Sources */,
 				D4FCBC781F80074800E6E45C /* VKLoginViewController.swift in Sources */,
 				D468B61A1FB1FB8E00D1063A /* UserDB.swift in Sources */,
+				D45DA4C11FC727C1002E5BD4 /* AsyncNetworkOperation.swift in Sources */,
 				D4416DF31F755746006720E1 /* NewGroupsController.swift in Sources */,
 				D43CBC461F8162800061FF79 /* RequestFactory.swift in Sources */,
 				D4416DEF1F754CDE006720E1 /* AvatarCollectionViewCell.swift in Sources */,

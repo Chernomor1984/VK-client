@@ -449,7 +449,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" systemItem="done" id="g04-jX-pXI"/>
+                            <barButtonItem enabled="NO" systemItem="done" id="g04-jX-pXI">
+                                <connections>
+                                    <action selector="doneButtonTapHandlerWithSender:" destination="RdG-uf-Ycx" id="GSu-RT-7YT"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="image_gallery" id="Gjp-1d-cBw">
                                 <connections>
                                     <action selector="imageGalleryTapHandlerWithSender:" destination="RdG-uf-Ycx" id="3PO-T2-2FF"/>
