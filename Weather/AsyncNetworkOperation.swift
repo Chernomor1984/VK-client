@@ -11,9 +11,8 @@ import UIKit
 
 class AsyncNetworkOperation: Operation {
     
-    private var urlRequest: URLRequest?
-    private var dataTask: URLSessionDataTask!
-    var data: Data?
+    internal var urlRequest: URLRequest?
+    internal var dataTask: URLSessionDataTask!
     
     // MARK: - Init
     
@@ -23,14 +22,14 @@ class AsyncNetworkOperation: Operation {
     
     // MARK: - Private
     
-    private enum State: String {
+    internal enum State: String {
         case ready, executing, finished
         fileprivate var keyPath: String {
             return "is" + rawValue.capitalized
         }
     }
     
-    private var state = State.ready {
+    internal var state = State.ready {
         willSet {
             willChangeValue(forKey: newValue.keyPath)
             willChangeValue(forKey: state.keyPath)
@@ -70,29 +69,6 @@ extension AsyncNetworkOperation {
             state = .finished
             return
         }
-        
-        guard let urlRequest = urlRequest else {
-            state = .finished
-            return
-        }
-        
-        let completionHandler = { [weak self] (data: Data?, urlResponse: URLResponse?, error: Error?) in
-            if let error = error {
-                print("AsyncDownloadOperation finished with error:\(error.localizedDescription)")
-                self?.state = .finished
-                return
-            }
-            
-            guard let data = data else {
-                print("AsyncDownloadOperation finished with no data")
-                self?.state = .finished
-                return
-            }
-            self?.data = data
-            self?.state = .finished
-        }
-        dataTask = HTTPSessionManager.sharedInstance.dataTask(urlRequest: urlRequest, completionHandler: completionHandler)
-        dataTask.resume()
-        state = .executing
+        main()
     }
 }

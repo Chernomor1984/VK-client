@@ -107,6 +107,7 @@ class RequestFactory {
         urlComponents.path = "/method/photos.getWallUploadServer"
         urlComponents.queryItems = [
             URLQueryItem(name: "group_id", value: String(groupID)),
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey)),
             URLQueryItem(name: "v", value: "5.68")
         ]
         let request = URLRequest(url: urlComponents.url!)

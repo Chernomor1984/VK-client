@@ -22,6 +22,8 @@
 		D4416DF31F755746006720E1 /* NewGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF21F755746006720E1 /* NewGroupsController.swift */; };
 		D4416DF71F756B60006720E1 /* NewGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */; };
 		D45DA4C11FC727C1002E5BD4 /* AsyncNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */; };
+		D45DA4C61FC782B2002E5BD4 /* VKServerAddressOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C51FC782B2002E5BD4 /* VKServerAddressOperation.swift */; };
+		D45DA4C81FC78BC6002E5BD4 /* VKImageUploadingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C71FC78BC6002E5BD4 /* VKImageUploadingOperation.swift */; };
 		D45F531B1FA821C000AE7B2F /* CellDataUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */; };
 		D468B6181FB1E79600D1063A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D468B6171FB1E79600D1063A /* GoogleService-Info.plist */; };
 		D468B61A1FB1FB8E00D1063A /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468B6191FB1FB8E00D1063A /* UserDB.swift */; };
@@ -69,6 +71,8 @@
 		D4416DF21F755746006720E1 /* NewGroupsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupsController.swift; sourceTree = "<group>"; };
 		D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupTableViewCell.swift; sourceTree = "<group>"; };
 		D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncNetworkOperation.swift; sourceTree = "<group>"; };
+		D45DA4C51FC782B2002E5BD4 /* VKServerAddressOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKServerAddressOperation.swift; sourceTree = "<group>"; };
+		D45DA4C71FC78BC6002E5BD4 /* VKImageUploadingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKImageUploadingOperation.swift; sourceTree = "<group>"; };
 		D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDataUpdating.swift; sourceTree = "<group>"; };
 		D468B6171FB1E79600D1063A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D468B6191FB1FB8E00D1063A /* UserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */,
 				D46A67901FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift */,
 				D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */,
+				D45DA4C51FC782B2002E5BD4 /* VKServerAddressOperation.swift */,
+				D45DA4C71FC78BC6002E5BD4 /* VKImageUploadingOperation.swift */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				D4F332191F962FAB0003765E /* News.swift in Sources */,
 				D49D21AB1FC27716007A1D4C /* LocationServiceDelegate.swift in Sources */,
 				D4416DBF1F7089D8006720E1 /* GroupsListController.swift in Sources */,
+				D45DA4C81FC78BC6002E5BD4 /* VKImageUploadingOperation.swift in Sources */,
 				D4416DF11F755508006720E1 /* GroupTableViewCell.swift in Sources */,
 				D46A67911FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift in Sources */,
 				D4416DED1F75475B006720E1 /* FriendTableViewCell.swift in Sources */,
@@ -481,6 +488,7 @@
 				D43CBC461F8162800061FF79 /* RequestFactory.swift in Sources */,
 				D4416DEF1F754CDE006720E1 /* AvatarCollectionViewCell.swift in Sources */,
 				D4416DF71F756B60006720E1 /* NewGroupTableViewCell.swift in Sources */,
+				D45DA4C61FC782B2002E5BD4 /* VKServerAddressOperation.swift in Sources */,
 				D47B29681F86F7B10024D191 /* Storage.swift in Sources */,
 				D4F332171F962F0F0003765E /* NewsFeedTableViewController.swift in Sources */,
 				D468B61C1FB1FC0D00D1063A /* GroupDB.swift in Sources */,

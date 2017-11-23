@@ -193,12 +193,14 @@ class AddPostController: UIViewController {
             return
         }
         
-        let urlRequest = RequestFactory.vkServerAddressRequest(groupID: userID)
-        let downloadServerAddressOperation = AsyncNetworkOperation(with: urlRequest)
-        downloadServerAddressOperation.completionBlock = {
-            print("downloadServerAddressOperation finished")
+        if let image = userImage {
+            var urlRequest = RequestFactory.vkServerAddressRequest(groupID: userID)
+            let downloadServerAddressOperation = VKServerAddressOperation(with: urlRequest)
+            downloadServerAddressOperation.completionBlock = {
+                print("downloadServerAddressOperation.uploadingServerAddress:\(String(describing: downloadServerAddressOperation.uploadingServerAddress))")
+            }
+            downloadQueue.addOperation(downloadServerAddressOperation)
         }
-        downloadQueue.addOperation(downloadServerAddressOperation)
     }
 }
 
