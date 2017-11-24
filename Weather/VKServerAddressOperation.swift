@@ -10,8 +10,14 @@ import Foundation
 import SwiftyJSON
 
 class VKServerAddressOperation: AsyncNetworkOperation {
-    
+    private var urlRequest: URLRequest?
     var uploadingServerAddress: String?
+    
+    // MARK: - Init
+    
+    init(with request: URLRequest) {
+        self.urlRequest = request
+    }
     
     override func main() {
         guard let urlRequest = urlRequest else {
@@ -21,13 +27,13 @@ class VKServerAddressOperation: AsyncNetworkOperation {
         
         let completionHandler = { [weak self] (data: Data?, urlResponse: URLResponse?, error: Error?) in
             if let error = error {
-                print("AsyncDownloadOperation finished with error:\(error.localizedDescription)")
+                print("VKServerAddressOperation finished with error:\(error.localizedDescription)")
                 self?.state = .finished
                 return
             }
             
             guard let data = data, let json = try? JSON(data: data) else {
-                print("AsyncDownloadOperation finished with no data")
+                print("VKServerAddressOperation finished with no data")
                 self?.state = .finished
                 return
             }

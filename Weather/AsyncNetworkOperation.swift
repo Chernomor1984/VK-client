@@ -10,15 +10,7 @@ import Foundation
 import UIKit
 
 class AsyncNetworkOperation: Operation {
-    
-    internal var urlRequest: URLRequest?
     internal var dataTask: URLSessionDataTask!
-    
-    // MARK: - Init
-    
-    init(with request: URLRequest) {
-        self.urlRequest = request
-    }
     
     // MARK: - Private
     

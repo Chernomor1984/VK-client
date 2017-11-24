@@ -19,7 +19,7 @@ class AddPostController: UIViewController {
     fileprivate var pointAddress = ""
     fileprivate var inputText = ""
     fileprivate var userImage: UIImage?
-    fileprivate var downloadQueue = OperationQueue()
+    fileprivate var uploadQueue = OperationQueue()
     
     let minZoom: Float = 8.0
     let defaultZoom: Float = 14.0
@@ -194,12 +194,12 @@ class AddPostController: UIViewController {
         }
         
         if let image = userImage {
-            var urlRequest = RequestFactory.vkServerAddressRequest(groupID: userID)
+            let urlRequest = RequestFactory.vkServerAddressRequest(groupID: userID)
             let downloadServerAddressOperation = VKServerAddressOperation(with: urlRequest)
-            downloadServerAddressOperation.completionBlock = {
-                print("downloadServerAddressOperation.uploadingServerAddress:\(String(describing: downloadServerAddressOperation.uploadingServerAddress))")
-            }
-            downloadQueue.addOperation(downloadServerAddressOperation)
+            uploadQueue.addOperation(downloadServerAddressOperation)
+            let vkImageUploadingOperation = VKImageUploadingOperation(image: image)
+            vkImageUploadingOperation.addDependency(downloadServerAddressOperation)
+            uploadQueue.addOperation(vkImageUploadingOperation)
         }
     }
 }

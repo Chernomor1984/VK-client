@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RequestFactory {
     
@@ -111,6 +112,25 @@ class RequestFactory {
             URLQueryItem(name: "v", value: "5.68")
         ]
         let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
+    
+    class func vkImageUploadingRequest(serverURL: URL, data: Data) -> URLRequest {
+        var request = URLRequest(url: serverURL)
+        request.httpMethod = "POST"
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        let body = NSMutableData()
+        let fileName = "image.png"
+        let mimetype = "image/png"
+        body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Disposition:form-data; name=\"photo\"; filename=\"\(fileName)\"\r\n".data(using: String.Encoding.utf8)!)
+        body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: String.Encoding.utf8)!)
+        body.append(data)
+        body.append("\r\n".data(using: String.Encoding.utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: String.Encoding.utf8)!)
+        request.httpBody = body as Data
         return request
     }
 }
