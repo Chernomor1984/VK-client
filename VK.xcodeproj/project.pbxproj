@@ -24,6 +24,7 @@
 		D45DA4C11FC727C1002E5BD4 /* AsyncNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */; };
 		D45DA4C61FC782B2002E5BD4 /* VKServerAddressOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C51FC782B2002E5BD4 /* VKServerAddressOperation.swift */; };
 		D45DA4C81FC78BC6002E5BD4 /* VKImageUploadingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C71FC78BC6002E5BD4 /* VKImageUploadingOperation.swift */; };
+		D45DA4CA1FC82681002E5BD4 /* VKSaveWallPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C91FC82681002E5BD4 /* VKSaveWallPhotoOperation.swift */; };
 		D45F531B1FA821C000AE7B2F /* CellDataUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */; };
 		D468B6181FB1E79600D1063A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D468B6171FB1E79600D1063A /* GoogleService-Info.plist */; };
 		D468B61A1FB1FB8E00D1063A /* UserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468B6191FB1FB8E00D1063A /* UserDB.swift */; };
@@ -73,6 +74,7 @@
 		D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncNetworkOperation.swift; sourceTree = "<group>"; };
 		D45DA4C51FC782B2002E5BD4 /* VKServerAddressOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKServerAddressOperation.swift; sourceTree = "<group>"; };
 		D45DA4C71FC78BC6002E5BD4 /* VKImageUploadingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKImageUploadingOperation.swift; sourceTree = "<group>"; };
+		D45DA4C91FC82681002E5BD4 /* VKSaveWallPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKSaveWallPhotoOperation.swift; sourceTree = "<group>"; };
 		D45F531A1FA821C000AE7B2F /* CellDataUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDataUpdating.swift; sourceTree = "<group>"; };
 		D468B6171FB1E79600D1063A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D468B6191FB1FB8E00D1063A /* UserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDB.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */,
 				D45DA4C51FC782B2002E5BD4 /* VKServerAddressOperation.swift */,
 				D45DA4C71FC78BC6002E5BD4 /* VKImageUploadingOperation.swift */,
+				D45DA4C91FC82681002E5BD4 /* VKSaveWallPhotoOperation.swift */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				D4F332171F962F0F0003765E /* NewsFeedTableViewController.swift in Sources */,
 				D468B61C1FB1FC0D00D1063A /* GroupDB.swift in Sources */,
 				D4416DC11F708AB8006720E1 /* FriendAvatarController.swift in Sources */,
+				D45DA4CA1FC82681002E5BD4 /* VKSaveWallPhotoOperation.swift in Sources */,
 				D46A678F1FA7E1BF00F9A5BD /* PhotoDownloadService.swift in Sources */,
 				D46A67931FA7F07100F9A5BD /* ImageViewCellProtocol.swift in Sources */,
 				D4F3322C1F9F87D70003765E /* JSONParsingProtocol.swift in Sources */,

@@ -107,7 +107,6 @@ class RequestFactory {
         urlComponents.host = "api.vk.com"
         urlComponents.path = "/method/photos.getWallUploadServer"
         urlComponents.queryItems = [
-            URLQueryItem(name: "group_id", value: String(groupID)),
             URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey)),
             URLQueryItem(name: "v", value: "5.68")
         ]
@@ -131,6 +130,23 @@ class RequestFactory {
         body.append("\r\n".data(using: String.Encoding.utf8)!)
         body.append("--\(boundary)--\r\n".data(using: String.Encoding.utf8)!)
         request.httpBody = body as Data
+        return request
+    }
+    
+    class func vkSaveWallPhotoRequest(userID: Int, photo: String, hash: String, server: String) -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/photos.saveWallPhoto"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "user_id", value: String(userID)),
+            URLQueryItem(name: "photo", value: photo),
+            URLQueryItem(name: "server", value: server),
+            URLQueryItem(name: "hash", value: hash),
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey)),
+            URLQueryItem(name: "v", value: "5.68")
+        ]
+        let request = URLRequest(url: urlComponents.url!)
         return request
     }
 }

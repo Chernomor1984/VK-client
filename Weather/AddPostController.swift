@@ -200,6 +200,9 @@ class AddPostController: UIViewController {
             let vkImageUploadingOperation = VKImageUploadingOperation(image: image)
             vkImageUploadingOperation.addDependency(downloadServerAddressOperation)
             uploadQueue.addOperation(vkImageUploadingOperation)
+            let vkSaveWallPhotoOperation = VKSaveWallPhotoOperation(userID: userID)
+            vkSaveWallPhotoOperation.addDependency(vkImageUploadingOperation)
+            uploadQueue.addOperation(vkSaveWallPhotoOperation)
         }
     }
 }

@@ -14,6 +14,9 @@ import Alamofire
 
 class VKImageUploadingOperation: AsyncNetworkOperation {
     
+    var photo: String?
+    var photoHash: String?
+    var server: String?
     private var image: UIImage?
     
     // MARK: - Init
@@ -49,7 +52,13 @@ class VKImageUploadingOperation: AsyncNetworkOperation {
                 self?.state = .finished
                 return
             }
-            print(json)
+            self?.photo = json["photo"].string
+            self?.photoHash = json["hash"].string
+            
+            if let server = json["server"].int {
+                self?.server = String(describing: server)
+            }
+
             self?.state = .finished
         }
         dataTask = HTTPSessionManager.sharedInstance.dataTask(urlRequest: urlRequest, completionHandler: completionHandler)
