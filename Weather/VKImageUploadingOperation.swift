@@ -36,6 +36,7 @@ class VKImageUploadingOperation: AsyncNetworkOperation {
         
         guard let image = image, let imageData = UIImagePNGRepresentation(image) else {
             print("VKImageUploadingOperation failed: no image data available")
+            self.state = .finished
             return
         }
         

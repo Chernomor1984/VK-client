@@ -12,6 +12,7 @@ import SwiftyJSON
 class VKSaveWallPhotoOperation: AsyncNetworkOperation {
     
     var userID: Int
+    var mediaID: Int?
     
     // MARK: - Init
     
@@ -49,7 +50,9 @@ class VKSaveWallPhotoOperation: AsyncNetworkOperation {
                 self?.state = .finished
                 return
             }
-            print(json)
+            if let array = json["response"].array, let dict = array.first {
+                self?.mediaID = dict["id"].int
+            }
             self?.state = .finished
         }
         dataTask = HTTPSessionManager.sharedInstance.dataTask(urlRequest: urlRequest, completionHandler: completionHandler)

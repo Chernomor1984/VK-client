@@ -6,6 +6,13 @@
 //  Copyright © 2017 RCNTEC. All rights reserved.
 //
 
+/**
+ 1. Повесить HUD при постинге
+ 2. блокировать кнопку готово после начала отправки
+ 3. закрывать контроллер после успешной отправки
+ 4. обработать ситуацию при закрытии контроллера и незавершённой отправке
+ */
+
 import UIKit
 import Foundation
 import GoogleMaps
@@ -25,7 +32,7 @@ class AddPostController: UIViewController {
     let defaultZoom: Float = 14.0
     let maxZoom: Float = 19.0
     
-    lazy var reverseGeoCoderClosure: GMSReverseGeocodeCallback = { (response, error) in
+    lazy var reverseGeoCoderClosure: GMSReverseGeocodeCallback = { [weak self] (response, error) in
         if let error = error {
             print("geocoding finished with error:\(error.localizedDescription)")
             return
@@ -35,7 +42,8 @@ class AddPostController: UIViewController {
             print("geocoding finished with no address")
             return
         }
-        self.constructAddress(from: address)
+        self?.constructAddress(from: address)
+        self?.doneBarItem.isEnabled = self?.textView.text.count != 0
     }
     
     lazy var geoCoder: GMSGeocoder = {
@@ -85,9 +93,6 @@ class AddPostController: UIViewController {
     }
     
     private func configureMapView() {
-        /**
-         3. Отправка пост-запроса в вк
-         */
         mapView.delegate = self
         mapView.setMinZoom(minZoom, maxZoom: maxZoom)
         addUserLocationButton()
@@ -163,6 +168,13 @@ class AddPostController: UIViewController {
         }
     }
     
+    // MARK: - Public
+    
+    func shouldEnableDoneButton() -> Bool {
+        let textViewIsEmpty = inputText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+        return !textViewIsEmpty && !self.pointAddress.isEmpty
+    }
+    
     // MARK: - Actions
     
     @objc private func closeKeyboard(sender: Any) {
@@ -193,6 +205,8 @@ class AddPostController: UIViewController {
             return
         }
         
+        let vkWallPostOperation = VKWallPostOperation(ownerID: userID, mediaTypeArray: "photo", message: self.textView.text)
+        
         if let image = userImage {
             let urlRequest = RequestFactory.vkServerAddressRequest(groupID: userID)
             let downloadServerAddressOperation = VKServerAddressOperation(with: urlRequest)
@@ -202,16 +216,17 @@ class AddPostController: UIViewController {
             uploadQueue.addOperation(vkImageUploadingOperation)
             let vkSaveWallPhotoOperation = VKSaveWallPhotoOperation(userID: userID)
             vkSaveWallPhotoOperation.addDependency(vkImageUploadingOperation)
+            vkWallPostOperation.addDependency(vkSaveWallPhotoOperation)
             uploadQueue.addOperation(vkSaveWallPhotoOperation)
         }
+        uploadQueue.addOperation(vkWallPostOperation)
     }
 }
 
 extension AddPostController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        inputText = textView.text.components(separatedBy: pointAddress).first ?? ""
-        let textViewIsEmpty = inputText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
-        self.doneBarItem.isEnabled = !textViewIsEmpty && !self.pointAddress.isEmpty
+        inputText = (pointAddress.count > 0) ? (textView.text.components(separatedBy: pointAddress).first ?? "") : textView.text
+        self.doneBarItem.isEnabled = shouldEnableDoneButton()
     }
 }
 

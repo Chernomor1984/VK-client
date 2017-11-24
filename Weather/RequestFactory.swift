@@ -149,4 +149,28 @@ class RequestFactory {
         let request = URLRequest(url: urlComponents.url!)
         return request
     }
+    
+    class func vkWallPostRequest(ownerID: Int, message: String?, attachments: String?) -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/wall.post"
+        var queryItems = [
+            URLQueryItem(name: "owner_id", value: String(ownerID)),
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey)),
+            URLQueryItem(name: "v", value: "5.68")
+        ]
+        
+        if let message = message {
+            queryItems.append(URLQueryItem(name: "message", value: message))
+        }
+        
+        if let attachments = attachments {
+            queryItems.append(URLQueryItem(name: "attachments", value: attachments))
+        }
+        urlComponents.queryItems = queryItems
+        
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
 }
