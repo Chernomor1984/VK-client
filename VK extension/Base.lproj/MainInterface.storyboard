@@ -56,13 +56,16 @@
                                     <constraint firstItem="u2C-21-jqO" firstAttribute="leading" secondItem="uPX-0o-uge" secondAttribute="leading" id="vYp-Rj-fbf"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-qu-9Kn">
+                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-qu-9Kn">
                                 <rect key="frame" x="106.5" y="96" width="107" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Tmj-k4-eWf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="Больше заявок"/>
+                                <connections>
+                                    <action selector="moreButtonTapHandlerWithSender:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Rxf-cp-wtQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

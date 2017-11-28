@@ -55,7 +55,7 @@ class NewFriendsBackgroundFetchService {
             }
             
             if data != nil {
-                UserDefaults.standard.setValue(data, forKey: newFriendsIdsKey)
+                UserDefaults.standard.setValue(data!, forKey: newFriendsIdsKey)
                 DispatchQueue.main.async {
                     UIApplication.shared.applicationIconBadgeNumber = 1
                 }

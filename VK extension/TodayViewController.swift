@@ -27,11 +27,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     private func loadFriendsRequests() {
         let friendsRequestsOperation = LoadFriendsRequestsIDOperation()
-        friendsRequestsOperation.completionBlock = {
-            DispatchQueue.main.async {
-                self.moreButton.isHidden = !(friendsRequestsOperation.count > 0)
-            }
-        }
         let loadNewFriendsOperation = LoadNewFriendsOperation()
         loadNewFriendsOperation.completionBlock = {
             DispatchQueue.main.async {
@@ -42,5 +37,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         loadNewFriendsOperation.addDependency(friendsRequestsOperation)
         downloadQueue.addOperation(friendsRequestsOperation)
         downloadQueue.addOperation(loadNewFriendsOperation)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func moreButtonTapHandler(sender: UIButton) {
+        if let url =  URL(string: "vkClient://") {
+            extensionContext?.open(url)
+        }
     }
 }
