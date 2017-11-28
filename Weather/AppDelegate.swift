@@ -33,5 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let newFriendsFetchService = NewFriendsBackgroundFetchService()
         newFriendsFetchService.startFetch(completion: completionHandler)
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AppOpenURL"), object: self, userInfo: nil)
+        return true
+    }
 }
 

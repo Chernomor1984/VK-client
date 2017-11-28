@@ -19,8 +19,15 @@ class FriendsListController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "AppOpenURL"), object: UIApplication.shared.delegate, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.requestsButton.isEnabled = UserDefaults.standard.object(forKey: newFriendsIdsKey) != nil
+        }
         loadFriendsFromCache()
         loadFriendsList()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
