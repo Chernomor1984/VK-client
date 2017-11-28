@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Thin</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="VK_extension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jyi-4C-MIR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
+                                <subviews>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPX-0o-uge">
+                                        <rect key="frame" x="8" y="0.0" width="304" height="46"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2C-21-jqO">
+                                        <rect key="frame" x="8" y="46" width="304" height="46"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="u2C-21-jqO" firstAttribute="top" secondItem="uPX-0o-uge" secondAttribute="bottom" id="XlK-Jf-dqj"/>
+                                    <constraint firstAttribute="trailing" secondItem="uPX-0o-uge" secondAttribute="trailing" constant="8" id="cq5-Dk-ElB"/>
+                                    <constraint firstItem="uPX-0o-uge" firstAttribute="height" secondItem="u2C-21-jqO" secondAttribute="height" id="eJ9-OU-FwH"/>
+                                    <constraint firstItem="uPX-0o-uge" firstAttribute="top" secondItem="Jyi-4C-MIR" secondAttribute="top" id="fOh-2H-d9K"/>
+                                    <constraint firstAttribute="bottom" secondItem="u2C-21-jqO" secondAttribute="bottom" id="i0l-Qt-209"/>
+                                    <constraint firstItem="u2C-21-jqO" firstAttribute="trailing" secondItem="uPX-0o-uge" secondAttribute="trailing" id="p94-bx-MPQ"/>
+                                    <constraint firstItem="uPX-0o-uge" firstAttribute="leading" secondItem="Jyi-4C-MIR" secondAttribute="leading" constant="8" id="qgY-Dp-hG0"/>
+                                    <constraint firstItem="u2C-21-jqO" firstAttribute="leading" secondItem="uPX-0o-uge" secondAttribute="leading" id="vYp-Rj-fbf"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-qu-9Kn">
+                                <rect key="frame" x="106.5" y="96" width="107" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Tmj-k4-eWf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Больше заявок"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Tml-qu-9Kn" firstAttribute="centerX" secondItem="ssy-KU-ocm" secondAttribute="centerX" id="5uR-Ti-GBK"/>
+                            <constraint firstItem="Jyi-4C-MIR" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="9df-0l-fRp"/>
+                            <constraint firstItem="Tml-qu-9Kn" firstAttribute="bottom" secondItem="ssy-KU-ocm" secondAttribute="bottom" constant="-4" id="9sH-6i-H1T"/>
+                            <constraint firstItem="Tml-qu-9Kn" firstAttribute="top" secondItem="Jyi-4C-MIR" secondAttribute="bottom" constant="4" id="UW9-ox-7WZ"/>
+                            <constraint firstItem="Jyi-4C-MIR" firstAttribute="trailing" secondItem="ssy-KU-ocm" secondAttribute="trailing" id="ar0-cT-z3C"/>
+                            <constraint firstItem="Jyi-4C-MIR" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="gKJ-9e-9aL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="120"/>
+                    <connections>
+                        <outlet property="locationLabel" destination="u2C-21-jqO" id="XSd-dL-JxL"/>
+                        <outlet property="moreButton" destination="Tml-qu-9Kn" id="g1Y-hh-RWf"/>
+                        <outlet property="nameLabel" destination="uPX-0o-uge" id="ZjP-5f-9og"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.59999999999999" y="132.23388305847078"/>
+        </scene>
+    </scenes>
+</document>

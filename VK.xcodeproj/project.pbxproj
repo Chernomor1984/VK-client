@@ -12,6 +12,13 @@
 		D4118C1A1FCD23ED008E3D91 /* NewFriendsRequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C191FCD23ED008E3D91 /* NewFriendsRequestsController.swift */; };
 		D4118C1C1FCD24B3008E3D91 /* NewFriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1B1FCD24B3008E3D91 /* NewFriendRequestCell.swift */; };
 		D4118C1E1FCD2B24008E3D91 /* NewFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */; };
+		D42500071FCD90A70049EFF6 /* LoadNewFriendsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42500061FCD90A70049EFF6 /* LoadNewFriendsOperation.swift */; };
+		D436AFC81FCD544C00C5DE50 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D436AFC71FCD544C00C5DE50 /* NotificationCenter.framework */; };
+		D436AFCB1FCD544C00C5DE50 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFCA1FCD544C00C5DE50 /* TodayViewController.swift */; };
+		D436AFCE1FCD544C00C5DE50 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D436AFCC1FCD544C00C5DE50 /* MainInterface.storyboard */; };
+		D436AFD21FCD544C00C5DE50 /* VK extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D436AFC61FCD544C00C5DE50 /* VK extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D436AFDA1FCD5E5000C5DE50 /* AsyncNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA4C01FC727C1002E5BD4 /* AsyncNetworkOperation.swift */; };
+		D436AFDC1FCD5E8100C5DE50 /* LoadFriendsRequestsIDOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFDB1FCD5E8100C5DE50 /* LoadFriendsRequestsIDOperation.swift */; };
 		D43CBC431F8161FC0061FF79 /* HTTPSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC421F8161FC0061FF79 /* HTTPSessionManager.swift */; };
 		D43CBC461F8162800061FF79 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC451F8162800061FF79 /* RequestFactory.swift */; };
 		D43CBC801F82D7660061FF79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC7F1F82D7660061FF79 /* User.swift */; };
@@ -59,6 +66,30 @@
 		D4FCBC781F80074800E6E45C /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FCBC771F80074800E6E45C /* VKLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D436AFD01FCD544C00C5DE50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4CD9AB31F6866420079A121 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D436AFC51FCD544C00C5DE50;
+			remoteInfo = "VK extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D436AFD61FCD544C00C5DE50 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D436AFD21FCD544C00C5DE50 /* VK extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0E0CC72051CAAB35FE8ABD9F /* Pods-VK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VK/Pods-VK.debug.xcconfig"; sourceTree = "<group>"; };
 		823F02A44E0633643258E290 /* Pods_VK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +98,15 @@
 		D4118C191FCD23ED008E3D91 /* NewFriendsRequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendsRequestsController.swift; sourceTree = "<group>"; };
 		D4118C1B1FCD24B3008E3D91 /* NewFriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendRequestCell.swift; sourceTree = "<group>"; };
 		D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriend.swift; sourceTree = "<group>"; };
+		D42500061FCD90A70049EFF6 /* LoadNewFriendsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadNewFriendsOperation.swift; sourceTree = "<group>"; };
+		D436AFC61FCD544C00C5DE50 /* VK extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VK extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D436AFC71FCD544C00C5DE50 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D436AFCA1FCD544C00C5DE50 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		D436AFCD1FCD544C00C5DE50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D436AFCF1FCD544C00C5DE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D436AFD71FCD545700C5DE50 /* VK extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "VK extension.entitlements"; sourceTree = "<group>"; };
+		D436AFDB1FCD5E8100C5DE50 /* LoadFriendsRequestsIDOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFriendsRequestsIDOperation.swift; sourceTree = "<group>"; };
+		D436AFE21FCD820900C5DE50 /* VK.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VK.entitlements; sourceTree = SOURCE_ROOT; };
 		D43CBC421F8161FC0061FF79 /* HTTPSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPSessionManager.swift; sourceTree = "<group>"; };
 		D43CBC451F8162800061FF79 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		D43CBC7F1F82D7660061FF79 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -117,6 +157,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D436AFC31FCD544C00C5DE50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D436AFC81FCD544C00C5DE50 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4CD9AB81F6866420079A121 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				823F02A44E0633643258E290 /* Pods_VK.framework */,
+				D436AFC71FCD544C00C5DE50 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,6 +192,19 @@
 				8B5CA7E196ED9A947A5A5CF2 /* Pods-VK.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D436AFC91FCD544C00C5DE50 /* VK extension */ = {
+			isa = PBXGroup;
+			children = (
+				D436AFD71FCD545700C5DE50 /* VK extension.entitlements */,
+				D436AFCA1FCD544C00C5DE50 /* TodayViewController.swift */,
+				D436AFDB1FCD5E8100C5DE50 /* LoadFriendsRequestsIDOperation.swift */,
+				D42500061FCD90A70049EFF6 /* LoadNewFriendsOperation.swift */,
+				D436AFCC1FCD544C00C5DE50 /* MainInterface.storyboard */,
+				D436AFCF1FCD544C00C5DE50 /* Info.plist */,
+			);
+			path = "VK extension";
 			sourceTree = "<group>";
 		};
 		D43CBC411F8161B50061FF79 /* Network */ = {
@@ -287,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				D4CD9ABD1F6866420079A121 /* VK */,
+				D436AFC91FCD544C00C5DE50 /* VK extension */,
 				D4CD9ABC1F6866420079A121 /* Products */,
 				B412AAB635BD6F71FFC0507A /* Pods */,
 				47CC9BEB5E6A60CAE6BE9008 /* Frameworks */,
@@ -297,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				D4CD9ABB1F6866420079A121 /* VK.app */,
+				D436AFC61FCD544C00C5DE50 /* VK extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +368,7 @@
 		D4CD9ABD1F6866420079A121 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				D436AFE21FCD820900C5DE50 /* VK.entitlements */,
 				D4AC5B0E1F6C231E009C42C6 /* Code */,
 				D4AC5B0D1F6C194F009C42C6 /* XIB */,
 				D4CD9ACA1F6866420079A121 /* Info.plist */,
@@ -328,6 +393,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D436AFC51FCD544C00C5DE50 /* VK extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D436AFD51FCD544C00C5DE50 /* Build configuration list for PBXNativeTarget "VK extension" */;
+			buildPhases = (
+				D436AFC21FCD544C00C5DE50 /* Sources */,
+				D436AFC31FCD544C00C5DE50 /* Frameworks */,
+				D436AFC41FCD544C00C5DE50 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VK extension";
+			productName = "VK extension";
+			productReference = D436AFC61FCD544C00C5DE50 /* VK extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D4CD9ABA1F6866420079A121 /* VK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4CD9ACD1F6866420079A121 /* Build configuration list for PBXNativeTarget "VK" */;
@@ -338,10 +420,12 @@
 				D4CD9AB91F6866420079A121 /* Resources */,
 				41AF2D2B435DE1BD9A19539D /* [CP] Embed Pods Frameworks */,
 				79E4CFCE8527D00D8F9543C5 /* [CP] Copy Pods Resources */,
+				D436AFD61FCD544C00C5DE50 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D436AFD11FCD544C00C5DE50 /* PBXTargetDependency */,
 			);
 			name = VK;
 			productName = Weather;
@@ -354,16 +438,29 @@
 		D4CD9AB31F6866420079A121 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = RCNTEC;
 				TargetAttributes = {
+					D436AFC51FCD544C00C5DE50 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = MLL2QM4L99;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					D4CD9ABA1F6866420079A121 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 9R5B75D885;
+						DevelopmentTeam = MLL2QM4L99;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -385,11 +482,20 @@
 			projectRoot = "";
 			targets = (
 				D4CD9ABA1F6866420079A121 /* VK */,
+				D436AFC51FCD544C00C5DE50 /* VK extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D436AFC41FCD544C00C5DE50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D436AFCE1FCD544C00C5DE50 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4CD9AB91F6866420079A121 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -476,6 +582,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D436AFC21FCD544C00C5DE50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D436AFCB1FCD544C00C5DE50 /* TodayViewController.swift in Sources */,
+				D436AFDC1FCD5E8100C5DE50 /* LoadFriendsRequestsIDOperation.swift in Sources */,
+				D42500071FCD90A70049EFF6 /* LoadNewFriendsOperation.swift in Sources */,
+				D436AFDA1FCD5E5000C5DE50 /* AsyncNetworkOperation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4CD9AB71F6866420079A121 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -530,7 +647,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D436AFD11FCD544C00C5DE50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D436AFC51FCD544C00C5DE50 /* VK extension */;
+			targetProxy = D436AFD01FCD544C00C5DE50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		D436AFCC1FCD544C00C5DE50 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D436AFCD1FCD544C00C5DE50 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		D4CD9AC21F6866420079A121 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -550,6 +683,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D436AFD31FCD544C00C5DE50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "VK extension/VK extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "VK extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rcntec.VK.VK-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D436AFD41FCD544C00C5DE50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "VK extension/VK extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "VK extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rcntec.VK.VK-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		D4CD9ACB1F6866420079A121 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -659,9 +834,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E0CC72051CAAB35FE8ABD9F /* Pods-VK.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 9R5B75D885;
+				CODE_SIGN_ENTITLEMENTS = VK.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = MLL2QM4L99;
 				INFOPLIST_FILE = Weather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -679,9 +857,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8B5CA7E196ED9A947A5A5CF2 /* Pods-VK.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 9R5B75D885;
+				CODE_SIGN_ENTITLEMENTS = VK.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = MLL2QM4L99;
 				INFOPLIST_FILE = Weather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -697,6 +878,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D436AFD51FCD544C00C5DE50 /* Build configuration list for PBXNativeTarget "VK extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D436AFD31FCD544C00C5DE50 /* Debug */,
+				D436AFD41FCD544C00C5DE50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D4CD9AB61F6866420079A121 /* Build configuration list for PBXProject "VK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

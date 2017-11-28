@@ -88,6 +88,7 @@ extension VKLoginViewController: WKNavigationDelegate {
         }
         
         if let token = parameters["access_token"], let userID = parameters["user_id"] {
+            UserDefaults(suiteName: "group.com.rcntec.VK")?.setValue(token, forKey: tokenKey)
             UserDefaults.standard.setValue(token, forKey: tokenKey)
             UserDefaults.standard.setValue(userID, forKey: userIDKey)
             updateFirebaseWithUser(userID: userID)
