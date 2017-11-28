@@ -7,10 +7,10 @@
 //
 
 /**
- 1. Повесить HUD при постинге
- 2. блокировать кнопку готово после начала отправки
- 3. закрывать контроллер после успешной отправки
- 4. обработать ситуацию при закрытии контроллера и незавершённой отправке
+ - Повесить HUD при постинге
+ - Обработка ошибок в операциях
+ - Обработать ситуацию при закрытии контроллера и незавершённой отправке
+ - Добавить возможность создания фото с помощью камеры
  */
 
 import UIKit
@@ -200,12 +200,21 @@ class AddPostController: UIViewController {
     }
     
     @IBAction func doneButtonTapHandler(sender: UIBarButtonItem) {
+        if uploadQueue.operationCount > 0 {
+            return
+        }
         guard let stringUserID = UserDefaults.standard.string(forKey: userIDKey), let userID = Int(stringUserID) else {
             print("AddPostController doneButtonTapHandler error: no user ID found")
             return
         }
         
         let vkWallPostOperation = VKWallPostOperation(ownerID: userID, mediaTypeArray: "photo", message: self.textView.text)
+        vkWallPostOperation.completionBlock = { [weak self] in
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible  = false
+                self?.dismiss(animated: true, completion:nil)
+            }
+        }
         
         if let image = userImage {
             let urlRequest = RequestFactory.vkServerAddressRequest(groupID: userID)
@@ -219,6 +228,7 @@ class AddPostController: UIViewController {
             vkWallPostOperation.addDependency(vkSaveWallPhotoOperation)
             uploadQueue.addOperation(vkSaveWallPhotoOperation)
         }
+        UIApplication.shared.isNetworkActivityIndicatorVisible  = true
         uploadQueue.addOperation(vkWallPostOperation)
     }
 }
