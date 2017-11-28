@@ -11,6 +11,7 @@ import AlamofireImage
 import RealmSwift
 
 class FriendsListController: UITableViewController {
+    @IBOutlet weak var requestsButton: UIBarButtonItem!
     var friends: Results<User>!
     var token: NotificationToken?
     
@@ -20,6 +21,11 @@ class FriendsListController: UITableViewController {
         super.viewDidLoad()
         loadFriendsFromCache()
         loadFriendsList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        requestsButton.isEnabled = UserDefaults.standard.object(forKey: newFriendsIdsKey) != nil
     }
     
     // MARK: - Private

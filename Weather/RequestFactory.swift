@@ -173,4 +173,32 @@ class RequestFactory {
         let request = URLRequest(url: urlComponents.url!)
         return request
     }
+    
+    class func newFriendsRequest() -> URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/friends.getRequests"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey)),
+            URLQueryItem(name: "v", value: "5.68")
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
+    
+    class func usersRequest(userIDs: String) ->URLRequest {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.vk.com"
+        urlComponents.path = "/method/users.get"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "user_ids", value: userIDs),
+            URLQueryItem(name: "fields", value: "city, screen_name, photo_200"),
+            URLQueryItem(name: "access_token", value: UserDefaults.standard.string(forKey: tokenKey)),
+            URLQueryItem(name: "v", value: "5.68")
+        ]
+        let request = URLRequest(url: urlComponents.url!)
+        return request
+    }
 }

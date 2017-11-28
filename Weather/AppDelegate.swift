@@ -18,14 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let googleMapsKey = "AIzaSyCewIm88BUch14Cr0LdbUsqAPqgEClf5kY"
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         FirebaseApp.configure()
         GMSServices.provideAPIKey(googleMapsKey)
         GMSPlacesClient.provideAPIKey(googleMapsKey)
+        let settings = UIUserNotificationSettings(types: .badge, categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(settings)
         return true
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let newFriendsFetchService = NewFriendsBackgroundFetchService()
+        newFriendsFetchService.startFetch(completion: completionHandler)
     }
 }
 

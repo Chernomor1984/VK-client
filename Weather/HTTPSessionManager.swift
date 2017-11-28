@@ -88,4 +88,28 @@ final class HTTPSessionManager {
     func dataTask(urlRequest: URLRequest, completionHandler: @escaping completionHandlerClosure) -> URLSessionDataTask {
         return urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
     }
+    
+    func performBackgroundFriendsRequest(completionHandler: @escaping completionHandlerClosure) {
+        let urlRequest = RequestFactory.newFriendsRequest()
+        let completion = { (_ data: Data?, _ urlResponse: URLResponse?, _ error: Error?) -> Void in
+            guard let data = data, let json = try? JSON(data: data) else {
+                completionHandler(nil, urlResponse, error)
+                return
+            }
+            
+            if let count = json["response"]["count"].int, count > 0 {
+                completionHandler(data, urlResponse, nil)
+                return
+            }
+            completionHandler(nil, urlResponse, nil)
+        }
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completion)
+        dataTask.resume()
+    }
+    
+    func performNewFriendsRequest(userIDs: String, completionHandler: @escaping completionHandlerClosure) {
+        let urlRequest = RequestFactory.usersRequest(userIDs: userIDs)
+        let dataTask = urlSession.dataTask(with: urlRequest, completionHandler: completionHandler)
+        dataTask.resume()
+    }
 }

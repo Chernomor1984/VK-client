@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		589AB1FB70AAFD447C4B6593 /* Pods_VK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823F02A44E0633643258E290 /* Pods_VK.framework */; };
+		D4118C181FCCFB3A008E3D91 /* NewFriendsBackgroundFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C171FCCFB3A008E3D91 /* NewFriendsBackgroundFetchService.swift */; };
+		D4118C1A1FCD23ED008E3D91 /* NewFriendsRequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C191FCD23ED008E3D91 /* NewFriendsRequestsController.swift */; };
+		D4118C1C1FCD24B3008E3D91 /* NewFriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1B1FCD24B3008E3D91 /* NewFriendRequestCell.swift */; };
+		D4118C1E1FCD2B24008E3D91 /* NewFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */; };
 		D43CBC431F8161FC0061FF79 /* HTTPSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC421F8161FC0061FF79 /* HTTPSessionManager.swift */; };
 		D43CBC461F8162800061FF79 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC451F8162800061FF79 /* RequestFactory.swift */; };
 		D43CBC801F82D7660061FF79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC7F1F82D7660061FF79 /* User.swift */; };
@@ -59,6 +63,10 @@
 		0E0CC72051CAAB35FE8ABD9F /* Pods-VK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VK/Pods-VK.debug.xcconfig"; sourceTree = "<group>"; };
 		823F02A44E0633643258E290 /* Pods_VK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5CA7E196ED9A947A5A5CF2 /* Pods-VK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK.release.xcconfig"; path = "Pods/Target Support Files/Pods-VK/Pods-VK.release.xcconfig"; sourceTree = "<group>"; };
+		D4118C171FCCFB3A008E3D91 /* NewFriendsBackgroundFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendsBackgroundFetchService.swift; sourceTree = "<group>"; };
+		D4118C191FCD23ED008E3D91 /* NewFriendsRequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendsRequestsController.swift; sourceTree = "<group>"; };
+		D4118C1B1FCD24B3008E3D91 /* NewFriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendRequestCell.swift; sourceTree = "<group>"; };
+		D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriend.swift; sourceTree = "<group>"; };
 		D43CBC421F8161FC0061FF79 /* HTTPSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPSessionManager.swift; sourceTree = "<group>"; };
 		D43CBC451F8162800061FF79 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		D43CBC7F1F82D7660061FF79 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 				D4416DEE1F754CDE006720E1 /* AvatarCollectionViewCell.swift */,
 				D4416DF61F756B60006720E1 /* NewGroupTableViewCell.swift */,
 				D4F3321A1F9645F20003765E /* NewsFeedTableViewCell.swift */,
+				D4118C1B1FCD24B3008E3D91 /* NewFriendRequestCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -196,6 +205,7 @@
 				D43CBC811F82F62B0061FF79 /* Photo.swift */,
 				D43CBC831F82FFC00061FF79 /* Group.swift */,
 				D4F332181F962FAB0003765E /* News.swift */,
+				D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -256,6 +266,7 @@
 				D4416DF21F755746006720E1 /* NewGroupsController.swift */,
 				D4F332161F962F0F0003765E /* NewsFeedTableViewController.swift */,
 				D49D219B1FBEF6AB007A1D4C /* AddPostController.swift */,
+				D4118C191FCD23ED008E3D91 /* NewFriendsRequestsController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -309,6 +320,7 @@
 				D4F3322D1F9F88460003765E /* NewsParser.swift */,
 				D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */,
 				D49D21A81FC27634007A1D4C /* LocationService.swift */,
+				D4118C171FCCFB3A008E3D91 /* NewFriendsBackgroundFetchService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -351,6 +363,11 @@
 						DevelopmentTeam = 9R5B75D885;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -464,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D43CBC821F82F62B0061FF79 /* Photo.swift in Sources */,
+				D4118C181FCCFB3A008E3D91 /* NewFriendsBackgroundFetchService.swift in Sources */,
 				D4CCC4571FA37B10005CAEF5 /* CachedImageOperation.swift in Sources */,
 				D43CBC841F82FFC00061FF79 /* Group.swift in Sources */,
 				D49D21A61FBF308B007A1D4C /* UITextViewExtension.swift in Sources */,
@@ -472,6 +490,7 @@
 				D4416DBD1F70883E006720E1 /* FriendsListController.swift in Sources */,
 				D49D21A91FC27634007A1D4C /* LocationService.swift in Sources */,
 				D4F3322E1F9F88460003765E /* NewsParser.swift in Sources */,
+				D4118C1A1FCD23ED008E3D91 /* NewFriendsRequestsController.swift in Sources */,
 				D45DA4CF1FC8C84E002E5BD4 /* VKWallPostOperation.swift in Sources */,
 				D45F531B1FA821C000AE7B2F /* CellDataUpdating.swift in Sources */,
 				D4CCC4521FA2B930005CAEF5 /* DateExtension.swift in Sources */,
@@ -481,6 +500,7 @@
 				D4416DBF1F7089D8006720E1 /* GroupsListController.swift in Sources */,
 				D45DA4C81FC78BC6002E5BD4 /* VKImageUploadingOperation.swift in Sources */,
 				D4416DF11F755508006720E1 /* GroupTableViewCell.swift in Sources */,
+				D4118C1C1FCD24B3008E3D91 /* NewFriendRequestCell.swift in Sources */,
 				D46A67911FA7E7D400F9A5BD /* ImageToRowBindingOperation.swift in Sources */,
 				D4416DED1F75475B006720E1 /* FriendTableViewCell.swift in Sources */,
 				D4F3322A1F9F7F5D0003765E /* NewsService.swift in Sources */,
@@ -503,6 +523,7 @@
 				D45DA4CA1FC82681002E5BD4 /* VKSaveWallPhotoOperation.swift in Sources */,
 				D46A678F1FA7E1BF00F9A5BD /* PhotoDownloadService.swift in Sources */,
 				D46A67931FA7F07100F9A5BD /* ImageViewCellProtocol.swift in Sources */,
+				D4118C1E1FCD2B24008E3D91 /* NewFriend.swift in Sources */,
 				D4F3322C1F9F87D70003765E /* JSONParsingProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
