@@ -47,8 +47,12 @@ class LoadNewFriendsOperation: AsyncNetworkOperation {
             return
         }
         
+        if userIDs.count == 0 {
+            self.userName = "Нет заявок"
+            self.state = .finished
+            return
+        }
         self.userIDs = userIDs
-        
         guard let url = url else {
             assertionFailure()
             return
@@ -62,12 +66,14 @@ class LoadNewFriendsOperation: AsyncNetworkOperation {
             }
             
             guard let data = data else {
+                self?.state = .finished
                 assertionFailure()
                 return
             }
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                print(json)
                 var dict = json as! [String : Any]
                 let array = dict["response"] as! [Any]
                 dict = array.first as! [String : Any]
