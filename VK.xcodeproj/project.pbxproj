@@ -63,6 +63,11 @@
 		D4F3322A1F9F7F5D0003765E /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F332291F9F7F5D0003765E /* NewsService.swift */; };
 		D4F3322C1F9F87D70003765E /* JSONParsingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3322B1F9F87D70003765E /* JSONParsingProtocol.swift */; };
 		D4F3322E1F9F88460003765E /* NewsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F3322D1F9F88460003765E /* NewsParser.swift */; };
+		D4FA80C01FD0E3230018421B /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA80BF1FD0E3230018421B /* Messages.framework */; };
+		D4FA80C31FD0E3230018421B /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80C21FD0E3230018421B /* MessagesViewController.swift */; };
+		D4FA80C61FD0E3230018421B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4FA80C41FD0E3230018421B /* MainInterface.storyboard */; };
+		D4FA80C81FD0E3230018421B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4FA80C71FD0E3230018421B /* Assets.xcassets */; };
+		D4FA80CC1FD0E3230018421B /* VK iMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D4FA80BE1FD0E3230018421B /* VK iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4FCBC781F80074800E6E45C /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FCBC771F80074800E6E45C /* VKLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +79,13 @@
 			remoteGlobalIDString = D436AFC51FCD544C00C5DE50;
 			remoteInfo = "VK extension";
 		};
+		D4FA80CA1FD0E3230018421B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4CD9AB31F6866420079A121 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4FA80BD1FD0E3230018421B;
+			remoteInfo = "VK iMessage";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				D4FA80CC1FD0E3230018421B /* VK iMessage.appex in Embed App Extensions */,
 				D436AFD21FCD544C00C5DE50 /* VK extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -153,6 +166,12 @@
 		D4F332291F9F7F5D0003765E /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		D4F3322B1F9F87D70003765E /* JSONParsingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingProtocol.swift; sourceTree = "<group>"; };
 		D4F3322D1F9F88460003765E /* NewsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsParser.swift; sourceTree = "<group>"; };
+		D4FA80BE1FD0E3230018421B /* VK iMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VK iMessage.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4FA80BF1FD0E3230018421B /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		D4FA80C21FD0E3230018421B /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		D4FA80C51FD0E3230018421B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D4FA80C71FD0E3230018421B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4FA80C91FD0E3230018421B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4FCBC771F80074800E6E45C /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +192,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4FA80BB1FD0E3230018421B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4FA80C01FD0E3230018421B /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -181,6 +208,7 @@
 			children = (
 				823F02A44E0633643258E290 /* Pods_VK.framework */,
 				D436AFC71FCD544C00C5DE50 /* NotificationCenter.framework */,
+				D4FA80BF1FD0E3230018421B /* Messages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -350,6 +378,7 @@
 			children = (
 				D4CD9ABD1F6866420079A121 /* VK */,
 				D436AFC91FCD544C00C5DE50 /* VK extension */,
+				D4FA80C11FD0E3230018421B /* VK iMessage */,
 				D4CD9ABC1F6866420079A121 /* Products */,
 				B412AAB635BD6F71FFC0507A /* Pods */,
 				47CC9BEB5E6A60CAE6BE9008 /* Frameworks */,
@@ -361,6 +390,7 @@
 			children = (
 				D4CD9ABB1F6866420079A121 /* VK.app */,
 				D436AFC61FCD544C00C5DE50 /* VK extension.appex */,
+				D4FA80BE1FD0E3230018421B /* VK iMessage.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -388,6 +418,17 @@
 				D4118C171FCCFB3A008E3D91 /* NewFriendsBackgroundFetchService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		D4FA80C11FD0E3230018421B /* VK iMessage */ = {
+			isa = PBXGroup;
+			children = (
+				D4FA80C21FD0E3230018421B /* MessagesViewController.swift */,
+				D4FA80C41FD0E3230018421B /* MainInterface.storyboard */,
+				D4FA80C71FD0E3230018421B /* Assets.xcassets */,
+				D4FA80C91FD0E3230018421B /* Info.plist */,
+			);
+			path = "VK iMessage";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,11 +467,29 @@
 			);
 			dependencies = (
 				D436AFD11FCD544C00C5DE50 /* PBXTargetDependency */,
+				D4FA80CB1FD0E3230018421B /* PBXTargetDependency */,
 			);
 			name = VK;
 			productName = Weather;
 			productReference = D4CD9ABB1F6866420079A121 /* VK.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D4FA80BD1FD0E3230018421B /* VK iMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4FA80CF1FD0E3230018421B /* Build configuration list for PBXNativeTarget "VK iMessage" */;
+			buildPhases = (
+				D4FA80BA1FD0E3230018421B /* Sources */,
+				D4FA80BB1FD0E3230018421B /* Frameworks */,
+				D4FA80BC1FD0E3230018421B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VK iMessage";
+			productName = "VK iMessage";
+			productReference = D4FA80BE1FD0E3230018421B /* VK iMessage.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
 		};
 /* End PBXNativeTarget section */
 
@@ -466,6 +525,11 @@
 							};
 						};
 					};
+					D4FA80BD1FD0E3230018421B = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = MLL2QM4L99;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = D4CD9AB61F6866420079A121 /* Build configuration list for PBXProject "VK" */;
@@ -483,6 +547,7 @@
 			targets = (
 				D4CD9ABA1F6866420079A121 /* VK */,
 				D436AFC51FCD544C00C5DE50 /* VK extension */,
+				D4FA80BD1FD0E3230018421B /* VK iMessage */,
 			);
 		};
 /* End PBXProject section */
@@ -504,6 +569,15 @@
 				D468B6181FB1E79600D1063A /* GoogleService-Info.plist in Resources */,
 				D4CD9AC61F6866420079A121 /* Assets.xcassets in Resources */,
 				D4CD9AC41F6866420079A121 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4FA80BC1FD0E3230018421B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4FA80C81FD0E3230018421B /* Assets.xcassets in Resources */,
+				D4FA80C61FD0E3230018421B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +719,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4FA80BA1FD0E3230018421B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4FA80C31FD0E3230018421B /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -652,6 +734,11 @@
 			isa = PBXTargetDependency;
 			target = D436AFC51FCD544C00C5DE50 /* VK extension */;
 			targetProxy = D436AFD01FCD544C00C5DE50 /* PBXContainerItemProxy */;
+		};
+		D4FA80CB1FD0E3230018421B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4FA80BD1FD0E3230018421B /* VK iMessage */;
+			targetProxy = D4FA80CA1FD0E3230018421B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -680,6 +767,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		D4FA80C41FD0E3230018421B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4FA80C51FD0E3230018421B /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -694,7 +789,7 @@
 				DEVELOPMENT_TEAM = MLL2QM4L99;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "VK extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rcntec.VK.VK-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -715,7 +810,7 @@
 				DEVELOPMENT_TEAM = MLL2QM4L99;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "VK extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rcntec.VK.VK-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -841,7 +936,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = MLL2QM4L99;
 				INFOPLIST_FILE = Weather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.VK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -864,12 +959,54 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = MLL2QM4L99;
 				INFOPLIST_FILE = Weather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.VK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D4FA80CD1FD0E3230018421B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "VK iMessage/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rcntec.VK.VK-iMessage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4FA80CE1FD0E3230018421B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "VK iMessage/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rcntec.VK.VK-iMessage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -901,6 +1038,15 @@
 			buildConfigurations = (
 				D4CD9ACE1F6866420079A121 /* Debug */,
 				D4CD9ACF1F6866420079A121 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4FA80CF1FD0E3230018421B /* Build configuration list for PBXNativeTarget "VK iMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4FA80CD1FD0E3230018421B /* Debug */,
+				D4FA80CE1FD0E3230018421B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
