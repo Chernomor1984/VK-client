@@ -38,12 +38,15 @@ class LoadNewFriendsOperation: AsyncNetworkOperation {
     override func main() {
         guard let loadFriendsRequestsIDOperation = dependencies.first as? LoadFriendsRequestsIDOperation else {
             print("LoadNewFriendsOperation finished with no or wrong dependencies")
+            self.userName = "Нет заявок"
             self.state = .finished
             return
         }
         
         guard let userIDs = loadFriendsRequestsIDOperation.userIDs else {
             print("LoadNewFriendsOperation finished with no userIDs")
+            self.userName = "Нет заявок"
+            self.state = .finished
             return
         }
         
@@ -55,6 +58,7 @@ class LoadNewFriendsOperation: AsyncNetworkOperation {
         self.userIDs = userIDs
         guard let url = url else {
             assertionFailure()
+            self.state = .finished
             return
         }
         
@@ -73,15 +77,15 @@ class LoadNewFriendsOperation: AsyncNetworkOperation {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                print(json)
-                var dict = json as! [String : Any]
-                let array = dict["response"] as! [Any]
-                dict = array.first as! [String : Any]
-                let city = dict["city"] as! [String : Any]
-                self?.userLocation = (city["title"] as! String)
-                let name = dict["first_name"] as! String
-                let lastName = dict["last_name"] as! String
-                self?.userName = name + " " + lastName
+                var dict = json as? [String : Any]
+                let array = dict?["response"] as? [Any]
+                dict = array?.first as? [String : Any]
+                let city = dict?["city"] as? [String : Any]
+                self?.userLocation = (city?["title"] as? String)
+                
+                if let name = dict?["first_name"] as? String, let lastName = dict?["last_name"] as? String {
+                    self?.userName = name + " " + lastName
+                }
             } catch {
                 print("LoadFriendsRequestsIDOperation failed:\(error.localizedDescription)")
             }

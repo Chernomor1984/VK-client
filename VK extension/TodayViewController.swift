@@ -9,6 +9,11 @@
 import UIKit
 import NotificationCenter
 
+/**
+ TODO:
+ Если заявки в друзья есть, передавать их в FriendsListController для отображения
+ */
+
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
