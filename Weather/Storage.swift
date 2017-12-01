@@ -10,6 +10,9 @@ import Foundation
 import RealmSwift
 
 final class Storage {
+    
+    static let appGroupIdentifier = "group.com.rcntec.VK"
+    
     // MARK: - Shared Instance
     
     static let sharedInstance = {
@@ -21,11 +24,16 @@ final class Storage {
     private init() {
     }
     
+    private lazy var realmConfig: Realm.Configuration = {
+        let fileURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Storage.appGroupIdentifier)!.appendingPathComponent("default.realm")
+        return Realm.Configuration(fileURL: fileURL)
+    }()
+    
     // MARK: - Public
     
     func loadPhotosFromCache(ownerID: String, completionHandler: @escaping(_ users: Results<Photo>?, _ error: Error?) -> Void) {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             let photos = realmInstance.objects(Photo.self).filter("ownerID == %@", ownerID)
             completionHandler(photos, nil)
         } catch {
@@ -35,7 +43,7 @@ final class Storage {
     
     func loadFriendsFromCache(completionHandler: @escaping(_ users: Results<User>?, _ error: Error?) -> Void) {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             let friends = realmInstance.objects(User.self)
             completionHandler(friends, nil)
         } catch {
@@ -45,7 +53,7 @@ final class Storage {
     
     func loadGroupsFromCache(completionHandler: @escaping(_ groups: Results<Group>?, _ error: Error?) -> Void) {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             let groups = realmInstance.objects(Group.self)
             completionHandler(groups, nil)
         } catch {
@@ -55,7 +63,7 @@ final class Storage {
     
     func importFriends(_ friends: [User], completion: @escaping(_ error: Error?) -> Void) -> Void {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             let oldFriends = realmInstance.objects(User.self)
             realmInstance.beginWrite()
             realmInstance.delete(oldFriends)
@@ -69,7 +77,7 @@ final class Storage {
     
     func importPhotos(ownerID: String, _ photos: [Photo], completion: @escaping(_ error: Error?) -> Void) -> Void {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             let oldPhotos = realmInstance.objects(Photo.self).filter("ownerID == %@", ownerID)
             realmInstance.beginWrite()
             realmInstance.delete(oldPhotos)
@@ -83,7 +91,7 @@ final class Storage {
     
     func importGroups(_ groups: [Group], completion: @escaping(_ error: Error?) -> Void) -> Void {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             let oldGroups = realmInstance.objects(Group.self)
             realmInstance.beginWrite()
             realmInstance.delete(oldGroups)
@@ -97,7 +105,7 @@ final class Storage {
     
     func removeObject(_ object: Object) {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             realmInstance.beginWrite()
             realmInstance.delete(object)
             try realmInstance.commitWrite()
@@ -108,7 +116,7 @@ final class Storage {
     
     func addObject(_ object: Object) {
         do {
-            let realmInstance = try Realm()
+            let realmInstance = try Realm(configuration: realmConfig)
             realmInstance.beginWrite()
             realmInstance.add(object)
             try realmInstance.commitWrite()

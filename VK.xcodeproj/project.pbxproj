@@ -151,6 +151,7 @@
 		D49D21A51FBF308B007A1D4C /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		D49D21A81FC27634007A1D4C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D49D21AA1FC27716007A1D4C /* LocationServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDelegate.swift; sourceTree = "<group>"; };
+		D4ACAFFA1FD0F8DC006023C6 /* VK iMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "VK iMessage.entitlements"; sourceTree = "<group>"; };
 		D4CCC4511FA2B930005CAEF5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageOperation.swift; sourceTree = "<group>"; };
 		D4CCC4581FA39034005CAEF5 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
@@ -423,6 +424,7 @@
 		D4FA80C11FD0E3230018421B /* VK iMessage */ = {
 			isa = PBXGroup;
 			children = (
+				D4ACAFFA1FD0F8DC006023C6 /* VK iMessage.entitlements */,
 				D4FA80C21FD0E3230018421B /* MessagesViewController.swift */,
 				D4FA80C41FD0E3230018421B /* MainInterface.storyboard */,
 				D4FA80C71FD0E3230018421B /* Assets.xcassets */,
@@ -529,6 +531,11 @@
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = MLL2QM4L99;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -976,6 +983,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "VK iMessage/VK iMessage.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLL2QM4L99;
@@ -997,6 +1005,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "VK iMessage/VK iMessage.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MLL2QM4L99;
