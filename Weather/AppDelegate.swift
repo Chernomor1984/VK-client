@@ -11,6 +11,7 @@ import RealmSwift
 import Firebase
 import GoogleMaps
 import GooglePlaces
+import UserNotifications
 
 @UIApplicationMain
 
@@ -24,8 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSServices.provideAPIKey(googleMapsKey)
         GMSPlacesClient.provideAPIKey(googleMapsKey)
-        let settings = UIUserNotificationSettings(types: .badge, categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(settings)
+        UNUserNotificationCenter.current().requestAuthorization(options: .badge) { (granted, error) in
+            if granted {
+                application.registerForRemoteNotifications()
+            }
+        }
         return true
     }
     
