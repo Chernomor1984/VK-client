@@ -11,6 +11,7 @@ import NotificationCenter
 
 /**
  TODO:
+ Парсинг переделать через SwiftyJSON
  Если заявки в друзья есть, передавать их в FriendsListController для отображения
  */
 

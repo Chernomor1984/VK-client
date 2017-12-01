@@ -24,7 +24,7 @@ final class Storage {
     private init() {
     }
     
-    private lazy var realmConfig: Realm.Configuration = {
+    public lazy var realmConfig: Realm.Configuration = {
         let fileURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Storage.appGroupIdentifier)!.appendingPathComponent("default.realm")
         return Realm.Configuration(fileURL: fileURL)
     }()
