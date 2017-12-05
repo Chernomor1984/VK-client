@@ -65,6 +65,14 @@
 		D49D21A61FBF308B007A1D4C /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D21A51FBF308B007A1D4C /* UITextViewExtension.swift */; };
 		D49D21A91FC27634007A1D4C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D21A81FC27634007A1D4C /* LocationService.swift */; };
 		D49D21AB1FC27716007A1D4C /* LocationServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D21AA1FC27716007A1D4C /* LocationServiceDelegate.swift */; };
+		D4CB099F1FD6DB9800F0449A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB099D1FD6DB9800F0449A /* Interface.storyboard */; };
+		D4CB09A11FD6DB9800F0449A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4CB09A01FD6DB9800F0449A /* Assets.xcassets */; };
+		D4CB09A81FD6DB9800F0449A /* VK watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D4CB09A71FD6DB9800F0449A /* VK watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D4CB09AD1FD6DB9800F0449A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB09AC1FD6DB9800F0449A /* InterfaceController.swift */; };
+		D4CB09AF1FD6DB9800F0449A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB09AE1FD6DB9800F0449A /* ExtensionDelegate.swift */; };
+		D4CB09B31FD6DB9800F0449A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4CB09B21FD6DB9800F0449A /* Assets.xcassets */; };
+		D4CB09B81FD6DB9800F0449A /* VK watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D4CB099B1FD6DB9800F0449A /* VK watch.app */; };
+		D4CB09C61FD6E73600F0449A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4CD9AC51F6866420079A121 /* Assets.xcassets */; };
 		D4CCC4521FA2B930005CAEF5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCC4511FA2B930005CAEF5 /* DateExtension.swift */; };
 		D4CCC4571FA37B10005CAEF5 /* CachedImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */; };
 		D4CCC4591FA39034005CAEF5 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCC4581FA39034005CAEF5 /* FileManagerExtension.swift */; };
@@ -94,6 +102,20 @@
 			remoteGlobalIDString = D436AFC51FCD544C00C5DE50;
 			remoteInfo = "VK extension";
 		};
+		D4CB09A91FD6DB9800F0449A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4CD9AB31F6866420079A121 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4CB09A61FD6DB9800F0449A;
+			remoteInfo = "VK watch Extension";
+		};
+		D4CB09B61FD6DB9800F0449A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4CD9AB31F6866420079A121 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4CB099A1FD6DB9800F0449A;
+			remoteInfo = "VK watch";
+		};
 		D4FA80CA1FD0E3230018421B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4CD9AB31F6866420079A121 /* Project object */;
@@ -114,6 +136,28 @@
 				D436AFD21FCD544C00C5DE50 /* VK extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CB09BE1FD6DB9800F0449A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D4CB09A81FD6DB9800F0449A /* VK watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CB09C01FD6DB9800F0449A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D4CB09B81FD6DB9800F0449A /* VK watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -171,6 +215,16 @@
 		D49D21A81FC27634007A1D4C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D49D21AA1FC27716007A1D4C /* LocationServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceDelegate.swift; sourceTree = "<group>"; };
 		D4ACAFFA1FD0F8DC006023C6 /* VK iMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "VK iMessage.entitlements"; sourceTree = "<group>"; };
+		D4CB099B1FD6DB9800F0449A /* VK watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4CB099E1FD6DB9800F0449A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		D4CB09A01FD6DB9800F0449A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4CB09A21FD6DB9800F0449A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4CB09A71FD6DB9800F0449A /* VK watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VK watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4CB09AC1FD6DB9800F0449A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		D4CB09AE1FD6DB9800F0449A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		D4CB09B21FD6DB9800F0449A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4CB09B41FD6DB9800F0449A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4CB09B51FD6DB9800F0449A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		D4CCC4511FA2B930005CAEF5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D4CCC4561FA37B10005CAEF5 /* CachedImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageOperation.swift; sourceTree = "<group>"; };
 		D4CCC4581FA39034005CAEF5 /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
@@ -204,6 +258,13 @@
 			files = (
 				D436AFC81FCD544C00C5DE50 /* NotificationCenter.framework in Frameworks */,
 				D0DFEBB74FDD48D7E8639C14 /* Pods_VK_extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CB09A41FD6DB9800F0449A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +427,28 @@
 			name = Code;
 			sourceTree = "<group>";
 		};
+		D4CB099C1FD6DB9800F0449A /* VK watch */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB099D1FD6DB9800F0449A /* Interface.storyboard */,
+				D4CB09A01FD6DB9800F0449A /* Assets.xcassets */,
+				D4CB09A21FD6DB9800F0449A /* Info.plist */,
+			);
+			path = "VK watch";
+			sourceTree = "<group>";
+		};
+		D4CB09AB1FD6DB9800F0449A /* VK watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D4CB09AC1FD6DB9800F0449A /* InterfaceController.swift */,
+				D4CB09AE1FD6DB9800F0449A /* ExtensionDelegate.swift */,
+				D4CB09B21FD6DB9800F0449A /* Assets.xcassets */,
+				D4CB09B41FD6DB9800F0449A /* Info.plist */,
+				D4CB09B51FD6DB9800F0449A /* PushNotificationPayload.apns */,
+			);
+			path = "VK watch Extension";
+			sourceTree = "<group>";
+		};
 		D4CCC4531FA3726F005CAEF5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +492,8 @@
 				D4CD9ABD1F6866420079A121 /* VK */,
 				D436AFC91FCD544C00C5DE50 /* VK extension */,
 				D4FA80C11FD0E3230018421B /* VK iMessage */,
+				D4CB099C1FD6DB9800F0449A /* VK watch */,
+				D4CB09AB1FD6DB9800F0449A /* VK watch Extension */,
 				D4CD9ABC1F6866420079A121 /* Products */,
 				B412AAB635BD6F71FFC0507A /* Pods */,
 				47CC9BEB5E6A60CAE6BE9008 /* Frameworks */,
@@ -421,6 +506,8 @@
 				D4CD9ABB1F6866420079A121 /* VK.app */,
 				D436AFC61FCD544C00C5DE50 /* VK extension.appex */,
 				D4FA80BE1FD0E3230018421B /* VK iMessage.appex */,
+				D4CB099B1FD6DB9800F0449A /* VK watch.app */,
+				D4CB09A71FD6DB9800F0449A /* VK watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -484,6 +571,40 @@
 			productReference = D436AFC61FCD544C00C5DE50 /* VK extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		D4CB099A1FD6DB9800F0449A /* VK watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4CB09BF1FD6DB9800F0449A /* Build configuration list for PBXNativeTarget "VK watch" */;
+			buildPhases = (
+				D4CB09991FD6DB9800F0449A /* Resources */,
+				D4CB09BE1FD6DB9800F0449A /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4CB09AA1FD6DB9800F0449A /* PBXTargetDependency */,
+			);
+			name = "VK watch";
+			productName = "VK watch";
+			productReference = D4CB099B1FD6DB9800F0449A /* VK watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		D4CB09A61FD6DB9800F0449A /* VK watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4CB09BD1FD6DB9800F0449A /* Build configuration list for PBXNativeTarget "VK watch Extension" */;
+			buildPhases = (
+				D4CB09A31FD6DB9800F0449A /* Sources */,
+				D4CB09A41FD6DB9800F0449A /* Frameworks */,
+				D4CB09A51FD6DB9800F0449A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VK watch Extension";
+			productName = "VK watch Extension";
+			productReference = D4CB09A71FD6DB9800F0449A /* VK watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		D4CD9ABA1F6866420079A121 /* VK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4CD9ACD1F6866420079A121 /* Build configuration list for PBXNativeTarget "VK" */;
@@ -495,12 +616,14 @@
 				41AF2D2B435DE1BD9A19539D /* [CP] Embed Pods Frameworks */,
 				79E4CFCE8527D00D8F9543C5 /* [CP] Copy Pods Resources */,
 				D436AFD61FCD544C00C5DE50 /* Embed App Extensions */,
+				D4CB09C01FD6DB9800F0449A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D436AFD11FCD544C00C5DE50 /* PBXTargetDependency */,
 				D4FA80CB1FD0E3230018421B /* PBXTargetDependency */,
+				D4CB09B71FD6DB9800F0449A /* PBXTargetDependency */,
 			);
 			name = VK;
 			productName = Weather;
@@ -546,6 +669,16 @@
 							};
 						};
 					};
+					D4CB099A1FD6DB9800F0449A = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = MLL2QM4L99;
+						ProvisioningStyle = Automatic;
+					};
+					D4CB09A61FD6DB9800F0449A = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = MLL2QM4L99;
+						ProvisioningStyle = Automatic;
+					};
 					D4CD9ABA1F6866420079A121 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = MLL2QM4L99;
@@ -588,6 +721,8 @@
 				D4CD9ABA1F6866420079A121 /* VK */,
 				D436AFC51FCD544C00C5DE50 /* VK extension */,
 				D4FA80BD1FD0E3230018421B /* VK iMessage */,
+				D4CB099A1FD6DB9800F0449A /* VK watch */,
+				D4CB09A61FD6DB9800F0449A /* VK watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -597,7 +732,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CB09C61FD6E73600F0449A /* Assets.xcassets in Resources */,
 				D436AFCE1FCD544C00C5DE50 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CB09991FD6DB9800F0449A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4CB09A11FD6DB9800F0449A /* Assets.xcassets in Resources */,
+				D4CB099F1FD6DB9800F0449A /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4CB09A51FD6DB9800F0449A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4CB09B31FD6DB9800F0449A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +941,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4CB09A31FD6DB9800F0449A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4CB09AF1FD6DB9800F0449A /* ExtensionDelegate.swift in Sources */,
+				D4CB09AD1FD6DB9800F0449A /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D4CD9AB71F6866420079A121 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -862,6 +1024,16 @@
 			target = D436AFC51FCD544C00C5DE50 /* VK extension */;
 			targetProxy = D436AFD01FCD544C00C5DE50 /* PBXContainerItemProxy */;
 		};
+		D4CB09AA1FD6DB9800F0449A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4CB09A61FD6DB9800F0449A /* VK watch Extension */;
+			targetProxy = D4CB09A91FD6DB9800F0449A /* PBXContainerItemProxy */;
+		};
+		D4CB09B71FD6DB9800F0449A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4CB099A1FD6DB9800F0449A /* VK watch */;
+			targetProxy = D4CB09B61FD6DB9800F0449A /* PBXContainerItemProxy */;
+		};
 		D4FA80CB1FD0E3230018421B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D4FA80BD1FD0E3230018421B /* VK iMessage */;
@@ -876,6 +1048,14 @@
 				D436AFCD1FCD544C00C5DE50 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		D4CB099D1FD6DB9800F0449A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4CB099E1FD6DB9800F0449A /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 		D4CD9AC21F6866420079A121 /* Main.storyboard */ = {
@@ -946,6 +1126,94 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D4CB09B91FD6DB9800F0449A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = VK_watch_Extension;
+				INFOPLIST_FILE = "VK watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.VK.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+			};
+			name = Debug;
+		};
+		D4CB09BA1FD6DB9800F0449A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = VK_watch_Extension;
+				INFOPLIST_FILE = "VK watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.VK.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+			};
+			name = Release;
+		};
+		D4CB09BB1FD6DB9800F0449A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "VK watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.VK.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+			};
+			name = Debug;
+		};
+		D4CB09BC1FD6DB9800F0449A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLL2QM4L99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "VK watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rcntec.VK.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.1;
 			};
 			name = Release;
 		};
@@ -1153,6 +1421,24 @@
 			buildConfigurations = (
 				D436AFD31FCD544C00C5DE50 /* Debug */,
 				D436AFD41FCD544C00C5DE50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4CB09BD1FD6DB9800F0449A /* Build configuration list for PBXNativeTarget "VK watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4CB09BB1FD6DB9800F0449A /* Debug */,
+				D4CB09BC1FD6DB9800F0449A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4CB09BF1FD6DB9800F0449A /* Build configuration list for PBXNativeTarget "VK watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4CB09B91FD6DB9800F0449A /* Debug */,
+				D4CB09BA1FD6DB9800F0449A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
