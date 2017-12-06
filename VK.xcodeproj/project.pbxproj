@@ -15,6 +15,8 @@
 		D4118C1C1FCD24B3008E3D91 /* NewFriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1B1FCD24B3008E3D91 /* NewFriendRequestCell.swift */; };
 		D4118C1E1FCD2B24008E3D91 /* NewFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */; };
 		D42500071FCD90A70049EFF6 /* LoadNewFriendsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42500061FCD90A70049EFF6 /* LoadNewFriendsOperation.swift */; };
+		D43461C81FD79814008861E2 /* WatchAppNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43461C71FD79814008861E2 /* WatchAppNews.swift */; };
+		D43461CB1FD79B95008861E2 /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43461CA1FD79B95008861E2 /* NewsRow.swift */; };
 		D436AFC81FCD544C00C5DE50 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D436AFC71FCD544C00C5DE50 /* NotificationCenter.framework */; };
 		D436AFCB1FCD544C00C5DE50 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436AFCA1FCD544C00C5DE50 /* TodayViewController.swift */; };
 		D436AFCE1FCD544C00C5DE50 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D436AFCC1FCD544C00C5DE50 /* MainInterface.storyboard */; };
@@ -54,11 +56,9 @@
 		D48F23FC1FD1034600347F78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC7F1F82D7660061FF79 /* User.swift */; };
 		D48F23FD1FD1035100347F78 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC811F82F62B0061FF79 /* Photo.swift */; };
 		D48F23FE1FD1035100347F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC831F82FFC00061FF79 /* Group.swift */; };
-		D48F23FF1FD1035100347F78 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F332181F962FAB0003765E /* News.swift */; };
 		D48F24001FD1035100347F78 /* NewFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */; };
 		D48F24011FD1035200347F78 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC811F82F62B0061FF79 /* Photo.swift */; };
 		D48F24021FD1035200347F78 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC831F82FFC00061FF79 /* Group.swift */; };
-		D48F24031FD1035200347F78 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F332181F962FAB0003765E /* News.swift */; };
 		D48F24041FD1035200347F78 /* NewFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */; };
 		D48F24061FD1096900347F78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4CD9AC51F6866420079A121 /* Assets.xcassets */; };
 		D49D219C1FBEF6AB007A1D4C /* AddPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D219B1FBEF6AB007A1D4C /* AddPostController.swift */; };
@@ -177,6 +177,8 @@
 		D4118C1B1FCD24B3008E3D91 /* NewFriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriendRequestCell.swift; sourceTree = "<group>"; };
 		D4118C1D1FCD2B24008E3D91 /* NewFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFriend.swift; sourceTree = "<group>"; };
 		D42500061FCD90A70049EFF6 /* LoadNewFriendsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadNewFriendsOperation.swift; sourceTree = "<group>"; };
+		D43461C71FD79814008861E2 /* WatchAppNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAppNews.swift; sourceTree = "<group>"; };
+		D43461CA1FD79B95008861E2 /* NewsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRow.swift; sourceTree = "<group>"; };
 		D436AFC61FCD544C00C5DE50 /* VK extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VK extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D436AFC71FCD544C00C5DE50 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		D436AFCA1FCD544C00C5DE50 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +449,8 @@
 				D4CB09AC1FD6DB9800F0449A /* InterfaceController.swift */,
 				D4CB09AE1FD6DB9800F0449A /* ExtensionDelegate.swift */,
 				D4CB09C71FD6FF4A00F0449A /* WKInterfaceImageExtension.swift */,
+				D43461C71FD79814008861E2 /* WatchAppNews.swift */,
+				D43461CA1FD79B95008861E2 /* NewsRow.swift */,
 				D4CB09B21FD6DB9800F0449A /* Assets.xcassets */,
 				D4CB09B41FD6DB9800F0449A /* Info.plist */,
 				D4CB09B51FD6DB9800F0449A /* PushNotificationPayload.apns */,
@@ -938,7 +942,6 @@
 				D48F23FD1FD1035100347F78 /* Photo.swift in Sources */,
 				D436AFCB1FCD544C00C5DE50 /* TodayViewController.swift in Sources */,
 				D436AFDC1FCD5E8100C5DE50 /* LoadFriendsRequestsIDOperation.swift in Sources */,
-				D48F23FF1FD1035100347F78 /* News.swift in Sources */,
 				D48F23FE1FD1035100347F78 /* Group.swift in Sources */,
 				D48F23FB1FD1034600347F78 /* User.swift in Sources */,
 				D42500071FCD90A70049EFF6 /* LoadNewFriendsOperation.swift in Sources */,
@@ -953,6 +956,8 @@
 			files = (
 				D4CB09AF1FD6DB9800F0449A /* ExtensionDelegate.swift in Sources */,
 				D4CB09C81FD6FF4A00F0449A /* WKInterfaceImageExtension.swift in Sources */,
+				D43461C81FD79814008861E2 /* WatchAppNews.swift in Sources */,
+				D43461CB1FD79B95008861E2 /* NewsRow.swift in Sources */,
 				D4CB09AD1FD6DB9800F0449A /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1014,7 +1019,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D48F24031FD1035200347F78 /* News.swift in Sources */,
 				D48F24041FD1035200347F78 /* NewFriend.swift in Sources */,
 				D48F24011FD1035200347F78 /* Photo.swift in Sources */,
 				D4FA80C31FD0E3230018421B /* MessagesViewController.swift in Sources */,

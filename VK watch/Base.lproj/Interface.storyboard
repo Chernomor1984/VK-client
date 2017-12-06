@@ -16,18 +16,22 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="hlX-st-WQV">
                             <items>
-                                <imageView width="30" height="30" alignment="center" id="XKA-d7-nrw"/>
+                                <imageView width="30" height="30" alignment="center" contentMode="scaleAspectFit" id="XKA-d7-nrw"/>
                                 <table alignment="left" id="knF-OQ-Dvx">
                                     <items>
-                                        <tableRow identifier="cellIdentifier" id="Pbq-an-akm">
+                                        <tableRow identifier="news" id="Pbq-an-akm" customClass="NewsRow" customModule="VK_watch_Extension">
                                             <group key="rootItem" width="1" height="110" alignment="left" layout="vertical" id="Iif-aB-PDl">
                                                 <items>
-                                                    <imageView width="50" height="50" alignment="center" id="K33-PP-3k8"/>
-                                                    <label width="1" height="60" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" id="pb2-5Z-DIi">
+                                                    <imageView width="50" height="50" alignment="center" contentMode="scaleAspectFill" id="K33-PP-3k8"/>
+                                                    <label width="1" height="56" alignment="center" verticalAlignment="center" textAlignment="justified" numberOfLines="0" id="pb2-5Z-DIi">
                                                         <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                                     </label>
                                                 </items>
                                             </group>
+                                            <connections>
+                                                <outlet property="image" destination="K33-PP-3k8" id="OcG-iF-yVQ"/>
+                                                <outlet property="text" destination="pb2-5Z-DIi" id="Mtq-Xy-Wln"/>
+                                            </connections>
                                         </tableRow>
                                     </items>
                                 </table>

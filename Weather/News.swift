@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
-import RealmSwift
 
 class News {
     var postID: Int?

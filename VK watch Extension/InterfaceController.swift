@@ -16,6 +16,8 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var tableView: WKInterfaceTable!
     @IBOutlet weak var indicatorImage: WKInterfaceImage!
     
+    var news = [WatchAppNews]()
+    
     private var session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
     // MARK: - Life cycle
@@ -27,51 +29,78 @@ class InterfaceController: WKInterfaceController {
         session?.activate()
     }
     
+    // MARK: - Public
+    
+    func updateTable() {
+        tableView.setNumberOfRows(news.count, withRowType: "news")
+        
+        for (index, news) in news.enumerated(){
+            if let row = tableView.rowController(at: index) as? NewsRow {
+                row.text.setText(news.text)
+            }
+        }
+    }
+    
     // MARK: - Private
+    
+    private func handleResponse(response: [String : Any]) {
+        if let response = response["newsListReply"] as? [[String : String]] {
+            news = response.flatMap{ singleNews in
+                let news = WatchAppNews()
+                
+                if let stringURL = singleNews.keys.first {
+                    news.url = URL(string: stringURL)
+                }
+                
+                if let text = singleNews.values.first {
+                    news.text = text
+                }
+                return news
+            }
+            DispatchQueue.main.async {
+                self.updateTable()
+            }
+        }
+    }
     
     private func sendParentAppRequest() {
         if !(session?.isReachable)! {
-            self.showConfirmationAlertController(title: "Parent app is unreachable", message: "Try again later")
+            self.showErrorAlertController(title: "Parent app is unreachable", message: "Try again later")
             return
         }
         
         let replyHandler = { [weak self] (response: [String : Any]) in
             DispatchQueue.main.async {
                 self?.indicatorImage.hideActivityIndicator()
+                self?.handleResponse(response: response)
             }
-            print(response)
         }
         
         let errorHandler = { [weak self] (error: Error) in
             DispatchQueue.main.async {
                 self?.indicatorImage.hideActivityIndicator()
-                self?.showConfirmationAlertController(title: "Error!", message: error.localizedDescription)
+                self?.showErrorAlertController(title: "Error!", message: error.localizedDescription)
             }
         }
-        session?.sendMessage(["requestType" : "friendsListRequest"], replyHandler: replyHandler, errorHandler: errorHandler)
+        session?.sendMessage(["requestType" : "newsListRequest"], replyHandler: replyHandler, errorHandler: errorHandler)
         indicatorImage.showActivityIndicator()
     }
     
-    // MARK: - Private
-    
-    private func showConfirmationAlertController(title: String?, message: String?) {
-        let okAction = WKAlertAction(title: "Ok", style: .cancel, handler: {})
-        self.presentAlert(withTitle: title, message: message, preferredStyle: .alert, actions: [okAction])
+    private func showErrorAlertController(title: String?, message: String?) {
+        let closeAction = WKAlertAction(title: "Close", style: .cancel, handler: {})
+        let sendAction = WKAlertAction(title: "Try again", style: .cancel, handler: {
+            self.sendParentAppRequest()
+        })
+        self.presentAlert(withTitle: title, message: message, preferredStyle: .alert, actions: [closeAction, sendAction])
     }
 }
 
 extension InterfaceController: WCSessionDelegate {
-    // MARK: - WCSessionDelegate
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if activationState == .activated{
             self.sendParentAppRequest()
         } else {
-            self.showConfirmationAlertController(title: "Parent app is unreachable", message: "Try again later")
+            self.showErrorAlertController(title: "Parent app is unreachable", message: "Try again later")
         }
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        print("didReceiveMessage:\(message)")
     }
 }
