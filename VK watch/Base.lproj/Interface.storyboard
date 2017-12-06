@@ -14,21 +14,30 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="VK_watch" customModuleProvider="target">
                     <items>
-                        <table alignment="left" id="knF-OQ-Dvx">
+                        <group width="1" alignment="left" layout="vertical" id="hlX-st-WQV">
                             <items>
-                                <tableRow identifier="cellIdentifier" id="Pbq-an-akm">
-                                    <group key="rootItem" width="1" height="110" alignment="left" layout="vertical" id="Iif-aB-PDl">
-                                        <items>
-                                            <imageView width="50" height="50" alignment="center" id="K33-PP-3k8"/>
-                                            <label width="1" height="60" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" id="pb2-5Z-DIi">
-                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
-                                            </label>
-                                        </items>
-                                    </group>
-                                </tableRow>
+                                <imageView width="30" height="30" alignment="center" id="XKA-d7-nrw"/>
+                                <table alignment="left" id="knF-OQ-Dvx">
+                                    <items>
+                                        <tableRow identifier="cellIdentifier" id="Pbq-an-akm">
+                                            <group key="rootItem" width="1" height="110" alignment="left" layout="vertical" id="Iif-aB-PDl">
+                                                <items>
+                                                    <imageView width="50" height="50" alignment="center" id="K33-PP-3k8"/>
+                                                    <label width="1" height="60" alignment="center" verticalAlignment="center" textAlignment="center" numberOfLines="0" id="pb2-5Z-DIi">
+                                                        <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </tableRow>
+                                    </items>
+                                </table>
                             </items>
-                        </table>
+                        </group>
                     </items>
+                    <connections>
+                        <outlet property="indicatorImage" destination="XKA-d7-nrw" id="P8m-OF-u3F"/>
+                        <outlet property="tableView" destination="knF-OQ-Dvx" id="KwP-mO-ed0"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
