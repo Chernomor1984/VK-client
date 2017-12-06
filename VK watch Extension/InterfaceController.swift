@@ -37,6 +37,7 @@ class InterfaceController: WKInterfaceController {
         for (index, news) in news.enumerated(){
             if let row = tableView.rowController(at: index) as? NewsRow {
                 row.text.setText(news.text)
+                row.image.imageFromUrl(news.url)
             }
         }
     }
@@ -47,14 +48,8 @@ class InterfaceController: WKInterfaceController {
         if let response = response["newsListReply"] as? [[String : String]] {
             news = response.flatMap{ singleNews in
                 let news = WatchAppNews()
-                
-                if let stringURL = singleNews.keys.first {
-                    news.url = URL(string: stringURL)
-                }
-                
-                if let text = singleNews.values.first {
-                    news.text = text
-                }
+                news.url = singleNews.keys.first
+                news.text = singleNews.values.first
                 return news
             }
             DispatchQueue.main.async {
@@ -101,6 +96,27 @@ extension InterfaceController: WCSessionDelegate {
             self.sendParentAppRequest()
         } else {
             self.showErrorAlertController(title: "Parent app is unreachable", message: "Try again later")
+        }
+    }
+}
+
+extension WKInterfaceImage {
+    public func imageFromUrl(_ urlString: String?) {
+        
+        if let urlString = urlString, let url = NSURL(string: urlString) {
+            
+            let request = NSURLRequest(url: url as URL)
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) in
+                if let imageData = data as Data? {
+                    DispatchQueue.main.async {
+                        self.setImageData(imageData)
+                    }
+                }
+            });
+            task.resume()
         }
     }
 }

@@ -10,5 +10,5 @@ import Foundation
 
 class WatchAppNews {
     var text: String?
-    var url: URL?
+    var url: String?
 }
