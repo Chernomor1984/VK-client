@@ -20,12 +20,20 @@
                                 <table alignment="left" id="knF-OQ-Dvx">
                                     <items>
                                         <tableRow identifier="news" id="Pbq-an-akm" customClass="NewsRow" customModule="VK_watch_Extension">
-                                            <group key="rootItem" width="1" height="110" alignment="left" layout="vertical" id="Iif-aB-PDl">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="Iif-aB-PDl">
                                                 <items>
-                                                    <imageView width="50" height="50" alignment="center" contentMode="scaleAspectFill" id="K33-PP-3k8"/>
-                                                    <label width="1" height="56" alignment="center" verticalAlignment="center" textAlignment="justified" numberOfLines="0" id="pb2-5Z-DIi">
-                                                        <fontDescription key="font" style="UICTFontTextStyleBody"/>
-                                                    </label>
+                                                    <group width="1" alignment="center" layout="vertical" id="jYv-3o-nb8">
+                                                        <items>
+                                                            <imageView width="1" alignment="center" contentMode="scaleAspectFill" id="K33-PP-3k8"/>
+                                                        </items>
+                                                    </group>
+                                                    <group width="1" alignment="center" layout="vertical" id="9fN-Eu-SVX">
+                                                        <items>
+                                                            <label alignment="center" verticalAlignment="center" textAlignment="left" numberOfLines="3" id="pb2-5Z-DIi">
+                                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
                                                 </items>
                                             </group>
                                             <connections>
@@ -45,6 +53,34 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--SingleNewsController-->
+        <scene sceneID="JYm-dN-IS4">
+            <objects>
+                <controller identifier="SingleNewsController" id="nlW-vw-fEq" customClass="SingleNewsController" customModule="VK_watch_Extension">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="4S0-FO-9Hj">
+                            <items>
+                                <group width="1" alignment="center" layout="vertical" id="fk1-87-2dd">
+                                    <items>
+                                        <imageView alignment="center" contentMode="scaleAspectFit" id="xX8-xR-icN"/>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="center" layout="vertical" id="jV0-2b-Wwt">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="center" text="Label" textAlignment="left" numberOfLines="0" id="kWh-hy-aFw"/>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="image" destination="xX8-xR-icN" id="eeb-AN-vsr"/>
+                        <outlet property="text" destination="kWh-hy-aFw" id="LjW-qD-CMb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="507" y="345"/>
         </scene>
     </scenes>
 </document>

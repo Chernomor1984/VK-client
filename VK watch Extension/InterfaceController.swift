@@ -29,9 +29,9 @@ class InterfaceController: WKInterfaceController {
         session?.activate()
     }
     
-    // MARK: - Public
+    // MARK: - Private
     
-    func updateTable() {
+    private func updateTable() {
         tableView.setNumberOfRows(news.count, withRowType: "news")
         
         for (index, news) in news.enumerated(){
@@ -41,8 +41,6 @@ class InterfaceController: WKInterfaceController {
             }
         }
     }
-    
-    // MARK: - Private
     
     private func handleResponse(response: [String : Any]) {
         if let response = response["newsListReply"] as? [[String : String]] {
@@ -88,6 +86,10 @@ class InterfaceController: WKInterfaceController {
         })
         self.presentAlert(withTitle: title, message: message, preferredStyle: .alert, actions: [closeAction, sendAction])
     }
+    
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        self.pushController(withName: "SingleNewsController", context: news[rowIndex])
+    }
 }
 
 extension InterfaceController: WCSessionDelegate {
@@ -96,27 +98,6 @@ extension InterfaceController: WCSessionDelegate {
             self.sendParentAppRequest()
         } else {
             self.showErrorAlertController(title: "Parent app is unreachable", message: "Try again later")
-        }
-    }
-}
-
-extension WKInterfaceImage {
-    public func imageFromUrl(_ urlString: String?) {
-        
-        if let urlString = urlString, let url = NSURL(string: urlString) {
-            
-            let request = NSURLRequest(url: url as URL)
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config)
-            
-            let task = session.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) in
-                if let imageData = data as Data? {
-                    DispatchQueue.main.async {
-                        self.setImageData(imageData)
-                    }
-                }
-            });
-            task.resume()
         }
     }
 }
