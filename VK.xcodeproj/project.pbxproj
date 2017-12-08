@@ -52,6 +52,7 @@
 		D46A67931FA7F07100F9A5BD /* ImageViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A67921FA7F07100F9A5BD /* ImageViewCellProtocol.swift */; };
 		D46A67971FA7F9AD00F9A5BD /* DownloadServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A67961FA7F9AD00F9A5BD /* DownloadServiceProtocol.swift */; };
 		D47B29681F86F7B10024D191 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B29671F86F7B10024D191 /* Storage.swift */; };
+		D480E8991FDA22B000392FEC /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D480E8981FDA22B000392FEC /* LocalNotificationsService.swift */; };
 		D48F23F91FD1028A00347F78 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B29671F86F7B10024D191 /* Storage.swift */; };
 		D48F23FA1FD1028C00347F78 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47B29671F86F7B10024D191 /* Storage.swift */; };
 		D48F23FB1FD1034600347F78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CBC7F1F82D7660061FF79 /* User.swift */; };
@@ -218,6 +219,7 @@
 		D46A67921FA7F07100F9A5BD /* ImageViewCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCellProtocol.swift; sourceTree = "<group>"; };
 		D46A67961FA7F9AD00F9A5BD /* DownloadServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadServiceProtocol.swift; sourceTree = "<group>"; };
 		D47B29671F86F7B10024D191 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		D480E8981FDA22B000392FEC /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		D49D219B1FBEF6AB007A1D4C /* AddPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostController.swift; sourceTree = "<group>"; };
 		D49D21A51FBF308B007A1D4C /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		D49D21A81FC27634007A1D4C /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				D46A678E1FA7E1BF00F9A5BD /* PhotoDownloadService.swift */,
 				D49D21A81FC27634007A1D4C /* LocationService.swift */,
 				D4118C171FCCFB3A008E3D91 /* NewFriendsBackgroundFetchService.swift */,
+				D480E8981FDA22B000392FEC /* LocalNotificationsService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -991,6 +994,7 @@
 				D4CCC4521FA2B930005CAEF5 /* DateExtension.swift in Sources */,
 				D4F3321B1F9645F20003765E /* NewsFeedTableViewCell.swift in Sources */,
 				D4F332191F962FAB0003765E /* News.swift in Sources */,
+				D480E8991FDA22B000392FEC /* LocalNotificationsService.swift in Sources */,
 				D49D21AB1FC27716007A1D4C /* LocationServiceDelegate.swift in Sources */,
 				D4416DBF1F7089D8006720E1 /* GroupsListController.swift in Sources */,
 				D45DA4C81FC78BC6002E5BD4 /* VKImageUploadingOperation.swift in Sources */,
