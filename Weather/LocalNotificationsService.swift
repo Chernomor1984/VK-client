@@ -12,6 +12,7 @@ import UserNotifications
 class LocalNotificationsService {
     static let sharedInstance = LocalNotificationsService()
     
+    private let newFriendsRequestNotificationIdentifier = "newFriendsRequestNotificationIdentifier"
     private let center = UNUserNotificationCenter.current()
     
     // MARK: - Init
@@ -33,5 +34,30 @@ class LocalNotificationsService {
                 print("Local notifications disabled")
             }
         }
+    }
+    
+    func addNewFriendsRequestNotification(title: String?, body: String, badge: NSNumber?, sound: UNNotificationSound? = UNNotificationSound.default()) {
+        let content = UNMutableNotificationContent()
+        content.body = body
+        
+        if let title = title {
+            content.title = title
+        }
+        
+        if let badge = badge {
+            content.badge = badge
+        }
+        
+        if let sound = sound {
+            content.sound = sound
+        }
+        
+        let request = UNNotificationRequest(identifier: newFriendsRequestNotificationIdentifier, content: content, trigger: nil)
+        let completionHandler = { (error: Error?) in
+            if let error = error {
+                assertionFailure("UNUserNotificationCenter newFriendsRequestNotification failed with error:\(error.localizedDescription)")
+            }
+        }
+        center.add(request, withCompletionHandler: completionHandler)
     }
 }

@@ -18,6 +18,7 @@ class NewFriendsRequestsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.applicationIconBadgeNumber = 0
         loadFriendsRequests()
     }
     
@@ -40,7 +41,6 @@ class NewFriendsRequestsController: UITableViewController {
             
             self?.friendRequests = json["response"].flatMap{NewFriend(json: $0.1)}
             DispatchQueue.main.async {
-                UIApplication.shared.applicationIconBadgeNumber = 0
                 self?.tableView.reloadData()
             }
         }

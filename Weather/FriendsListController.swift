@@ -19,9 +19,7 @@ class FriendsListController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "AppOpenURL"), object: UIApplication.shared.delegate, queue: OperationQueue.main) { [weak self] (notification) in
-            self?.requestsButton.isEnabled = UserDefaults.standard.object(forKey: newFriendsIdsKey) != nil
-        }
+        subscribeForNotifications()
         loadFriendsFromCache()
         loadFriendsList()
     }
@@ -32,10 +30,17 @@ class FriendsListController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        requestsButton.isEnabled = UserDefaults.standard.object(forKey: newFriendsIdsKey) != nil
+        updateRequestButton()
     }
     
     // MARK: - Private
+    
+    private func subscribeForNotifications() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "AppOpenURL"), object: UIApplication.shared.delegate, queue: OperationQueue.main) { [weak self] (notification) in
+            self?.updateRequestButton()
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActiveNotificationHandler), name: .UIApplicationDidBecomeActive, object: UIApplication.shared.delegate)
+    }
     
     private func loadFriendsFromCache() {
         weak var weakSelf = self
@@ -112,6 +117,16 @@ class FriendsListController: UITableViewController {
     }
     
     // MARK: - Actions
+    
+    @objc private func didBecomeActiveNotificationHandler() {
+        updateRequestButton()
+    }
+    
+    private func updateRequestButton() {
+        DispatchQueue.main.async {
+            self.requestsButton.isEnabled = UserDefaults.standard.object(forKey: newFriendsIdsKey) != nil
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "didSelectFriend"{

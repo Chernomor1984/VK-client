@@ -57,7 +57,10 @@ class NewFriendsBackgroundFetchService {
             if data != nil {
                 UserDefaults.standard.setValue(data!, forKey: newFriendsIdsKey)
                 DispatchQueue.main.async {
-                    UIApplication.shared.applicationIconBadgeNumber = 1
+                    let title = "Аларм!"
+                    let body = "Новые запросы в друзья!"
+                    let badge = NSNumber(value: 1)
+                    LocalNotificationsService.sharedInstance.addNewFriendsRequestNotification(title: title, body: body, badge: badge)
                 }
             }
             self?.timer?.cancel()
