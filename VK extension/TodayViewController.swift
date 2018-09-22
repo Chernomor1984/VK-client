@@ -38,6 +38,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             DispatchQueue.main.async {
                 self.nameLabel.text = loadNewFriendsOperation.userName
                 self.locationLabel.text = loadNewFriendsOperation.userLocation
+                // MARK: - add to UserDefaults new requests info
             }
         }
         loadNewFriendsOperation.addDependency(friendsRequestsOperation)

@@ -36,10 +36,10 @@ class FriendsListController: UITableViewController {
     // MARK: - Private
     
     private func subscribeForNotifications() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "AppOpenURL"), object: UIApplication.shared.delegate, queue: OperationQueue.main) { [weak self] (notification) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "AppOpenURL"), object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             self?.updateRequestButton()
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActiveNotificationHandler), name: .UIApplicationDidBecomeActive, object: UIApplication.shared.delegate)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActiveNotificationHandler), name: .UIApplicationDidBecomeActive, object: nil)
     }
     
     private func loadFriendsFromCache() {
@@ -124,6 +124,7 @@ class FriendsListController: UITableViewController {
     
     private func updateRequestButton() {
         DispatchQueue.main.async {
+            print(UserDefaults.standard.object(forKey: newFriendsIdsKey) as Any)
             self.requestsButton.isEnabled = UserDefaults.standard.object(forKey: newFriendsIdsKey) != nil
         }
     }
